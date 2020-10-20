@@ -43,7 +43,7 @@ const Header = () => {
     .section-navigation {
       /* display: flex; */
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: $fff;
       .logo {
         max-width: 100px;
         max-height: 100px;
@@ -72,38 +72,51 @@ const Header = () => {
           }
         }
       }
-      a {
-        display: flex;
-        justify-content: center;
+      .right-container {
+        position: relative;
         height: 100%;
-        .phone-wrap {
-          height: 100%;
+        display: flex; 
+        a.phone-container {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          color: white;
-          text-decoration: none;
+          justify-content: flex-start;
+          height: 100%;
+          flex: 1; 
+          .phone {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            background-color: #fff;
+            color: #BB0000;
+            font-size: 1.7em;
+          }
+        }
+        .menu-container {
+          position: relative; 
+          flex: 1; 
+          background-color: #BB0000;
         }
       }
     }
   `
-
-
 
   return (
     <Navigation>
       <div className="section-navigation">
         <Container fluid>
           <Row>
-            <Col>
+            <Col xs={3}>
               {" "}
               <div className="logo">
                 <Image />
               </div>
             </Col>
-            <Col xs={6} className="d-none">
+            <Col xs={6} className="">
               {" "}
-              <div className="navigation-menu">
+              <div className="navigation-menu d-none">
                 <ul>
                   {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
                     return (
@@ -117,13 +130,16 @@ const Header = () => {
                 </ul>
               </div>
             </Col>
-            <Col className="p-0">
-              <div classNam="right-container">
-                {data.allThemeOptions.nodes[0].phone_number}
-                <div className="phone-wrap">
-                  <FontAwesomeIcon icon={faPhone} />
-                </div>
+            <Col xs={3} className="p-0">
+              <div className="right-container">
+                <a className="phone-container" href={data.allThemeOptions.nodes[0].phone_number}>
+                  <div className="phone">
+                    <FontAwesomeIcon icon={faPhone} />
+                  </div>
+                </a>
+                <div className="menu-container">
                   <Mmenu />
+                </div>
               </div>
             </Col>
           </Row>
