@@ -1,30 +1,64 @@
 import { slide as Menu } from "react-burger-menu"
+import { Link, useStaticQuery } from "gatsby"
+import React from "react"
+import styled from "styled-components"
 
-import React, { Component } from "react"
+const MMenuWrapper = styled.div`
+  @media (min-width: 992px) {
+    display: none; 
+  }
+`
 
 const Mmenu = () => {
+  const data = useStaticQuery(graphql`
+    query mmenuQuery {
+      wordpress {
+        menus {
+          nodes {
+            name
+            menuItems {
+              nodes {
+                label
+                id
+                url
+                path
+              }
+            }
+            id
+            slug
+          }
+        }
+      }
+      allThemeOptions {
+        nodes {
+          phone_number
+          logo {
+            url
+          }
+        }
+      }
+    }
+  `)
   return (
-    <Menu styles={styles}>
-      <a id="home" className="menu-item" href="/">
-        Home
-      </a>
-      <a id="about" className="menu-item" href="/about">
-        About
-      </a>
-      <a id="contact" className="menu-item" href="/contact">
-        Contact
-      </a>
-    </Menu>
+    <MMenuWrapper>
+      <Menu styles={styles}>
+        {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
+          return (
+            <li key={x.id}>
+              <Link key={x.id} to={x.path}>
+                {x.label}
+              </Link>
+            </li>
+          )
+        })}
+      </Menu>
+    </MMenuWrapper>
   )
 }
 
 export default Mmenu
 
 var styles = {
-
-  bmOverlay: {
-    display: "none",
-  },
   bmBurgerButton: {
     position: "absolute",
     width: "36px",
@@ -53,7 +87,7 @@ var styles = {
   },
   bmMenu: {
     background: "#373a47",
-    padding: "2.5em 1.5em 0",
+    padding: "0em 1.5em 0",
     fontSize: "1.15em",
   },
   bmMorphShape: {
@@ -62,12 +96,15 @@ var styles = {
   bmItemList: {
     color: "#b8b7ad",
     padding: "0.8em",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   bmItem: {
     display: "inline-block",
   },
   bmOverlay: {
+    display: "none",
     background: "rgba(0, 0, 0, 0.0)",
-
   },
 }

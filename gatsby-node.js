@@ -52,11 +52,52 @@ const query = `
             id
             slug
             title
+            content
           }
         }
       }
     }
 `
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { data } = await graphql(
+    `
+      ${query}
+    `
+  )
+ 
+  if (!data) return null
+
+  data.wordpress.pages.nodes.forEach(page => {
+    const uri = page.uri == "homepage" ? `` : `${page.uri}`
+    console.log(page);
+    actions.createPage({
+      path: uri,
+      component: path.resolve(`./src/templates/page.js`),
+      context: {
+        ...page,
+        id: page.id,
+        slug: page.uri,
+        title: page.title,
+        content: page.content
+      },
+    })
+  })
+
+  data.wordpress.posts.nodes.forEach(post => {
+    actions.createPage({
+      path: `/post${post.uri}`,
+      component: path.resolve(`./src/templates/post.js`),
+      context: {
+        ...post,
+        id: post.id,
+        slug: post.uri,
+        title: post.title,
+      },
+    })
+  })
+}
+
 
 exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
   const { createNode } = actions;
@@ -66,7 +107,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
   // await for results
   const res = await fetchThemeOptions();
   // console.log(res.data);
-
+  
   const nodeContent = JSON.stringify(res.data.acf)
 
   const nodeMeta = {
@@ -87,44 +128,14 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
 }
 
 
-exports.createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(
-    `
-      ${query}
-    `
-  )
-
-  if (!data) return null
-
-  data.wordpress.pages.nodes.forEach(page => {
-    const uri = page.uri == "homepage" ? `` : `/${page.uri}`
-
-    actions.createPage({
-      path: uri,
-      component: path.resolve(`./src/templates/page.js`),
-      context: {
-        ...page,
-        id: page.id,
-        slug: page.uri,
-        title: page.title,
-      },
-    })
-  })
-
-  data.wordpress.posts.nodes.forEach(post => {
-    actions.createPage({
-      path: `/post${post.uri}`,
-      component: path.resolve(`./src/templates/post.js`),
-      context: {
-        ...post,
-        id: post.id,
-        slug: post.uri,
-        title: post.title,
-      },
-    })
-  })
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+  const config = getConfig()
+  if (stage.startsWith('develop') && config.resolve) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'react-dom': '@hot-loader/react-dom'
+    }
+  }
 }
-
-
 
 

@@ -8,6 +8,81 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import Mmenu from "../components/vendor/mmenu"
 
+const Navigation = styled.div`
+.section-navigation {
+  /* display: flex; */
+  align-items: center;
+  background-color: $fff;
+  font-family: 'Roboto', sans-serif;
+  .logo {
+    max-width: 100px;
+    max-height: 100px;
+    img {
+    }
+  }
+  .navigation-menu {
+    display: flex;
+    justify-content: center;
+    height: 100%; 
+    ul {
+      display: flex;
+      margin: 0;
+      height: 100%;
+      align-items: center; 
+      justify-content: center; 
+      li {
+        list-style-type: none;
+        margin-bottom: 0; 
+        margin-left: 5px;
+        margin-right: 5px; 
+        a {
+          color: blue;
+          text-decoration: none;
+          text-transform: uppercase;
+          margin-right: 5px;
+          margin-bottom: 0;
+          font-weight: 700;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  .right-container {
+    position: relative;
+    height: 100%;
+    display: flex; 
+    a.phone-container {
+      display: flex;
+      justify-content: flex-start;
+      height: 100%;
+      flex: 1; 
+      .phone {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        background-color: #fff;
+        color: #BB0000;
+        font-size: 1.7em;
+      }
+    }
+    .menu-container {
+      position: relative; 
+      flex: 1; 
+      background-color: #BB0000;
+      @media (min-width: 992px) {
+        display: none; 
+      }
+    }
+  }
+}
+`
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query newQuery {
@@ -39,69 +114,7 @@ const Header = () => {
     }
   `)
 
-  const Navigation = styled.div`
-    .section-navigation {
-      /* display: flex; */
-      align-items: center;
-      background-color: $fff;
-      .logo {
-        max-width: 100px;
-        max-height: 100px;
-        img {
-        }
-      }
-      .navigation-menu {
-        display: flex;
-        justify-content: center;
-
-        ul {
-          display: flex;
-          margin: 0;
-
-          li {
-            list-style-type: none;
-            a {
-              color: blue;
-              text-decoration: none;
-              text-transform: uppercase;
-              margin-right: 5px;
-              &:last-child {
-                margin-right: 0;
-              }
-            }
-          }
-        }
-      }
-      .right-container {
-        position: relative;
-        height: 100%;
-        display: flex; 
-        a.phone-container {
-          display: flex;
-          justify-content: flex-start;
-          height: 100%;
-          flex: 1; 
-          .phone {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            background-color: #fff;
-            color: #BB0000;
-            font-size: 1.7em;
-          }
-        }
-        .menu-container {
-          position: relative; 
-          flex: 1; 
-          background-color: #BB0000;
-        }
-      }
-    }
-  `
+  const tel = "tel:"
 
   return (
     <Navigation>
@@ -116,8 +129,8 @@ const Header = () => {
             </Col>
             <Col xs={6} className="">
               {" "}
-              <div className="navigation-menu d-none">
-                <ul>
+              <div className="navigation-menu d-none d-lg-block">
+                <ul>    
                   {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
                     return (
                       <li key={x.id}>
@@ -132,7 +145,7 @@ const Header = () => {
             </Col>
             <Col xs={3} className="p-0">
               <div className="right-container">
-                <a className="phone-container" href={data.allThemeOptions.nodes[0].phone_number}>
+                <a className="phone-container" href={tel + data.allThemeOptions.nodes[0].phone_number}>
                   <div className="phone">
                     <FontAwesomeIcon icon={faPhone} />
                   </div>
