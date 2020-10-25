@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const IndexPage = props => {
-    console.log(props);
     const {content, title} = props.pageContext
     console.log(content);
     return (
