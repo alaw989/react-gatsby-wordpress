@@ -29,14 +29,14 @@ const Mmenu = () => {
           }
         }
       }
-      allThemeOptions {
-        nodes {
-          phone_number
-          logo {
-            url
-          }
-        }
-      }
+      # allThemeOptions {
+      #   nodes {
+      #     phone_number
+      #     logo {
+      #       url
+      #     }
+      #   }
+      # }
     }
   `)
   return (
