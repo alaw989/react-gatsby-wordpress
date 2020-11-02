@@ -1,48 +1,35 @@
 import { slide as Menu } from "react-burger-menu"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
 const MMenuWrapper = styled.div`
   @media (min-width: 992px) {
-    display: none; 
+    display: none;
   }
 `
 
 const Mmenu = () => {
-  const data = useStaticQuery(graphql`
-    query mmenuQuery {
-      wordpress {
-        menus {
-          nodes {
-            name
-            menuItems {
-              nodes {
-                label
-                id
-                url
-                path
-              }
-            }
-            id
-            slug
-          }
-        }
-      }
-      # allThemeOptions {
-      #   nodes {
-      #     phone_number
-      #     logo {
-      #       url
-      #     }
-      #   }
-      # }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query mmenuQuery {
+  //     allWpMenu {
+  //       nodes {
+  //         menuItems {
+  //           nodes {
+  //             label
+  //             id
+  //             path
+  //             url
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
   return (
     <MMenuWrapper>
       <Menu styles={styles}>
-        {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
+        {/* {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
           return (
             <li key={x.id}>
               <Link key={x.id} to={x.path}>
@@ -50,7 +37,7 @@ const Mmenu = () => {
               </Link>
             </li>
           )
-        })}
+        })} */}
       </Menu>
     </MMenuWrapper>
   )

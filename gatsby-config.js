@@ -27,26 +27,34 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `WORDPRESS`,
-        fieldName: `wordpress`,
-        url: `http://caring-group.dev14.sociusinc.com/graphql`,
-        // refetchInterval: 60,
-      }
-    },
     // {
-		// 	resolve: `gatsby-source-wordpress-experimental`,
-		// 	options: {
-		// 		url: `http://caring-group.dev14.sociusinc.com/graphql`,
-		// 		protocol: "http",
-		// 		hostingWPCOM: false,
-		// 		useACF: true
-		// 	}
-		// }
+    //   resolve: `gatsby-source-graphql`,
+    //   options: {
+    //     typeName: `WORDPRESS`,
+    //     fieldName: `wordpress`,
+    //     url: `http://caring-group.dev14.sociusinc.com/graphql`,
+    //     // refetchInterval: 60,
+    //   }
+    // },
+    {
+			resolve: `gatsby-source-wordpress`,
+			options: {
+        baseUrl: "caring-group.dev14.sociusinc.com",
+        url: "http://caring-group.dev14.sociusinc.com/graphql",
+				protocol: "http",
+				hostingWPCOM: false,
+        useACF: true,
+        acfRestVersion: 3,
+        acfOptionPageIds: ['options'],
+        auth: {},
+        verboseOutput: false,
+        minimizeDeprecationNotice: true
+			}
+		}
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
 }
+
+

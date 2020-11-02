@@ -1,46 +1,51 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
-import Image from "../components/image"
 import { Container, Row, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import Mmenu from "../components/vendor/mmenu"
 import { Navigation } from "../styles/components/_header.js"
+import Img from "gatsby-image"
 
 const Header = () => {
   const data = useStaticQuery(graphql`
     query newQuery {
-      wordpress {
-        menus {
-          nodes {
-            name
-            menuItems {
-              nodes {
-                label
-                id
-                url
-                path
-              }
+      allWordpressWpApiMenusMenusItems {
+        edges {
+          node {
+            items {
+              title
+              object_slug
             }
-            id
-            slug
           }
         }
       }
-      # allThemeOptions {
-      #   nodes {
-      #     phone_number
-      #     logo {
-      #       url
-      #     }
-      #   }
-      # }
+      allWordpressAcfOptions {
+        nodes {
+          options {
+            phone_number
+            logo {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
   const tel = "tel:"
-    console.log(data.allThemeOptions.nodes[0].logo.url)
+
+  const logo = data.allWordpressAcfOptions.nodes[0].options.logo.localFile.childImageSharp.fluid
+  const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
+  const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
+ 
   return (
     <Navigation>
       <div className="section-navigation">
@@ -48,19 +53,18 @@ const Header = () => {
           <Row>
             <Col xs={3}>
               {" "}
-              <div className="logo">
-                <img src={data.allThemeOptions.nodes[0].logo.url}></img>
-              </div>
+              <div className="logo"><Img fixed={logo} /></div>
             </Col>
             <Col xs={6} lg={5} className="">
               {" "}
               <div className="navigation-menu d-none d-lg-block">
                 <ul>
-                  {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
+                  {menuItems.map(x => {
+                    const uri = `/${x.object_slug}`
                     return (
-                      <li key={x.id}>
-                        <Link key={x.id} to={x.path}>
-                          {x.label}
+                      <li key={x.wordpress_id}>
+                        <Link key={x.wordpress_id} to={uri}>
+                          {x.title}
                         </Link>
                       </li>
                     )
@@ -72,12 +76,12 @@ const Header = () => {
               <div className="right-container">
                 <a
                   className="phone-container"
-                  href={tel + data.allThemeOptions.nodes[0].phone_number}
+                  href={tel + phone}
                 >
                   <div className="phone">
                     <FontAwesomeIcon icon={faPhone} />
                     <div className="number">
-                      {data.allThemeOptions.nodes[0].phone_number}
+                      {phone}
                     </div>
                   </div>
                 </a>

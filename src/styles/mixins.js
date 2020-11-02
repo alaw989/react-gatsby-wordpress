@@ -1,36 +1,23 @@
 //Media Queries 
-export const xs = (content) => {
-    return `@media(min-width: 375px) {
-        ${content}
-    }`;
-};
 
-export const sm = (content) => {
-    return `@media(min-width: 480px) {
-        ${content}
-    }`;
-};
+const size = {
+    xs: '320px',
+    sm: '375px',
+    md: '425px',
+    lg: '768px',
+    xl: '1024px',
+    xxl: '1440px',
+    
+  }
 
-export const md = (content) => {
-    return `@media(min-width: 768px) {
-        ${content}
-    }`;
-};
 
-export const lg = (content) => {
-    return `@media(min-width: 992px) {
-        ${content}
-    }`;
-};
+  export const device = {
+    xs: `(min-width: ${size.xs})`,
+    sm: `(min-width: ${size.sm})`,
+    md: `(min-width: ${size.md})`,
+    lg: `(min-width: ${size.lg})`,
+    xl: `(min-width: ${size.xl})`,
+    xxl: `(min-width: ${size.xxl})`,
+  };
 
-export const xl = (content) => {
-    return `@media(min-width: 1200px) {
-        ${content}
-    }`;
-};
 
-export const xxl = (content) => {
-    return `@media(min-width: 1400px) {
-        ${content}
-    }`;
-};

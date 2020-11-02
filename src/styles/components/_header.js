@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { xs, sm, md, lg, xl, xxl } from "../mixins"
+import { device } from "../mixins"
 
 export const Navigation = styled.div`
   .section-navigation {
@@ -8,8 +8,13 @@ export const Navigation = styled.div`
     background-color: $fff;
     font-family: "Roboto Condensed", sans-serif;
     .logo {
-      max-width: 100px;
-      max-height: 100px;
+      max-width: 100%;
+      max-height: 100%;
+
+      .gatsby-image-wrapper {
+        height: 100%;
+        width: 100%;
+      }
     }
     .navigation-menu {
       display: flex;
@@ -33,10 +38,10 @@ export const Navigation = styled.div`
             margin-right: 5px;
             margin-bottom: 0;
             font-weight: 700;
-            transition: .5s all;
+            transition: 0.5s all;
             font-size: 16px;
             &:hover {
-                color: red;
+              color: red;
             }
             &:last-child {
               margin-right: 0;
@@ -67,13 +72,18 @@ export const Navigation = styled.div`
           color: #bb0000;
           font-size: 1.7em;
           svg {
-            ${lg(`display: none;`)}
+            @media ${device.lg} {
+              display: none;
+            }
           }
           .number {
             font-size: 1.6rem;
             font-weight: 700;
             display: none;
-            ${lg(`display: block`)}
+
+            @media ${device.lg} {
+              display: block;
+            }
           }
         }
       }
@@ -90,13 +100,11 @@ export const Navigation = styled.div`
           display: none;
           height: 100%;
           font-size: 14px;
-
-          ${
-            lg(`display: flex;
-                align-items: center;
-                justify-content: center;
-              `)
-            };
+          @media ${device.lg} {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
         a {
           height: 100%;

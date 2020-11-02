@@ -28,36 +28,57 @@ const seoFields = `
     }
 `
 
+// const query = `
+//     query {
+//       wordpress {
+//         posts {
+//           nodes {
+//             categories {
+//               nodes {
+//                 name
+//                 slug
+//                 termTaxonomyId
+//               }
+//             }
+//             content
+//             date
+//             status
+//             uri
+//             title(format: RAW)
+//           }
+//         }
+//         pages {
+//           nodes {
+//             uri
+//             id
+//             slug
+//             title
+//             content
+//           }
+//         }
+//       }
+//     }
+// `
+
 const query = `
-    query {
-      wordpress {
-        posts {
-          nodes {
-            categories {
-              nodes {
-                name
-                slug
-                termTaxonomyId
-              }
-            }
-            content
-            date
-            status
-            uri
-            title(format: RAW)
-          }
-        }
-        pages {
-          nodes {
-            uri
-            id
-            slug
-            title
-            content
-          }
-        }
-      }
+query {
+  allWordpressPage {
+    nodes {
+      slug
+      id
+      title
+      content
+      link
     }
+  }
+  allWordpressPost {
+    nodes {
+      slug
+      path
+      content
+    }
+  }
+}
 `
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -69,68 +90,68 @@ exports.createPages = async ({ actions, graphql }) => {
 
   if (!data) return null
 
-  data.wordpress.pages.nodes.forEach(page => {
-    const uri = page.uri == "homepage" ? `` : `${page.uri}`
-    console.log(page)
+  data.allWordpressPage.nodes.forEach(page => {
+    
+    const uri = `${page.path}` == "home" ? `` : `${page.path}`
+   
     actions.createPage({
-      path: uri,
+      path: `/${page.slug}`,
       component: path.resolve(`./src/templates/page.js`),
       context: {
         ...page,
         id: page.id,
-        slug: page.uri,
+        slug: page.slug,
         title: page.title,
         content: page.content,
       },
     })
   })
 
-  data.wordpress.posts.nodes.forEach(post => {
-    actions.createPage({
-      path: `/post${post.uri}`,
-      component: path.resolve(`./src/templates/post.js`),
-      context: {
-        ...post,
-        id: post.id,
-        slug: post.uri,
-        title: post.title,
-      },
-    })
-  })
+  // data.allWordpressPost.nodes.forEach(post => {
+  //   actions.createPage({
+  //     path: `/post${post.path}`,
+  //     component: path.resolve(`./src/templates/post.js`),
+  //     context: {
+  //       ...post,
+  //       id: post.id,
+  //       slug: post.uri,
+  //       title: post.title,
+  //     },
+  //   })
+  // })
 }
 
-exports.sourceNodes = async ({
-  actions,
-  createNodeId,
-  createContentDigest,
-}) => {
-  const { createNode } = actions
+// exports.sourceNodes = async ({
+//   actions,
+//   createNodeId,
+//   createContentDigest,
+// }) => {
+//   const { createNode } = actions
 
-  const fetchThemeOptions = () =>
-    axios.get(
-      `http://caring-group.dev14.sociusinc.com/wp-json/acf/v3/options/options/`
-    )
-  // await for results
-  const res = await fetchThemeOptions()
-  // console.log(res.data);
+//   const fetchThemeOptions = () =>
+//     axios.get(
+//       `http://caring-group.dev14.sociusinc.com/wp-json/acf/v3/options/options/`
+//     )
+//   // await for results
+//   const res = await fetchThemeOptions()
 
-  const nodeContent = JSON.stringify(res.data.acf)
+//   const nodeContent = JSON.stringify(res.data.acf)
 
-  const nodeMeta = {
-    id: createNodeId(`my-data-${res.data.acf.phone_number}`),
-    parent: null,
-    children: [],
-    internal: {
-      type: `ThemeOptions`,
-      mediaType: `text/html`,
-      content: nodeContent,
-      contentDigest: createContentDigest(res.data.acf),
-    },
-  }
+//   const nodeMeta = {
+//     id: createNodeId(`my-data-${res.data.acf.phone_number}`),
+//     parent: "wordpress",
+//     children: [],
+//     internal: {
+//       type: `ThemeOptions`,
+//       mediaType: `text/html`,
+//       content: nodeContent,
+//       contentDigest: createContentDigest(res.data.acf),
+//     },
+//   }
 
-  const node = Object.assign({}, res.data.acf, nodeMeta)
-  createNode(node)
-}
+//   const node = Object.assign({}, res.data.acf, nodeMeta)
+//   createNode(node)
+// }
 
 exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   const config = getConfig()
@@ -142,37 +163,37 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   }
 }
 
-exports.createResolvers = async ({
-  actions,
-  cache,
-  createNodeId,
-  createResolvers,
-  store,
-  reporter,
-}) => {
-  const { createNode } = actions
+// exports.createResolvers = async ({
+//   actions,
+//   cache,
+//   createNodeId,
+//   createResolvers,
+//   store,
+//   reporter,
+// }) => {
+//   const { createNode } = actions
 
-  await createResolvers({
-    WORDPRESS_MediaItem: {
-      imageFile: {
-        type: "File",
-        async resolve(source) {
-          let sourceUrl = source.sourceUrl
+//   await createResolvers({
+//     WORDPRESS_MediaItem: {
+//       imageFile: {
+//         type: "File",
+//         async resolve(source) {
+//           let sourceUrl = source.sourceUrl
 
-          if (source.mediaItemUrl !== undefined) {
-            sourceUrl = source.mediaItemUrl
-          }
+//           if (source.mediaItemUrl !== undefined) {
+//             sourceUrl = source.mediaItemUrl
+//           }
 
-          return await createRemoteFileNode({
-            url: encodeURI(sourceUrl),
-            store,
-            cache,
-            createNode,
-            createNodeId,
-            reporter,
-          })
-        },
-      },
-    },
-  })
-}
+//           return await createRemoteFileNode({
+//             url: encodeURI(sourceUrl),
+//             store,
+//             cache,
+//             createNode,
+//             createNodeId,
+//             reporter,
+//           })
+//         },
+//       },
+//     },
+//   })
+// }

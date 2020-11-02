@@ -20,16 +20,16 @@ const IndexPage = ({ data }) => (
   </Layout>
 )
 
-export const query = graphql`
-  query MyQuery {
-    wordpress {
-      posts {
-        nodes {
-          title
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query MyQuery {
+//     wordpress {
+//       posts {
+//         nodes {
+//           title
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default IndexPage
