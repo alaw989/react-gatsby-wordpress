@@ -45,7 +45,7 @@ const Header = () => {
   const logo = data.allWordpressAcfOptions.nodes[0].options.logo.localFile.childImageSharp.fluid
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
- 
+
   return (
     <Navigation>
       <div className="section-navigation">
