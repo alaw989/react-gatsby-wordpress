@@ -28,8 +28,8 @@ const Header = () => {
             logo {
               localFile {
                 childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
+                  fixed {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }
@@ -42,7 +42,7 @@ const Header = () => {
 
   const tel = "tel:"
 
-  const logo = data.allWordpressAcfOptions.nodes[0].options.logo.localFile.childImageSharp.fluid
+  const logo = data.allWordpressAcfOptions.nodes[0].options.logo.localFile.childImageSharp.fixed
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
@@ -53,7 +53,7 @@ const Header = () => {
           <Row>
             <Col xs={3}>
               {" "}
-              <div className="logo"><Img fixed={logo} /></div>
+            <Img fixed={logo} />
             </Col>
             <Col xs={6} lg={5} className="">
               {" "}

@@ -10,7 +10,7 @@ export const Navigation = styled.div`
     .logo {
       max-width: 100%;
       max-height: 100%;
-
+      height: 100%;
       .gatsby-image-wrapper {
         height: 100%;
         width: 100%;
@@ -26,11 +26,14 @@ export const Navigation = styled.div`
         height: 100%;
         align-items: center;
         justify-content: center;
+     
         li {
+          display: flex; 
           list-style-type: none;
           margin-bottom: 0;
           margin-left: 5px;
           margin-right: 5px;
+          height: 100%;
           a {
             color: #032f78;
             text-decoration: none;
@@ -40,6 +43,10 @@ export const Navigation = styled.div`
             font-weight: 700;
             transition: 0.5s all;
             font-size: 16px;
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+            padding: 35px 0;
             &:hover {
               color: red;
             }

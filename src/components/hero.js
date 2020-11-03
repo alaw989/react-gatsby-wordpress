@@ -3,7 +3,7 @@ import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Img from "gatsby-image"
-
+import { HeroContainer } from "../styles/components/_hero.js"
 import Slider from "react-slick"
 
 const Hero = () => {
@@ -16,8 +16,8 @@ const Hero = () => {
               slide {
                 localFile {
                   childImageSharp {
-                    fixed {
-                      ...GatsbyImageSharpFixed
+                    fluid {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -44,16 +44,18 @@ const Hero = () => {
 
   return (
     <div>
- 
+      <HeroContainer>
       <Slider {...settings}>
         {slide.map(slide => {
-          const slideImage = slide.slide.localFile.childImageSharp.fixed
+          const slideImage = slide.slide.localFile.childImageSharp.fluid
           console.log(slideImage)
           {
             return <Img fixed={slideImage} />
           }
         })}
       </Slider>
+      </HeroContainer>
+
     </div>
   )
 }
