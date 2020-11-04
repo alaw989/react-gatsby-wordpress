@@ -28,7 +28,7 @@ const Header = () => {
             logo {
               localFile {
                 childImageSharp {
-                  fixed {
+                  fixed(width: 265, height: 55) {
                     ...GatsbyImageSharpFixed
                   }
                 }
@@ -49,15 +49,14 @@ const Header = () => {
   return (
     <Navigation>
       <div className="section-navigation">
-        <Container fluid>
-          <Row>
-            <Col xs={3}>
+  
+          
+            
+              <div className="logo">      <Img fixed={logo} /></div>
+            
+           
               {" "}
-            <Img fixed={logo} />
-            </Col>
-            <Col xs={6} lg={5} className="">
-              {" "}
-              <div className="navigation-menu d-none d-lg-block">
+              <div className="navigation-menu d-none d-xl-block">
                 <ul>
                   {menuItems.map(x => {
                     const uri = `/${x.object_slug}`
@@ -71,8 +70,8 @@ const Header = () => {
                   })}
                 </ul>
               </div>
-            </Col>
-            <Col xs={3} lg={4} className="p-0">
+     
+          
               <div className="right-container">
                 <a
                   className="phone-container"
@@ -92,9 +91,8 @@ const Header = () => {
                   </a>
                 </div>
               </div>
-            </Col>
-          </Row>
-        </Container>
+        
+  
       </div>
     </Navigation>
   )

@@ -2,15 +2,27 @@ import styled from "styled-components"
 import { device } from "../mixins"
 
 export const Navigation = styled.div`
+ 
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+  opacity: 0.95;
   .section-navigation {
-    /* display: flex; */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: $fff;
     font-family: "Roboto Condensed", sans-serif;
+    height: 95px;
+
     .logo {
-      max-width: 100%;
-      max-height: 100%;
       height: 100%;
+      display: flex;
+      align-items: center;
+      flex: 2;
+      @media ${device.xl} {
+        flex: 1;
+      }
       .gatsby-image-wrapper {
         height: 100%;
         width: 100%;
@@ -20,15 +32,16 @@ export const Navigation = styled.div`
       display: flex;
       justify-content: center;
       height: 100%;
+      flex: 2;
       ul {
         display: flex;
         margin: 0;
         height: 100%;
         align-items: center;
         justify-content: center;
-     
+
         li {
-          display: flex; 
+          display: flex;
           list-style-type: none;
           margin-bottom: 0;
           margin-left: 5px;
@@ -43,9 +56,9 @@ export const Navigation = styled.div`
             font-weight: 700;
             transition: 0.5s all;
             font-size: 16px;
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
+            height: 100%;
+            display: flex;
+            align-items: center;
             padding: 35px 0;
             &:hover {
               color: red;
@@ -61,12 +74,19 @@ export const Navigation = styled.div`
       position: relative;
       height: 100%;
       display: flex;
+      flex: 1;
+      justify-content: flex-end;
       a.phone-container {
         display: flex;
         justify-content: flex-start;
         height: 100%;
         flex: 1;
         text-decoration: none;
+        max-width: 75px;
+        @media ${device.lg} {
+          width: 195px;
+          max-width: 195px;
+        }
         .phone {
           height: 100%;
           width: 100%;
@@ -101,6 +121,12 @@ export const Navigation = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 75px;
+        max-width: 75px;
+        @media ${device.lg} {
+          width: 165px;
+          max-width: 165px;
+        }
         .contact-text {
           text-transform: uppercase;
           color: #fff;

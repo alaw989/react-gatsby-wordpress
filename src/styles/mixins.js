@@ -2,10 +2,10 @@
 
 const size = {
     xs: '320px',
-    sm: '375px',
-    md: '425px',
-    lg: '768px',
-    xl: '1024px',
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1200px',
     xxl: '1440px',
     
   }

@@ -16,8 +16,8 @@ const Hero = () => {
               slide {
                 localFile {
                   childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid
+                    fixed{
+                      ...GatsbyImageSharpFixed
                     }
                   }
                 }
@@ -45,17 +45,19 @@ const Hero = () => {
   return (
     <div>
       <HeroContainer>
-      <Slider {...settings}>
-        {slide.map(slide => {
-          const slideImage = slide.slide.localFile.childImageSharp.fluid
-          console.log(slideImage)
-          {
-            return <Img fixed={slideImage} />
-          }
-        })}
-      </Slider>
-      </HeroContainer>
+        <div className="section-hero">
+        <Slider {...settings}>
+          {slide.map(slide => {
+            const slideImage = slide.slide.localFile.childImageSharp.fixed
+            console.log(slideImage)
+            {
+              return <Img fixed={slideImage} />
+            }
+          })}
+        </Slider>
+        </div>
 
+      </HeroContainer>
     </div>
   )
 }
