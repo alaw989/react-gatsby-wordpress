@@ -1,10 +1,10 @@
-import { Link, useStaticQuery, graphql } from "gatsby"
+import {  useStaticQuery, graphql } from "gatsby"
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
-import Img from "gatsby-image"
 import { HeroContainer } from "../styles/components/_hero.js"
 import Slider from "react-slick"
+import BackgroundImage from "gatsby-background-image"
+import Triangle from "../assets/Triangle.svg"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -16,8 +16,8 @@ const Hero = () => {
               slide {
                 localFile {
                   childImageSharp {
-                    fixed{
-                      ...GatsbyImageSharpFixed
+                    fluid(maxWidth: 3080, quality: 100) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -30,9 +30,6 @@ const Hero = () => {
   `)
 
   const slide = data.allWordpressAcfOptions.nodes[0].options.hompage_slider
-  //   console.log(slide.map(x => {
-  //       console.log(x.slide.localFile.childImageSharp.fixed)
-  //   }))
 
   const settings = {
     dots: false,
@@ -46,17 +43,22 @@ const Hero = () => {
     <div>
       <HeroContainer>
         <div className="section-hero">
-        <Slider {...settings}>
-          {slide.map(slide => {
-            const slideImage = slide.slide.localFile.childImageSharp.fixed
-            console.log(slideImage)
-            {
-              return <Img fixed={slideImage} />
-            }
-          })}
-        </Slider>
+          <Triangle />
+          <Slider {...settings}>
+            {slide.map(slide => {
+              const slideImage = slide.slide.localFile.childImageSharp.fluid
+              {
+                return (
+                  <BackgroundImage
+                    fluid={slideImage}
+                    backgroundColor={`#040e18`}
+                    className="bgSlide"
+                  ></BackgroundImage>
+                )
+              }
+            })}
+          </Slider>
         </div>
-
       </HeroContainer>
     </div>
   )

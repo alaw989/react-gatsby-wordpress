@@ -4,10 +4,20 @@ import { device } from "../mixins"
 export const HeroContainer = styled.div`
   .section-hero {
     height: 65vh;
+    position: relative; 
+    svg {
+      position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    
+    z-index: 1;
+}
+    
     @media ${device.lg} {
-      height: 73vh;
+      height: 65vh;
     }
-    .gatsby-image-wrapper {
+    .bgSlide {
       height: 65vh !important;
     }
   }
