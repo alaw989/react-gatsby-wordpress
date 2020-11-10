@@ -1,4 +1,4 @@
-import {  useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { HeroContainer } from "../styles/components/_hero.js"
@@ -57,6 +57,7 @@ const Hero = () => {
                 )
               }
             })}
+            <div className="overlay"></div>
           </Slider>
         </div>
       </HeroContainer>
