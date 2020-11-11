@@ -2,16 +2,17 @@ import styled from "styled-components"
 import { device } from "../mixins"
 
 export const Navigation = styled.div`
- 
+     position: absolute;
+    background-color: transparent;
   z-index: 1;
-  background-color: white;
+  background-color: transparent;
   width: 100%;
   opacity: 0.95;
   .section-navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $fff;
+    background-color: transparent;
     font-family: "Roboto Condensed", sans-serif;
     height: 95px;
 
@@ -48,7 +49,7 @@ export const Navigation = styled.div`
           margin-right: 5px;
           height: 100%;
           a {
-            color: #032f78;
+            color: white;
             text-decoration: none;
             text-transform: uppercase;
             margin-right: 5px;
@@ -95,8 +96,8 @@ export const Navigation = styled.div`
           align-items: center;
           color: white;
           text-decoration: none;
-          background-color: #fff;
-          color: #bb0000;
+          background-color: transparent;
+          color: white;
           font-size: 1.7em;
           svg {
             @media ${device.lg} {
@@ -117,7 +118,7 @@ export const Navigation = styled.div`
       .menu-container {
         position: relative;
         flex: 1;
-        background-color: #bb0000;
+        background-color: transparent;
         display: flex;
         align-items: center;
         justify-content: center;

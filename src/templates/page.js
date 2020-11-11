@@ -6,14 +6,14 @@ import SEO from "../components/seo"
 
 const IndexPage = props => {
     const {content, title} = props.pageContext
-    console.log(content);
+  
     return (
         <Layout>
             <SEO title="Home" /> 
             <h1>{title}</h1>
            
             <article dangerouslySetInnerHTML={{ __html: content }} />
-            <Link to="/">Go To Homepage</Link>
+        
         </Layout>
     )
 }

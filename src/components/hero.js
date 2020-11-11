@@ -43,6 +43,9 @@ const Hero = () => {
     <div>
       <HeroContainer>
         <div className="section-hero">
+          <div className="hero-text">
+            Structural Engineering and Steel Detailing
+          </div>
           <Triangle />
           <Slider {...settings}>
             {slide.map(slide => {

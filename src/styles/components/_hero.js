@@ -7,11 +7,37 @@ export const HeroContainer = styled.div`
     position: relative;
 
     @media ${device.lg} {
-      height: 75vh;
+      height: 100vh;
     }
 
     .bgSlide {
-      height: 75vh !important;
+      height: 100vh !important;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .hero-text {
+      position: absolute;
+      color: white;
+      z-index: 1;
+      font-family: "Roboto Condensed", sans-serif;
+      text-transform: uppercase;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 50px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      line-height: 1em;
+      @media ${device.lg} {
+        font-size: 75px;
+        text-align: left;
+        left: 387px;
+        max-width: 600px;
+      }
     }
 
     svg {
@@ -26,18 +52,17 @@ export const HeroContainer = styled.div`
       overflow: hidden;
       height: 65vh;
       @media ${device.lg} {
-        height: 75vh;
+        height: 100vh;
       }
     }
 
     .overlay {
-      position: absolute; 
+      position: absolute;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      background-color:  rgba(38, 67, 102, .5);
+      background-color: rgba(38, 67, 102, 0.5);
     }
-
   }
 `
