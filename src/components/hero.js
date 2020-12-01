@@ -6,14 +6,15 @@ import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
 import Triangle from "../assets/Triangle.svg"
 
+
 const Hero = () => {
   const data = useStaticQuery(graphql`
     query slideQuery {
       allWordpressAcfOptions {
         nodes {
           options {
-            hompage_slider {
-              slide {
+            homepage {
+              hero_image {
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 3080, quality: 100) {
@@ -29,7 +30,8 @@ const Hero = () => {
     }
   `)
 
-  const slide = data.allWordpressAcfOptions.nodes[0].options.hompage_slider
+  const slide = data.allWordpressAcfOptions.nodes[0].options.homepage.hero_image.localFile.childImageSharp.fluid
+  
 
   const settings = {
     dots: false,
@@ -43,26 +45,18 @@ const Hero = () => {
     <div>
       <HeroContainer>
         <div className="section-hero">
-          <div className="hero-text">
+          {/* <div className="hero-text">
             Structural Engineering and Steel Detailing
-          </div>
+          </div> */}
           <Triangle />
-          <Slider {...settings}>
-            {slide.map(slide => {
-              const slideImage = slide.slide.localFile.childImageSharp.fluid
-              {
-                return (
-                  <BackgroundImage
-                    fluid={slideImage}
-                    backgroundColor={`#040e18`}
-                    className="bgSlide"
-                  ></BackgroundImage>
-                )
-              }
-            })}
-            <div className="overlay"></div>
-          </Slider>
+          <BackgroundImage
+            fluid={slide}
+            backgroundColor={`#040e18`}
+            className="bgSlide"
+          ></BackgroundImage>
+           <div className="overlay"></div>
         </div>
+       
       </HeroContainer>
     </div>
   )

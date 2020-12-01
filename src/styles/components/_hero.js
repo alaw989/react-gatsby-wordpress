@@ -62,7 +62,7 @@ export const HeroContainer = styled.div`
       height: 100%;
       top: 0;
       left: 0;
-      background-color: rgba(38, 67, 102, 0.5);
+      background-color: rgba(38, 67, 102, 0.8);
     }
   }
 `

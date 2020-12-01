@@ -5,31 +5,28 @@ import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 import { Container, Row, Col } from "react-bootstrap"
 
 const AboutIntro = () => {
-
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query aboutQuery {
-      allWordpressWpApiMenusMenusItems {
-        edges {
-          node {
-            items {
-              title
-              object_slug
-            }
-          }
-        }
-      }
       allWordpressAcfOptions {
         nodes {
           options {
-            phone_number
-            logo {
-              localFile {
-                childImageSharp {
-                  fixed(width: 265, height: 55) {
-                    ...GatsbyImageSharpFixed
+            about_intro_section {
+              button_link {
+                target
+                title
+                url
+              }
+              heading
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 3080, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
               }
+              paragraph
             }
           }
         }
@@ -37,12 +34,21 @@ const AboutIntro = () => {
     }
   `)
 
+  const heading = data.allWordpressAcfOptions.nodes[0].options.about_intro_section.heading
+  console.log(heading);
+
+  const paragraph = data.allWordpressAcfOptions.nodes[0].options.about_intro_section.paragraph
+
   return (
     <AboutIntroContainer>
       <Container>
         <Row>
-          <Col>
-            <div>hey</div>
+          <Col xs={12}>
+            <div className="section-heading">{heading}</div>
+            <div className="section-content">{paragraph}</div>
+          </Col>
+          <Col xs={12}>
+
           </Col>
         </Row>
       </Container>
