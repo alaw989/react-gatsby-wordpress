@@ -11,11 +11,14 @@ export const HeroContainer = styled.div`
     }
 
     .bgSlide {
-      height: 100vh !important;
+     
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+      height: 100%;
+
+      height: 100vh !important;
     }
 
     .hero-text {

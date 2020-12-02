@@ -56,7 +56,6 @@ const Hero = () => {
           ></BackgroundImage>
            <div className="overlay"></div>
         </div>
-       
       </HeroContainer>
     </div>
   )
