@@ -14,14 +14,14 @@ export const AboutIntroContainer = styled.div`
       text-transform: uppercase;
     }
     .section-content {
-        position: relative;
-    width: 100%;
-    max-width: 915px;
-    margin-bottom: .75em;
-    font-weight: 300;
-    font-size: 1rem;
-    line-height: 1.5em;
-    color: #3d3d3d;
+      position: relative;
+      width: 100%;
+      max-width: 915px;
+      margin-bottom: 0.75em;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.5em;
+      color: #3d3d3d;
     }
   }
 
