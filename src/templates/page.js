@@ -11,9 +11,7 @@ const IndexPage = props => {
         <Layout>
             <SEO title="Home" /> 
             <h1>{title}</h1>
-           
             <article dangerouslySetInnerHTML={{ __html: content }} />
-        
         </Layout>
     )
 }

@@ -35,7 +35,7 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col xs={11}>
-            <div>logo</div>
+            <div></div>
           </Col>
         </Row>
       </Container>
