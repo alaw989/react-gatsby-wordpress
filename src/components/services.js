@@ -52,39 +52,36 @@ const Services = () => {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <ServicesContainer>
           <div>
               <h1>{title}</h1>
               <div className="subtitle">{subtitle}</div>
             <Slider {...settings}>
-              <div>
-                <h3>1</h3>
+              <div class="service-container">
+                <div>Deep Foundation and Shallow Foundation Design</div>
               </div>
-              <div>
-                <h3>2</h3>
+              <div class="service-container">
+                <div>Seawall Design</div>
               </div>
-              <div>
-                <h3>3</h3>
+              <div class="service-container">
+                <div>Lowrise and Multi-Story Building</div>
               </div>
-              <div>
-                <h3>4</h3>
+              <div class="service-container">
+                <div>CAD Drawing</div>
               </div>
-              <div>
-                <h3>5</h3>
+              <div class="service-container">
+                <div>Steel Connection Design</div>
               </div>
-              <div>
-                <h3>6</h3>
+              <div class="service-container">
+                <div>Create Lifting Plans</div>
               </div>
-              <div>
-                <h3>7</h3>
+              <div class="service-container">
+                <div>Inspection Services</div>
               </div>
-              <div>
-                <h3>8</h3>
-              </div>
-              <div>
-                <h3>9</h3>
+              <div class="service-container">
+                <div>Steel Detailing</div>
               </div>
             </Slider>
           </div>
