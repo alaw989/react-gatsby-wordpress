@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
 import Button from "@material-ui/core/Button"
 import BackgroundImage from "gatsby-background-image"
+import Astro from "../images/gatsby-astronaut.png"
 
 const Services = () => {
   const data = useStaticQuery(graphql`
@@ -20,9 +21,9 @@ const Services = () => {
                 service_image {
                   localFile {
                     childImageSharp {
-                        fluid(maxWidth: 3080, quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                      fluid(maxWidth: 3080, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
                     }
                   }
                 }
@@ -36,12 +37,14 @@ const Services = () => {
     }
   `)
 
-  console.log(data.allWordpressAcfOptions.nodes[0].options.services_section)
-
   const services = data.allWordpressAcfOptions.nodes[0].options.services_section
-
+  console.log(services)
   const title = services.title
   const subtitle = services.subtitle
+
+  services.services_repeater.map(x => {
+    console.log(x)
+  })
 
   const settings = {
     dots: true,
@@ -49,40 +52,24 @@ const Services = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    dots: false,
   }
+
+  const img = ""
 
   return (
     <Container fluid>
-      <Row>
+      <Row className="justify-content-center">
         <ServicesContainer>
           <div>
-              <h1>{title}</h1>
-              <div className="subtitle">{subtitle}</div>
+            <h1>{title}</h1>
+            <div className="subtitle">{subtitle}</div>
             <Slider {...settings}>
-              <div class="service-container">
-                <div>Deep Foundation and Shallow Foundation Design</div>
-              </div>
-              <div class="service-container">
-                <div>Seawall Design</div>
-              </div>
-              <div class="service-container">
-                <div>Lowrise and Multi-Story Building</div>
-              </div>
-              <div class="service-container">
-                <div>CAD Drawing</div>
-              </div>
-              <div class="service-container">
-                <div>Steel Connection Design</div>
-              </div>
-              <div class="service-container">
-                <div>Create Lifting Plans</div>
-              </div>
-              <div class="service-container">
-                <div>Inspection Services</div>
-              </div>
-              <div class="service-container">
-                <div>Steel Detailing</div>
-              </div>
+              {services.services_repeater.map(x => (
+                <div className="service-container">
+                  <div>{x.service_title}</div>
+                </div>
+              ))}
             </Slider>
           </div>
         </ServicesContainer>
