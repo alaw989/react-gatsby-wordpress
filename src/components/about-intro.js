@@ -59,7 +59,6 @@ const AboutIntro = () => {
             </div>
           </Col>
           <Col xs={12} md={6}>
-            {" "}
             <BackgroundImage
               fluid={img}
               backgroundColor={`#040e18`}

@@ -1,12 +1,12 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { Component } from "react"
+import React, { Arrow } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ServicesContainer } from "../styles/components/_services.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
 import Button from "@material-ui/core/Button"
 import BackgroundImage from "gatsby-background-image"
-import Astro from "../images/gatsby-astronaut.png"
+
 
 const Services = () => {
   const data = useStaticQuery(graphql`
@@ -38,43 +38,61 @@ const Services = () => {
   `)
 
   const services = data.allWordpressAcfOptions.nodes[0].options.services_section
-  console.log(services)
+
   const title = services.title
   const subtitle = services.subtitle
 
-  services.services_repeater.map(x => {
-    console.log(x)
-  })
+  const imgs = []
 
+  services.services_repeater.map(x => {
+    for (const key in x.service_image) {
+      imgs.push(x.service_image[key].childImageSharp.fluid)
+    }
+  })
+ 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     dots: false,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
-  const img = ""
-
   return (
-    <Container fluid>
-      <Row className="justify-content-center">
-        <ServicesContainer>
-          <div>
-            <h1>{title}</h1>
-            <div className="subtitle">{subtitle}</div>
-            <Slider {...settings}>
-              {services.services_repeater.map(x => (
+    <ServicesContainer>
+      <Container fluid>
+        <Row className="justify-content-center">
+          <div className="services-section">
+            {/* <h1>{title}</h1>
+            <div className="subtitle">{subtitle}</div> */}
+
+            <Slider {...settings} >
+              {services.services_repeater.map((x, index) => (
                 <div className="service-container">
-                  <div>{x.service_title}</div>
+                  <BackgroundImage
+                    fluid={imgs[index]}
+                    backgroundColor={`#040e18`}
+                    className="service-bg"
+                  ></BackgroundImage>
+                  <div className="service-title">{x.service_title}</div>
                 </div>
               ))}
             </Slider>
           </div>
-        </ServicesContainer>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </ServicesContainer>
   )
 }
 
