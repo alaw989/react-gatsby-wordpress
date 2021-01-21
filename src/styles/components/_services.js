@@ -17,16 +17,70 @@ export const ServicesContainer = styled.div`
     .slick-slider {
       position: relative;
       &.slick-initialized {
-   
       }
       .service-container {
         position: relative;
         color: white;
         border-right: 0.1rem solid white;
         height: 50vh;
+        cursor: pointer;
+
+        &:hover {
+          .overlay-dark {
+            opacity: 1;
+          }
+          .service-title {
+            opacity: 0;
+          }
+          .industry-plus-icon {
+            opacity: 1; 
+          }
+        }
 
         @media ${device.md} {
           height: 60vh;
+        }
+
+        .overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          background-image: linear-gradient(
+            0deg,
+            rgba(0, 29, 78, 0.85),
+            transparent
+          );
+        }
+
+        .overlay-dark {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 29, 78, 0.85);
+          -webkit-transition: 0.3s all;
+          transition: 0.3s all;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          opacity: 0;
+        }
+
+        .industry-plus-icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+     
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: #fff;
+          opacity: 0;
+          z-index: 1;
+          transition: 0.5s all;
         }
 
         .service-bg {
@@ -51,7 +105,8 @@ export const ServicesContainer = styled.div`
       button {
         position: absolute;
         display: block;
-        top: 0px;
+        top: 50%;
+        transform: translateY(-50%);  
         background-color: #fff;
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
         cursor: pointer;
@@ -59,13 +114,13 @@ export const ServicesContainer = styled.div`
         height: 50px;
         z-index: 1;
         &.slick-prev {
-          left: 100px;
+          left: 0px;
           &:before {
             color: #000;
           }
         }
         &.slick-next {
-          right: 100px;
+          right: 0px;
           &:before {
             color: #000;
           }

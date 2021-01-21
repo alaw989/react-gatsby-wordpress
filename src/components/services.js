@@ -1,12 +1,11 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { Arrow } from "react"
+import React, { useRef } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ServicesContainer } from "../styles/components/_services.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
 import Button from "@material-ui/core/Button"
 import BackgroundImage from "gatsby-background-image"
-
 
 const Services = () => {
   const data = useStaticQuery(graphql`
@@ -49,7 +48,7 @@ const Services = () => {
       imgs.push(x.service_image[key].childImageSharp.fluid)
     }
   })
- 
+
   const settings = {
     dots: false,
     infinite: true,
@@ -76,10 +75,15 @@ const Services = () => {
           <div className="services-section">
             {/* <h1>{title}</h1>
             <div className="subtitle">{subtitle}</div> */}
-
-            <Slider {...settings} >
+            <Slider {...settings}>
               {services.services_repeater.map((x, index) => (
                 <div className="service-container">
+                  <div className="overlay"></div>
+                  <div className="overlay-dark"></div>
+                  <div className="industry-plus-icon">
+                    <i className="fal fa-plus-circle"></i>
+                    <div className="learn-text">Learn More</div>
+                  </div>
                   <BackgroundImage
                     fluid={imgs[index]}
                     backgroundColor={`#040e18`}
