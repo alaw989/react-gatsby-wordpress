@@ -6,9 +6,16 @@ export const ServicesContainer = styled.div`
   margin-top: 100px;
   font-family: "Roboto Condensed", sans-serif;
   height: 50vh;
-
+  position: relative;
   @media ${device.md} {
     height: 60vh;
+  }
+
+  svg {
+    position: absolute;
+    z-index: 1;
+    transform: rotate(180deg);
+    top: -1px;
   }
 
   .services-section {
@@ -33,7 +40,7 @@ export const ServicesContainer = styled.div`
             opacity: 0;
           }
           .industry-plus-icon {
-            opacity: 1; 
+            opacity: 1;
           }
         }
 
@@ -72,7 +79,7 @@ export const ServicesContainer = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
-     
+
           position: absolute;
           top: 50%;
           left: 50%;
@@ -106,7 +113,7 @@ export const ServicesContainer = styled.div`
         position: absolute;
         display: block;
         top: 50%;
-        transform: translateY(-50%);  
+        transform: translateY(-50%);
         background-color: #fff;
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
         cursor: pointer;

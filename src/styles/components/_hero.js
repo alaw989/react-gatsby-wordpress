@@ -18,7 +18,7 @@ export const HeroContainer = styled.div`
       background-size: cover;
       height: 100%;
 
-      height: 100vh !important;
+    
     }
 
     .hero-text {

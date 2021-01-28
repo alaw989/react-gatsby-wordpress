@@ -5,6 +5,7 @@ import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Button from "@material-ui/core/Button"
 import BackgroundImage from "gatsby-background-image"
+import Triangle from "../assets/Triangle.svg"
 
 const AboutIntro = () => {
   const data = useStaticQuery(graphql`
@@ -46,28 +47,28 @@ const AboutIntro = () => {
 
   return (
     <AboutIntroContainer>
+
+
       <div className="section-about-intro">
-      <Container>
-        <Row>
-          <Col xs={12} md={6}>
-            <div className="content-container">
-              <div className="section-heading">{heading}</div>
-              <div className="section-content">{paragraph}</div>
-              <Button variant="contained" color="primary">
-                {button.title}
-              </Button>
-            </div>
-          </Col>
-          <Col xs={12} md={6}>
-            <BackgroundImage
-              fluid={img}
-              backgroundColor={`#040e18`}
-              className="intro-bg"
-            ></BackgroundImage>
-          </Col>
-        </Row>
-      </Container>
+        <div className="content-container">
+          <div className="section-heading">{heading}</div>
+          <div className="section-content">{paragraph}</div>
+          {/* <Button variant="contained" color="primary">
+                  {button.title}
+                </Button> */}
+        </div>
+        <div className="intro-image">
+          <Triangle className="upper-angle" />
+          <BackgroundImage
+            fluid={img}
+            backgroundColor={`#040e18`}
+            className="intro-bg"
+          ></BackgroundImage>
+          <Triangle className="lower-angle" />
+        </div>
       </div>
+
+ 
     </AboutIntroContainer>
   )
 }

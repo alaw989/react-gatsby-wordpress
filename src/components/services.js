@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { ServicesContainer } from "../styles/components/_services.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
-import Button from "@material-ui/core/Button"
+import Triangle from "../assets/Triangle.svg"
 import BackgroundImage from "gatsby-background-image"
 
 const Services = () => {
@@ -70,6 +70,7 @@ const Services = () => {
 
   return (
     <ServicesContainer>
+      <Triangle />
       <Container fluid>
         <Row className="justify-content-center">
           <div className="services-section">
