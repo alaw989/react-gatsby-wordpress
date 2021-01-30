@@ -21,6 +21,7 @@ export const AboutIntroContainer = styled.div`
     .content-container {
       @media ${device.lg} {
         padding: 0;
+        padding-right: 100px;
       }
       .section-heading {
         margin-top: 0.1em;
@@ -58,10 +59,11 @@ export const AboutIntroContainer = styled.div`
       height: 100%;
       position: relative;
       overflow: hidden;
-      height: 50vh;
+      height: 85vh;
       @media ${device.lg} {
         width: 100%;
         left: 0;
+        padding-left: 100px;
       }
       svg.upper-angle {
         position: absolute;
