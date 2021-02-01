@@ -91,12 +91,16 @@ exports.createPages = async ({ actions, graphql }) => {
   if (!data) return null
 
   data.allWordpressPage.nodes.forEach(page => {
-    
+ 
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
+
+    const template = `${page.slug}` == "contact" ? "contact" : `page`
+    
+    // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
    
     actions.createPage({
       path: `/${page.slug}`,
-      component: path.resolve(`./src/templates/page.js`),
+      component: path.resolve(`./src/templates/${template}.js`),
       context: {
         ...page,
         id: page.id,

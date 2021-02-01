@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Button from "@material-ui/core/Button"
 import BackgroundImage from "gatsby-background-image"
@@ -65,6 +65,8 @@ const AboutIntro = () => {
           <Triangle className="lower-angle" />
         </div>
       </div>
+
+ 
     </AboutIntroContainer>
   )
 }

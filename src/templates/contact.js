@@ -1,18 +1,18 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
+import ContactLayout from "../components/contactlayout"
 import SEO from "../components/seo"
 
 const IndexPage = props => {
     const {content, title} = props.pageContext
   
     return (
-        <Layout>
-            <SEO title={title} /> 
+        <ContactLayout>
+            <SEO title="Home" /> 
             <h1>{title}</h1>
             <article dangerouslySetInnerHTML={{ __html: content }} />
-        </Layout>
+        </ContactLayout>
     )
 }
 
