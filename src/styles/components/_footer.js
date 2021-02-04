@@ -44,6 +44,7 @@ export const FooterContainer = styled.div`
 
     .sub-footer {
       font-size: 0.7rem;
+      margin-top: 50px; 
       display: flex;
       justify-content: center;
       padding: 12px 0;

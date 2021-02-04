@@ -65,8 +65,6 @@ const AboutIntro = () => {
           <Triangle className="lower-angle" />
         </div>
       </div>
-
- 
     </AboutIntroContainer>
   )
 }

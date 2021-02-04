@@ -1,11 +1,8 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
-import "bootstrap/dist/css/bootstrap.min.css"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faPhone } from "@fortawesome/free-solid-svg-icons"
-import { FooterContainer } from "../styles/components/_footer.js"
 import Img from "gatsby-image"
+import "bootstrap/dist/css/bootstrap.min.css"
+import { FooterContainer } from "../styles/components/_footer.js"
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -24,15 +21,6 @@ const Footer = () => {
         nodes {
           options {
             phone_number
-            logo {
-              localFile {
-                childImageSharp {
-                  fixed(width: 265, height: 55) {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            }
             logo_alt {
               localFile {
                 childImageSharp {
@@ -48,22 +36,19 @@ const Footer = () => {
     }
   `)
 
- 
-
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
-  const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
+  const logo =
+    data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile
+      .childImageSharp.fixed
 
-  const logo_alt =
-  data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile.childImageSharp
-    .fixed
+    const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
   return (
     <FooterContainer>
       <div className="section-footer">
-      <div className="logo">
-          {" "}
-          <Img fixed={logo_alt} />
-        </div>{" "}
+        <div className="logo">
+          <Img fixed={logo} />
+        </div>
         <div className="phone">{phone}</div>
         <div className="nav-menu">
           <ul>
@@ -79,6 +64,7 @@ const Footer = () => {
             })}
           </ul>
         </div>
+
         <div className="sub-footer">
           ©2021 VP & Associates. All Rights Reserved.
         </div>

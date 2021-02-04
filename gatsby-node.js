@@ -91,6 +91,7 @@ exports.createPages = async ({ actions, graphql }) => {
   if (!data) return null
 
   data.allWordpressPage.nodes.forEach(page => {
+    console.log(page)
  
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
 

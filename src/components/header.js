@@ -53,7 +53,9 @@ const Header = () => {
       <div className="section-navigation">
         <div className="logo">
           {" "}
-          <Img fixed={logo} />
+          <Link to="/">
+            <Img fixed={logo} />
+          </Link>
         </div>{" "}
         <div className="navigation-menu d-none d-xl-block">
           <ul>

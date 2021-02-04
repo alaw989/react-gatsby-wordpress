@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { device } from "../mixins"
 
 export const Navigation = styled.div`
-     position: absolute;
-    background-color: transparent;
+  position: absolute;
+  background-color: transparent;
   z-index: 1;
   background-color: transparent;
   width: 100%;

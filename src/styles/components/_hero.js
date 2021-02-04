@@ -1,24 +1,48 @@
 import styled from "styled-components"
 import { device } from "../mixins"
+import { colors } from "../variables"
 
 export const HeroContainer = styled.div`
   .section-hero {
     height: 65vh;
     position: relative;
+    font-family: "Roboto Condensed", sans-serif;
 
     @media ${device.lg} {
       height: 100vh;
     }
 
-    .bgSlide {
-     
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100%;
-
-    
+    .slick-slide {
+      height: 90vh;
+      .bgSlide {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 90vh;
+      }
+      .bgText {
+        color: ${colors.white};
+        position: absolute;
+        z-index: 99;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-transform: uppercase;
+        font-size: 5rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 5rem;
+        &.stroke {
+          color: #fff;
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: #fff;
+          @media ${device} {
+            -webkit-text-stroke-width: 3px;
+          }
+        }
+      }
     }
 
     .hero-text {
