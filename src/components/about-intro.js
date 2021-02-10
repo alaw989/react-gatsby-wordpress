@@ -5,6 +5,7 @@ import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Button from "@material-ui/core/Button"
 import BackgroundImage from "gatsby-background-image"
+import Img from "gatsby-image"
 import Triangle from "../assets/Triangle.svg"
 
 const AboutIntro = () => {
@@ -57,11 +58,11 @@ const AboutIntro = () => {
         </div>
         <div className="intro-image">
           <Triangle className="upper-angle" />
-          <BackgroundImage
+          <Img
             fluid={img}
             backgroundColor={`#040e18`}
             className="intro-bg"
-          ></BackgroundImage>
+          ></Img>
           <Triangle className="lower-angle" />
         </div>
       </div>

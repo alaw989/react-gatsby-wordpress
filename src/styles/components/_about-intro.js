@@ -8,7 +8,7 @@ export const AboutIntroContainer = styled.div`
   }
   .section-about-intro {
     font-family: "Roboto Condensed", sans-serif;
-    height: 70vh;
+
     display: flex;
     flex-direction: column;
 
@@ -22,6 +22,9 @@ export const AboutIntroContainer = styled.div`
       @media ${device.lg} {
         padding: 0;
         padding-right: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
       .section-heading {
         margin-top: 0.1em;
@@ -61,9 +64,11 @@ export const AboutIntroContainer = styled.div`
       overflow: hidden;
       height: 85vh;
       @media ${device.lg} {
-        width: 100%;
+        width: 650px;
+        height: 650px;
+        
         left: 0;
-        padding-left: 100px;
+        
       }
       svg.upper-angle {
         position: absolute;
@@ -84,14 +89,12 @@ export const AboutIntroContainer = styled.div`
   }
 
   .intro-bg {
-    
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
     height: 100%;
     @media ${device.lg} {
-      
     }
   }
 `

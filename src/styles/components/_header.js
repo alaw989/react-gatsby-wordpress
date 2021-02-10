@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import { device } from "../mixins"
+import { colors } from "../variables"
 
 export const Navigation = styled.div`
   position: absolute;
-  background-color: transparent;
+  background-color: ${colors.white};
   z-index: 1;
-  background-color: transparent;
   width: 100%;
   opacity: 0.95;
   .section-navigation {
@@ -49,7 +49,7 @@ export const Navigation = styled.div`
           margin-right: 5px;
           height: 100%;
           a {
-            color: white;
+            color: ${colors.primary};
             text-decoration: none;
             text-transform: uppercase;
             margin-right: 5px;
@@ -94,10 +94,9 @@ export const Navigation = styled.div`
           display: flex;
           justify-content: center;
           align-items: center;
-          color: white;
           text-decoration: none;
           background-color: transparent;
-          color: white;
+          color: ${colors.secondary};
           font-size: 1.7em;
           svg {
             @media ${device.lg} {

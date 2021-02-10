@@ -9,17 +9,23 @@ export const HeroContainer = styled.div`
     font-family: "Roboto Condensed", sans-serif;
 
     @media ${device.lg} {
-      height: 100vh;
+      height: 92vh;
     }
 
     .slick-slide {
-      height: 90vh;
+      height: 65vh;
+      @media ${device.lg} {
+          height: 92vh;
+        }
       .bgSlide {
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 90vh;
+        height: 65vh;
+        @media ${device.lg} {
+          height: 92vh;
+        }
       }
       .bgText {
         color: ${colors.white};
@@ -29,16 +35,20 @@ export const HeroContainer = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
         text-transform: uppercase;
-        font-size: 5rem;
+        font-size: 2rem;
         font-weight: 700;
         text-align: center;
-        line-height: 5rem;
+        line-height: 2rem;
+        @media ${device.lg} {
+          font-size: 5rem;
+          line-height: 5rem;
+        }
         &.stroke {
           color: #fff;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke-width: 1px;
           -webkit-text-stroke-color: #fff;
-          @media ${device} {
+          @media ${device.lg} {
             -webkit-text-stroke-width: 3px;
           }
         }

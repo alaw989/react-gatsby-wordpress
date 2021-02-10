@@ -15,7 +15,7 @@ import Hero from "./hero"
 import "./layout.css"
 
 const Contactlayout = ({ children }) => {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query ContactTitleQuery {
       site {
         siteMetadata {
