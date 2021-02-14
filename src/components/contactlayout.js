@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Footer from "./footer"
-import Hero from "./hero"
+import InternalBanner from "./internalbanner"
 
 import "./layout.css"
 
@@ -24,10 +24,11 @@ const Contactlayout = ({ children }) => {
       }
     }
   `)
+  
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Hero />
+      <InternalBanner />
       {children}
       <Footer />
     </>

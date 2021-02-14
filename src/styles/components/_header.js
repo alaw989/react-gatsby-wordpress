@@ -15,6 +15,7 @@ export const Navigation = styled.div`
     background-color: transparent;
     font-family: "Roboto Condensed", sans-serif;
     height: 95px;
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
 
     .logo {
       height: 100%;
@@ -49,6 +50,7 @@ export const Navigation = styled.div`
           margin-right: 5px;
           height: 100%;
           a {
+            position: relative; 
             color: ${colors.primary};
             text-decoration: none;
             text-transform: uppercase;
@@ -61,8 +63,24 @@ export const Navigation = styled.div`
             display: flex;
             align-items: center;
             padding: 35px 0;
+            &:after {
+              content: '';
+              position: absolute; 
+              background-color: red; 
+              width: 0; 
+              height: 3px; 
+              bottom: 0; 
+              left: 50%; 
+              transform: translateX(-50%);
+              transition: .5s all;
+            }
+
+            &:hover::after {
+              width: 100%; 
+            }
             &:hover {
               color: red;
+        
             }
             &:last-child {
               margin-right: 0;

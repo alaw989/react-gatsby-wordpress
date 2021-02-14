@@ -4,18 +4,18 @@ import { colors } from "../variables"
 
 export const HeroContainer = styled.div`
   .section-hero {
-    height: 65vh;
+    height: 45vh;
     position: relative;
     font-family: "Roboto Condensed", sans-serif;
 
     @media ${device.lg} {
-      height: 92vh;
+      height: 72vh;
     }
 
     .slick-slide {
-      height: 65vh;
+      height: 45vh;
       @media ${device.lg} {
-          height: 92vh;
+          height: 72vh;
         }
       .bgSlide {
         background-attachment: fixed;
@@ -24,7 +24,7 @@ export const HeroContainer = styled.div`
         background-size: cover;
         height: 65vh;
         @media ${device.lg} {
-          height: 92vh;
+          height: 72vh;
         }
       }
       .bgText {

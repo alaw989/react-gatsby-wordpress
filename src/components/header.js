@@ -25,7 +25,7 @@ const Header = () => {
         nodes {
           options {
             phone_number
-            logo {
+            logo_alt {
               localFile {
                 childImageSharp {
                   fixed(width: 265, height: 55) {
@@ -43,7 +43,7 @@ const Header = () => {
   const tel = "tel:"
 
   const logo =
-    data.allWordpressAcfOptions.nodes[0].options.logo.localFile.childImageSharp
+    data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile.childImageSharp
       .fixed
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
