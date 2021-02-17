@@ -11,12 +11,8 @@ const IndexPage = props => {
   return (
     <ContactLayout>
       <SEO title="Home" />
-      <Container fluid>
+      <Container>
         <Row>
-          <Col>
-            <h1>{title}</h1>
-            <article dangerouslySetInnerHTML={{ __html: content }} />
-          </Col>
           <Col>
             <Form>
               <Form.Group controlId="formBasicEmail">
@@ -38,6 +34,10 @@ const IndexPage = props => {
                 Submit
               </Button>
             </Form>
+          </Col>
+          <Col>
+            <h1>{title}</h1>
+            <article dangerouslySetInnerHTML={{ __html: content }} />
           </Col>
         </Row>
       </Container>

@@ -58,6 +58,7 @@ const AboutIntro = () => {
         </div>
         <div className="intro-image">
           <Triangle className="upper-angle" />
+          <div className="skewed-block"></div>
           <Img
             fluid={img}
             backgroundColor={`#040e18`}

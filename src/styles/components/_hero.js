@@ -9,13 +9,13 @@ export const HeroContainer = styled.div`
     font-family: "Roboto Condensed", sans-serif;
 
     @media ${device.lg} {
-      height: 72vh;
+      height: 650px;
     }
 
     .slick-slide {
       height: 45vh;
       @media ${device.lg} {
-          height: 72vh;
+          height: 650px;
         }
       .bgSlide {
         background-attachment: fixed;
@@ -24,7 +24,7 @@ export const HeroContainer = styled.div`
         background-size: cover;
         height: 65vh;
         @media ${device.lg} {
-          height: 72vh;
+          height: 650px;
         }
       }
       .bgText {
@@ -36,7 +36,7 @@ export const HeroContainer = styled.div`
         transform: translate(-50%, -50%);
         text-transform: uppercase;
         font-size: 2rem;
-        font-weight: 700;
+        font-weight: 700; 
         text-align: center;
         line-height: 2rem;
         @media ${device.lg} {
@@ -80,7 +80,7 @@ export const HeroContainer = styled.div`
     svg {
       position: absolute;
       width: 100%;
-      bottom: 0;
+      bottom: -1px;
       left: 0;
       z-index: 1;
     }
