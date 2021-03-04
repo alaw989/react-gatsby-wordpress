@@ -1,8 +1,8 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { useRef } from "react"
+import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ServicesContainer } from "../styles/components/_services.js"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import Slider from "react-slick"
 import Triangle from "../assets/Triangle.svg"
 import BackgroundImage from "gatsby-background-image"
@@ -38,8 +38,8 @@ const Services = () => {
 
   const services = data.allWordpressAcfOptions.nodes[0].options.services_section
 
-  const title = services.title
-  const subtitle = services.subtitle
+  // const title = services.title
+  // const subtitle = services.subtitle
 
   const imgs = []
 
@@ -55,7 +55,6 @@ const Services = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    dots: false,
     arrows: true,
     responsive: [
       {

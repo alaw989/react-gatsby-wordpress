@@ -2,9 +2,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { AboutIntroContainer } from "../styles/components/_about-intro.js"
-import { Container, Row, Col } from "react-bootstrap"
-import Button from "@material-ui/core/Button"
-import BackgroundImage from "gatsby-background-image"
+// import BackgroundImage from "gatsby-background-image"
 import Img from "gatsby-image"
 import Triangle from "../assets/Triangle.svg"
 
@@ -43,7 +41,7 @@ const AboutIntro = () => {
 
   const heading = options.heading
   const paragraph = options.paragraph
-  const button = options.button_link
+  // const button = options.button_link
   const img = options.image.localFile.childImageSharp.fluid
 
   return (

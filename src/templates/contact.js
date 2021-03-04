@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import ContactLayout from "../components/contactlayout"
 import SEO from "../components/seo"
 import { Container, Row, Form, Button, Col } from "react-bootstrap"
@@ -8,7 +6,7 @@ import { Container, Row, Form, Button, Col } from "react-bootstrap"
 const IndexPage = props => {
   const { content, title } = props.pageContext
 
-  return (
+  return (    
     <ContactLayout>
       <SEO title="Home" />
       <Container>

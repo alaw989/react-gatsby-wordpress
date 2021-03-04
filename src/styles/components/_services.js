@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { device } from "../mixins"
-import BackgroundImage from "gatsby-background-image"
+// import BackgroundImage from "gatsby-background-image"
 
 export const ServicesContainer = styled.div`
   margin-top: 100px;

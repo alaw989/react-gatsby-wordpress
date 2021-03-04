@@ -42,13 +42,13 @@ const Hero = () => {
   `)
 
   const affix = data.allWordpressAcfOptions.nodes[0].options.homepage
-  const slide = affix.hero_image.localFile.childImageSharp.fluid
+  // const slide = affix.hero_image.localFile.childImageSharp.fluid
 
   const home_slider = affix.hero_slider
 
-  home_slider.map(slide => {
-    console.log(slide.text)
-  })
+  // home_slider.map(slide => {
+  //   console.log(slide.text)
+  // })
 
   const settings = {
     dots: false,

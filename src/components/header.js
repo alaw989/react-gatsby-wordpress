@@ -1,6 +1,6 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
+// import { Container, Row, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"

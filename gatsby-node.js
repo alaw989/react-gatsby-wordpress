@@ -7,7 +7,9 @@
 // You can delete this file if you're not using it
 const axios = require("axios")
 const path = require("path")
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+const {
+  createRemoteFileNode
+} = require(`gatsby-source-filesystem`)
 
 const mediaFields = `
     altText
@@ -81,8 +83,13 @@ query {
 }
 `
 
-exports.createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(
+exports.createPages = async ({
+  actions,
+  graphql
+}) => {
+  const {
+    data
+  } = await graphql(
     `
       ${query}
     `
@@ -91,14 +98,12 @@ exports.createPages = async ({ actions, graphql }) => {
   if (!data) return null
 
   data.allWordpressPage.nodes.forEach(page => {
-    console.log(page)
- 
-    const uri = `${page.path}` == "home" ? `` : `${page.path}`
 
+    const uri = `${page.path}` == "home" ? `` : `${page.path}`
     const template = `${page.slug}` == "contact" ? "contact" : `page`
-    
+
     // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
-   
+
     actions.createPage({
       path: `/${page.slug}`,
       component: path.resolve(`./src/templates/${template}.js`),
@@ -112,7 +117,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   })
 
-  // data.allWordpressPost.nodes.forEach(post => {
+  // data.allWordpressPost.nodes.forEach(post => { 
   //   actions.createPage({
   //     path: `/post${post.path}`,
   //     component: path.resolve(`./src/templates/post.js`),
@@ -158,7 +163,10 @@ exports.createPages = async ({ actions, graphql }) => {
 //   createNode(node)
 // }
 
-exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+exports.onCreateWebpackConfig = ({
+  getConfig,
+  stage
+}) => {
   const config = getConfig()
   if (stage.startsWith("develop") && config.resolve) {
     config.resolve.alias = {

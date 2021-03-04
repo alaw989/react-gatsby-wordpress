@@ -40,8 +40,8 @@ module.exports = {
     {
 			resolve: `gatsby-source-wordpress`,
 			options: {
-        baseUrl: "caring-group.dev14.sociusinc.com",
-        url: "http://caring-group.dev14.sociusinc.com/graphql",
+        baseUrl: "whataustinhasmade.com",
+        url: "http://whataustinhasmade.com/graphql",
 				protocol: "http",
 				hostingWPCOM: false,
         useACF: true,
