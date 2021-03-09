@@ -7,9 +7,7 @@
 // You can delete this file if you're not using it
 const axios = require("axios")
 const path = require("path")
-const {
-  createRemoteFileNode
-} = require(`gatsby-source-filesystem`)
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 const mediaFields = `
     altText
@@ -71,6 +69,7 @@ query {
       title
       content
       link
+      template
     }
   }
   allWordpressPost {
@@ -83,13 +82,8 @@ query {
 }
 `
 
-exports.createPages = async ({
-  actions,
-  graphql
-}) => {
-  const {
-    data
-  } = await graphql(
+exports.createPages = async ({ actions, graphql }) => {
+  const { data } = await graphql(
     `
       ${query}
     `
@@ -98,10 +92,9 @@ exports.createPages = async ({
   if (!data) return null
 
   data.allWordpressPage.nodes.forEach(page => {
-
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
-    const template = `${page.slug}` == "contact" ? "contact" : `page`
-
+    const template = `${page.template}` == "templates/contact.php" ? "contact" : `page`
+    console.log(page.template);
     // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
 
     actions.createPage({
@@ -115,9 +108,10 @@ exports.createPages = async ({
         content: page.content,
       },
     })
+
   })
 
-  // data.allWordpressPost.nodes.forEach(post => { 
+  // data.allWordpressPost.nodes.forEach(post => {
   //   actions.createPage({
   //     path: `/post${post.path}`,
   //     component: path.resolve(`./src/templates/post.js`),
@@ -131,42 +125,9 @@ exports.createPages = async ({
   // })
 }
 
-// exports.sourceNodes = async ({
-//   actions,
-//   createNodeId,
-//   createContentDigest,
-// }) => {
-//   const { createNode } = actions
 
-//   const fetchThemeOptions = () =>
-//     axios.get(
-//       `http://caring-group.dev14.sociusinc.com/wp-json/acf/v3/options/options/`
-//     )
-//   // await for results
-//   const res = await fetchThemeOptions()
 
-//   const nodeContent = JSON.stringify(res.data.acf)
-
-//   const nodeMeta = {
-//     id: createNodeId(`my-data-${res.data.acf.phone_number}`),
-//     parent: "wordpress",
-//     children: [],
-//     internal: {
-//       type: `ThemeOptions`,
-//       mediaType: `text/html`,
-//       content: nodeContent,
-//       contentDigest: createContentDigest(res.data.acf),
-//     },
-//   }
-
-//   const node = Object.assign({}, res.data.acf, nodeMeta)
-//   createNode(node)
-// }
-
-exports.onCreateWebpackConfig = ({
-  getConfig,
-  stage
-}) => {
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   const config = getConfig()
   if (stage.startsWith("develop") && config.resolve) {
     config.resolve.alias = {

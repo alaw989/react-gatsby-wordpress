@@ -23,23 +23,29 @@ const InternalBanner = () => {
               }
             }
           }
+          title
         }
       }
     }
   `)
 
-    const bgImage = data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp.fluid
+  const title = data.allWordpressPage.nodes[0].title
+  const bgImage = data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp.fluid
+
+  console.log(title);
 
   return (
     <div>
       <InternalBannerContainer>
         <Triangle />
         <BackgroundImage
-                  fluid={bgImage}
-                  backgroundColor={`#040e18`}
-                  className="bgImage"
-               />
+          fluid={bgImage}
+          backgroundColor={`#040e18`}
+          className="bgImage"
+        />
         <div className="section-hero internal"></div>
+        <div className="overlay"></div>
+        <div className="title">{title}</div>
       </InternalBannerContainer>
     </div>
   )
