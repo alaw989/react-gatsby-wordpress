@@ -63,12 +63,15 @@ export const AboutIntroContainer = styled.div`
       position: relative;
       overflow: hidden;
       height: 85vh;
+      filter: drop-shadow(-17px 30px 16px rgba(46, 46, 40, 0.5));
+      img {
+        clip-path: polygon(0 7%, 100% 0%, 100% 93%, 0% 100%);
+      }
       @media ${device.lg} {
         width: 650px;
         height: 650px;
-        
+
         left: 0;
-        
       }
       svg.upper-angle {
         position: absolute;

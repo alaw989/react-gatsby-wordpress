@@ -3,7 +3,6 @@ import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const Navigation = styled.div`
-  position: absolute;
   background-color: ${colors.white};
   z-index: 1;
   width: 100%;
@@ -50,7 +49,7 @@ export const Navigation = styled.div`
           margin-right: 5px;
           height: 100%;
           a {
-            position: relative; 
+            position: relative;
             color: ${colors.primary};
             text-decoration: none;
             text-transform: uppercase;
@@ -64,23 +63,22 @@ export const Navigation = styled.div`
             align-items: center;
             padding: 35px 0;
             &:after {
-              content: '';
-              position: absolute; 
-              background-color: red; 
-              width: 0; 
-              height: 3px; 
-              bottom: 0; 
-              left: 50%; 
+              content: "";
+              position: absolute;
+              background-color: red;
+              width: 0;
+              height: 3px;
+              bottom: 0;
+              left: 50%;
               transform: translateX(-50%);
-              transition: .5s all;
+              transition: 0.5s all;
             }
 
             &:hover::after {
-              width: 100%; 
+              width: 100%;
             }
             &:hover {
               color: red;
-        
             }
             &:last-child {
               margin-right: 0;
@@ -135,34 +133,67 @@ export const Navigation = styled.div`
       .menu-container {
         position: relative;
         flex: 1;
-        background-color: transparent;
+        background-color: ${colors.secondary};
         display: flex;
         align-items: center;
         justify-content: center;
         width: 75px;
         max-width: 75px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: 0.5s all;
+        border-left: 1px solid ${colors.secondary};
+        overflow: hidden;
+
+        &:hover {
+          .overlay-shift {
+            @media ${device.lg} {
+              bottom: 0;
+            }
+          }
+          .contact-text {
+            color: ${colors.secondary};
+          }
+        }
         @media ${device.lg} {
           width: 165px;
           max-width: 165px;
         }
+        .overlay-shift {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: ${colors.white};
+          bottom: -95px;
+          z-index: 1;
+          transition: 0.5s all;
+        }
         .contact-text {
+          position: absolute;
           text-transform: uppercase;
-          color: #fff;
-          display: none;
+          color: ${colors.white};
           height: 100%;
           font-size: 14px;
+          z-index: 2;
+          transition: 0.5s all;
+          display: none;
           @media ${device.lg} {
             display: flex;
             align-items: center;
             justify-content: center;
           }
         }
-        a {
+        /* a {
+          position: absolute;
           height: 100%;
           width: 100%;
           text-decoration: none;
-        }
+          background-color: transparent;
+        } */
       }
+    }
+    .bm-menu-wrap {
+      top: 0; 
     }
   }
 `

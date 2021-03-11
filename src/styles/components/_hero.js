@@ -7,6 +7,7 @@ export const HeroContainer = styled.div`
     height: 45vh;
     position: relative;
     font-family: "Roboto Condensed", sans-serif;
+    z-index: -1;
 
     @media ${device.lg} {
       height: 650px;

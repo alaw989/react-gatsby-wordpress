@@ -43,8 +43,8 @@ const Header = () => {
   const tel = "tel:"
 
   const logo =
-    data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile.childImageSharp
-      .fixed
+    data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile
+      .childImageSharp.fixed
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
@@ -78,12 +78,11 @@ const Header = () => {
               <div className="number">{phone}</div>
             </div>
           </a>
-          <div className="menu-container">
+          <a className="menu-container">
+            <div className="overlay-shift"></div>
+            <div className="contact-text">Contact Us</div>
             <Mmenu />
-            <a href="/contact">
-              <div className="contact-text">Contact Us</div>
-            </a>
-          </div>
+          </a>
         </div>
       </div>
     </Navigation>

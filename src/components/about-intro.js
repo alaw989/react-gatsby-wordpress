@@ -55,14 +55,14 @@ const AboutIntro = () => {
                 </Button> */}
         </div>
         <div className="intro-image">
-          <Triangle className="upper-angle" />
+          {/* <Triangle className="upper-angle" /> */}
           <div className="skewed-block"></div>
           <Img
             fluid={img}
             backgroundColor={`#040e18`}
             className="intro-bg"
           ></Img>
-          <Triangle className="lower-angle" />
+          {/* <Triangle className="lower-angle" /> */}
         </div>
       </div>
     </AboutIntroContainer>

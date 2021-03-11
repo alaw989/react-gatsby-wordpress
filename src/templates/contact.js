@@ -12,7 +12,6 @@ const IndexPage = props => {
       <Container>
         <Row>
           <Col>
-          <h1>Contact VP & Associates</h1>
             <Form>
               <Form.Group controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
@@ -29,7 +28,6 @@ const IndexPage = props => {
               <Button variant="primary" type="submit">
                 Submit
               </Button>
-              
             </Form>
           </Col>
           <Col>
