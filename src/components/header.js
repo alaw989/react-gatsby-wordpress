@@ -12,14 +12,7 @@ const Header = () => {
   const data = useStaticQuery(graphql`
     query newQuery {
       allWordpressWpApiMenusMenusItems {
-        edges {
-          node {
-            items {
-              title
-              object_slug
-            }
-          }
-        }
+        ...wordpress__wp_api_menus_menus_itemsConnectionFragment
       }
       allWordpressAcfOptions {
         nodes {
@@ -59,12 +52,12 @@ const Header = () => {
         </div>{" "}
         <div className="navigation-menu d-none d-xl-block">
           <ul>
-            {menuItems.map(x => {
-              const uri = `/${x.object_slug}`
+            {menuItems.map((post, index) => {
+              const uri = `/${post.object_slug}`
               return (
-                <li key={x.wordpress_id}>
-                  <Link key={x.wordpress_id} to={uri}>
-                    {x.title}
+                <li key={index}>
+                  <Link key={index} to={uri}>
+                    {post.title}
                   </Link>
                 </li>
               )
@@ -78,11 +71,11 @@ const Header = () => {
               <div className="number">{phone}</div>
             </div>
           </a>
-          <a className="menu-container">
+          <div className="menu-container">
             <div className="overlay-shift"></div>
             <div className="contact-text">Contact Us</div>
             <Mmenu />
-          </a>
+          </div>
         </div>
       </div>
     </Navigation>
