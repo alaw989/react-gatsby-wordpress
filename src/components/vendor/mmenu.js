@@ -10,30 +10,30 @@ const MMenuWrapper = styled.div`
 `
 
 const Mmenu = () => {
-  // const data = useStaticQuery(graphql`
-  //   query mmenuQuery {
-  //     allWpMenu {
-  //       nodes {
-  //         menuItems {
-  //           nodes {
-  //             label
-  //             id
-  //             path
-  //             url
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const data = useStaticQuery(graphql`
+    query mmenuQuery {
+      allWordpressWpApiMenusMenusItems {
+        edges {
+          node {
+            items {
+              title
+              object_slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  console.log('data:', data.allWordpressWpApiMenusMenusItems.edges[0].node) 
   return (
     <MMenuWrapper>
       <Menu styles={styles}>
-        {/* {data.wordpress.menus.nodes[0].menuItems.nodes.map(x => {
+        {/* {data.allWordpressWpApiMenusMenusItems.edges[0].node.map(x => {
           return (
-            <li key={x.id}>
-              <Link key={x.id} to={x.path}>
-                {x.label}
+            <li key={x.object_slug}>
+              <Link key={x.object_slug} to={x.object_slug}>
+                {x.title}
               </Link>
             </li>
           )
