@@ -47,6 +47,7 @@ const Services = () => {
     for (const key in x.service_image) {
       imgs.push(x.service_image[key].childImageSharp.fluid)
     }
+    return null
   })
 
   const settings = {
@@ -77,7 +78,7 @@ const Services = () => {
             <div className="subtitle">{subtitle}</div> */}
             <Slider {...settings}>
               {services.services_repeater.map((x, index) => (
-                <div className="service-container">
+                <div className="service-container" key={index}>
                   <div className="overlay"></div>
                   <div className="overlay-dark"></div>
                   <div className="industry-plus-icon">

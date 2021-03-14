@@ -28,6 +28,8 @@ const seoFields = `
     }
 `
 
+
+
 // const query = `
 //     query {
 //       wordpress {
@@ -94,7 +96,7 @@ exports.createPages = async ({ actions, graphql }) => {
   data.allWordpressPage.nodes.forEach(page => {
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
     const template = `${page.template}` == "templates/contact.php" ? "contact" : `page`
-    console.log(page.template);
+
     // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
 
     actions.createPage({
@@ -171,3 +173,5 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
 //     },
 //   })
 // }
+
+

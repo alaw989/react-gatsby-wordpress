@@ -73,7 +73,7 @@ const Hero = () => {
 
           <Slider {...settings}>
             {home_slider.map((slide, index) => (
-              <div className="slider-container">
+              <div className="slider-container" key={index}>
                 <BackgroundImage
                   fluid={slide.image.localFile.childImageSharp.fluid}
                   backgroundColor={`#040e18`}

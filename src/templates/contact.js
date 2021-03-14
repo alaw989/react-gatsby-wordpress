@@ -4,7 +4,8 @@ import SEO from "../components/seo"
 import { Container, Row, Form, Button, Col } from "react-bootstrap"
 
 const IndexPage = props => {
-  const { content, title } = props.pageContext
+  // const { content, title } = props.pageContext
+  const { content } = props.pageContext
 
   return (    
     <ContactLayout>

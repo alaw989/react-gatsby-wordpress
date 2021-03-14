@@ -16,8 +16,8 @@ export const HeroContainer = styled.div`
     .slick-slide {
       height: 45vh;
       @media ${device.lg} {
-          height: 650px;
-        }
+        height: 650px;
+      }
       .bgSlide {
         background-attachment: fixed;
         background-position: center;
@@ -37,7 +37,7 @@ export const HeroContainer = styled.div`
         transform: translate(-50%, -50%);
         text-transform: uppercase;
         font-size: 2rem;
-        font-weight: 700; 
+        font-weight: 700;
         text-align: center;
         line-height: 2rem;
         @media ${device.lg} {

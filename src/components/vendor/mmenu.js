@@ -13,31 +13,26 @@ const Mmenu = () => {
   const data = useStaticQuery(graphql`
     query mmenuQuery {
       allWordpressWpApiMenusMenusItems {
-        edges {
-          node {
-            items {
-              title
-              object_slug
-            }
-          }
-        }
+        ...wordpress__wp_api_menus_menus_itemsConnectionFragment
       }
     }
   `)
 
-  console.log('data:', data.allWordpressWpApiMenusMenusItems.edges[0].node) 
+ 
+
+  const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
+
   return (
     <MMenuWrapper>
-      <Menu styles={styles}>
-        {/* {data.allWordpressWpApiMenusMenusItems.edges[0].node.map(x => {
-          return (
-            <li key={x.object_slug}>
-              <Link key={x.object_slug} to={x.object_slug}>
-                {x.title}
-              </Link>
-            </li>
-          )
-        })} */}
+      <Menu right styles={styles}>
+            {menuItems.map((page, index) => {
+              const uri = `/${page.object_slug}`
+              return (
+                  <Link key={index} to={uri}>
+                    {page.title}
+                  </Link>
+              )
+            })}
       </Menu>
     </MMenuWrapper>
   )
@@ -70,7 +65,7 @@ var styles = {
   bmMenuWrap: {
     position: "fixed",
     height: "100%",
-    left: "0",
+    right: "0",
   },
   bmMenu: {
     background: "#373a47",

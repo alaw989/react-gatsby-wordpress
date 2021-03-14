@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
 import Img from "gatsby-image"
-import Triangle from "../assets/Triangle.svg"
+// import Triangle from "../assets/Triangle.svg"
 
 const AboutIntro = () => {
   const data = useStaticQuery(graphql`

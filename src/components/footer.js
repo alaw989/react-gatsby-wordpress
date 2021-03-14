@@ -8,14 +8,7 @@ const Footer = () => {
   const data = useStaticQuery(graphql`
     query footerQuery {
       allWordpressWpApiMenusMenusItems {
-        edges {
-          node {
-            items {
-              title
-              object_slug
-            }
-          }
-        }
+        ...wordpress__wp_api_menus_menus_itemsConnectionFragment
       }
       allWordpressAcfOptions {
         nodes {
@@ -41,7 +34,7 @@ const Footer = () => {
     data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile
       .childImageSharp.fixed
 
-    const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
+  const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
   return (
     <FooterContainer>
@@ -52,10 +45,10 @@ const Footer = () => {
         <div className="phone">{phone}</div>
         <div className="nav-menu">
           <ul>
-            {menuItems.map(x => {
+            {menuItems.map((x, index) => {
               const uri = `/${x.object_slug}`
               return (
-                <li key={x.wordpress_id}>
+                <li key={index}>
                   <Link key={x.wordpress_id} to={uri}>
                     {x.title}
                   </Link>
