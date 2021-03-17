@@ -3,10 +3,16 @@ html {
   -webkit-text-size-adjust: 100%;
   font: 112.5%/1.45em georgia, serif, sans-serif;
   box-sizing: border-box;
-  overflow-y: scroll;
+
+  height: 100%; 
+  
 }
 body {
   margin: 0;
+  width:100%;
+ 
+
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
@@ -18,6 +24,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  
 }
 article,
 aside,
@@ -43,6 +50,8 @@ audio:not([controls]) {
   display: none;
   height: 0;
 }
+
+
 progress {
   vertical-align: baseline;
 }
@@ -595,3 +604,9 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+#___gatsby {
+  height: 100%; 
+  overflow: auto; 
+}
+

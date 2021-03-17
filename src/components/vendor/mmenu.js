@@ -4,6 +4,7 @@ import React from "react"
 import styled from "styled-components"
 
 const MMenuWrapper = styled.div`
+height: 100%;
   @media (min-width: 992px) {
     display: none;
   }
@@ -24,7 +25,9 @@ const Mmenu = () => {
 
   return (
     <MMenuWrapper>
-      <Menu right styles={styles}>
+      <Menu right styles={styles}
+      isOpen={false}
+      >
             {menuItems.map((page, index) => {
               const uri = `/${page.object_slug}`
               return (
@@ -84,9 +87,17 @@ var styles = {
   },
   bmItem: {
     display: "inline-block",
+    textTransform: "uppercase",
+    color: "white"
   },
   bmOverlay: {
-    display: "none",
-    background: "rgba(0, 0, 0, 0.0)",
+    position: "fixed",
+    zIndex: "1000",
+    width: "100%",
+    height: "100%", 
+    opacity: "1",
+    left: "0",
+    top: "0",
+    background: "rgba(0, 0, 0, 0.5)",
   },
 }
