@@ -15,14 +15,13 @@ const IndexPage = props => {
           <Col>
             <Form>
               <Form.Group controlId="formBasicName">
-                <Form.Label>Name</Form.Label>
                 <Form.Control type="text" placeholder="Name" />
                 <Form.Text className="text-muted">
                 </Form.Text>
               </Form.Group>
 
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
+            
                 <Form.Control type="email" placeholder="Email" />
               </Form.Group>
 

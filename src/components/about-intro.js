@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
 import Img from "gatsby-image"
+import parse from "html-react-parser"
 // import Triangle from "../assets/Triangle.svg"
 
 const AboutIntro = () => {
@@ -48,8 +49,13 @@ const AboutIntro = () => {
     <AboutIntroContainer>
       <div className="section-about-intro">
         <div className="content-container">
+          <div className="supheading-container">
+            <div class="tagline-line first"></div>
+            <div className="supheading">Introduction</div>
+            <div class="tagline-line second"></div>
+          </div>
           <div className="section-heading">{heading}</div>
-          <div className="section-content">{paragraph}</div>
+          <div className="section-content">{parse(paragraph)}</div>
           {/* <Button variant="contained" color="primary">
                   {button.title}
                 </Button> */}
