@@ -10,13 +10,13 @@ export const HeroContainer = styled.div`
     z-index: -1;
 
     @media ${device.lg} {
-      height: 850px;
+      height: 90vh;
     }
 
     .slick-slide {
       height: 45vh;
       @media ${device.lg} {
-        height: 850px;
+        height: 90vh;
       }
       .bgSlide {
         background-attachment: fixed;
@@ -25,7 +25,7 @@ export const HeroContainer = styled.div`
         background-size: cover;
         height: 65vh;
         @media ${device.lg} {
-          height: 850px;
+          height: 90vh;
         }
       }
       .bgText {
