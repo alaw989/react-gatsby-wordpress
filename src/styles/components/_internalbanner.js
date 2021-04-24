@@ -8,7 +8,7 @@ export const InternalBannerContainer = styled.div`
   font-family: "Roboto Condensed", sans-serif;
 
   @media ${device.lg} {
-    height: 72vh;
+    height: 550px;
   }
 
   .section-hero.internal {
@@ -35,15 +35,18 @@ export const InternalBannerContainer = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(38,67,102,0.8);
+    background: rgba(38,67,102, .8);
+
   }
 
   .title {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     color: ${colors.white};
+    font-size: 5vw;
+    font-weight: 700;
   }
 `

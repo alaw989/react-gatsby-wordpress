@@ -86,7 +86,6 @@ const Hero = () => {
               </div>
             ))}
           </Slider>
-         
         </div>
       </HeroContainer>
     </div>
