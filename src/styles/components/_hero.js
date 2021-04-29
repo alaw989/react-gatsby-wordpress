@@ -32,7 +32,7 @@ export const HeroContainer = styled.div`
         color: ${colors.white};
         position: absolute;
         z-index: 99;
-        top: 50%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-transform: uppercase;
@@ -44,7 +44,7 @@ export const HeroContainer = styled.div`
           font-size: 5rem;
           line-height: 5rem;
         }
-        &.stroke {
+        span {
           color: #fff;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke-width: 1px;

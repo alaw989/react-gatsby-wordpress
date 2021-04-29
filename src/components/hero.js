@@ -5,6 +5,7 @@ import { HeroContainer } from "../styles/components/_hero.js"
 import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
 import Triangle from "../assets/Triangle.svg"
+import parse from "html-react-parser"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -81,7 +82,7 @@ const Hero = () => {
                 >
                   {" "}
                 </BackgroundImage>
-                <div className="bgText">{slide.text}</div>
+                <div className="bgText">{parse(slide.text)}</div>
                 <div className="overlay"></div>
               </div>
             ))}

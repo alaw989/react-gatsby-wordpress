@@ -7,17 +7,17 @@ export const SectionContact = styled.div`
 
   .form-container {
     .form-heading {
-      margin-bottom: 10px; 
+      margin-bottom: 10px;
     }
   }
 
   .title {
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.7rem;
 
     @media ${device.lg} {
-      font-size: 0.2.5rem;
+      font-size: 2.0rem;
     }
     span {
       font-weight: 700;
@@ -40,7 +40,7 @@ export const SectionContact = styled.div`
       }
     }
     .email {
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       a {
         color: ${colors.primary};
       }

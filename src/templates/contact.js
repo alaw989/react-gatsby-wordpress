@@ -16,7 +16,7 @@ const IndexPage = props => {
       <SectionContact>
         <Container>
           <Row>
-            <Col xs={12} lg={6} xs={{ order: 2 }} lg={{ order: 1 }}>
+            <Col xs={{ span: 12, order: 2 }} lg={{ span: 6, order: 1 }}>
               <div className="form-container">
                 <div className="form-heading">
                   Please fill out the form below and we will contact you
@@ -46,7 +46,7 @@ const IndexPage = props => {
                 </Form>
               </div>
             </Col>
-            <Col xs={12} lg={6} xs={{ order: 1 }} lg={{ order: 2 }}>
+            <Col xs={{ span: 12, order: 1 }} lg={{ span: 6, order: 2 }}>
               <div className="contact-container">
                 <h2 className="title">
                   Contact <span>VP & Associates</span>

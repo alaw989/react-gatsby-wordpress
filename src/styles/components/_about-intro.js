@@ -42,10 +42,11 @@ export const AboutIntroContainer = styled.div`
           height: 2px;
           background-color: #48b2e6;
           margin-left: 10px;
-          /* &.first {
+          &.first {
             @media ${device.lg} {
               display: none; 
-          } */
+            }
+          }
         }
         .supheading {
           text-align: center;
