@@ -29,7 +29,7 @@ const Contactlayout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <InternalBanner />
+      <InternalBanner color="dark"/>
       {children}
       <SectionSegue />
       <Footer />

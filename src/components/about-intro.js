@@ -5,8 +5,8 @@ import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
 import Img from "gatsby-image"
 import parse from "html-react-parser"
-// import PrimaryButton from "../components/buttons.js"
-
+import { PrimaryButton } from "../styles/components/_buttons.js"
+import { Link } from "gatsby"
 
 const AboutIntro = () => {
   const data = useStaticQuery(graphql`
@@ -57,7 +57,12 @@ const AboutIntro = () => {
           </div>
           <div className="section-heading">{heading}</div>
           <div className="section-content">{parse(paragraph)}</div>
-          {/* <PrimaryButton border text="Learn About Us"></PrimaryButton> */}
+          <PrimaryButton light>
+            <Link to="/home">
+              <div className="overlay"></div>
+              <div className="button-text">Request Your Quote</div>
+            </Link>
+          </PrimaryButton>
         </div>
         <div className="intro-image">
           {/* <Triangle className="upper-angle" /> */}
