@@ -3,9 +3,10 @@ import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { StyleSegue } from "../styles/components/_style-segue.js"
 import Triangle from "../assets/Triangle.svg"
-import PrimaryButton from "../components/buttons.js"
+import { PrimaryButton } from "../styles/components/_buttons.js"
+import { Link } from "gatsby"
 
-const SectionSegue = props => {
+const SectionSegue = () => {
   //   const { content } = props.pageContext
 
   return (
@@ -19,7 +20,13 @@ const SectionSegue = props => {
                 <div className="text-block">
                   Need a custom quote? Request your custom quote here.{" "}
                 </div>
-                <PrimaryButton text="Get Custom Quote" />
+                <PrimaryButton>
+                  <Link to="/home">
+                    
+                    <div className="overlay"></div>
+                    <div className="button-text">Request Your Quote</div>
+                  </Link>
+                </PrimaryButton>
               </div>
             </div>
           </div>

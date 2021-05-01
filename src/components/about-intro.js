@@ -5,7 +5,7 @@ import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
 import Img from "gatsby-image"
 import parse from "html-react-parser"
-import PrimaryButton from "../components/buttons.js"
+// import PrimaryButton from "../components/buttons.js"
 
 
 const AboutIntro = () => {
@@ -57,7 +57,7 @@ const AboutIntro = () => {
           </div>
           <div className="section-heading">{heading}</div>
           <div className="section-content">{parse(paragraph)}</div>
-          <PrimaryButton border text="Learn About Us"></PrimaryButton>
+          {/* <PrimaryButton border text="Learn About Us"></PrimaryButton> */}
         </div>
         <div className="intro-image">
           {/* <Triangle className="upper-angle" /> */}
