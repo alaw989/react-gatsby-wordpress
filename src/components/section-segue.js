@@ -22,7 +22,6 @@ const SectionSegue = () => {
                 </div>
                 <PrimaryButton>
                   <Link to="/home">
-                    
                     <div className="overlay"></div>
                     <div className="button-text">Request Your Quote</div>
                   </Link>

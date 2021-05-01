@@ -9,6 +9,14 @@ export const SectionContact = styled.div`
     .form-heading {
       margin-bottom: 10px;
     }
+
+    form {
+      .form-group {
+        input {
+          border-radius: 0;
+        }
+      }
+    }
   }
 
   .title {
@@ -17,7 +25,7 @@ export const SectionContact = styled.div`
     font-size: 1.7rem;
 
     @media ${device.lg} {
-      font-size: 2.0rem;
+      font-size: 2rem;
     }
     span {
       font-weight: 700;
@@ -27,7 +35,7 @@ export const SectionContact = styled.div`
   .contact-container {
     .contact-info {
       svg {
-        color: ${colors.secondary};
+        color: ${colors.primary};
         margin-right: 5px;
       }
     }
