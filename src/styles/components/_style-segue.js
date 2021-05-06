@@ -5,12 +5,19 @@ import { colors } from "../variables"
 export const StyleSegue = styled.div`
   .section-segue {
     font-family: "Roboto Condensed", sans-serif;
-    background-color: ${colors.primary};
+    background-color: ${colors.white};
 
     svg {
         transform: rotate(180deg);
         margin-top: -1px;
     }
+
+    svg {
+
+    .cls-1 {
+      fill: ${props => props.dark ? colors.primary : colors.white};
+    }
+  }
 
     .cta {
       display: flex;
@@ -28,7 +35,7 @@ export const StyleSegue = styled.div`
         margin-right: 0px;
         font-size: 1.7rem;
         text-align: center;
-        color: ${colors.white};
+        color: ${colors.primary};
         font-weight: 700;
         margin-bottom: 15px;
         @media ${device.md} {

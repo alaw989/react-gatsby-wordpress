@@ -10,7 +10,7 @@ const SectionSegue = () => {
   //   const { content } = props.pageContext
 
   return (
-    <StyleSegue>
+    <StyleSegue dark>
       <div className="section-segue internal">
         <Triangle />
         <div className="container-fluid">

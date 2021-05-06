@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { device } from "../mixins"
+import { colors } from "../variables"
 // import BackgroundImage from "gatsby-background-image"
 
 export const ServicesContainer = styled.div`
@@ -16,6 +17,11 @@ export const ServicesContainer = styled.div`
     z-index: 1;
     transform: rotate(180deg);
     top: -1px;
+ 
+    .cls-1 {
+      fill: ${props => props.dark ? colors.primary : colors.white};
+    }
+  
   }
 
   .services-section {

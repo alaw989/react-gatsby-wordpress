@@ -12,6 +12,13 @@ export const HeroContainer = styled.div`
     @media ${device.lg} {
       height: 90vh;
     }
+    
+    svg {
+
+    .cls-1 {
+      fill: ${props => props.dark ? colors.primary : colors.white};
+    }
+  }
 
     .slick-slide {
       height: 45vh;

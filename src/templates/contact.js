@@ -14,7 +14,7 @@ const IndexPage = props => {
   return (
     <ContactLayout>
       <SectionContact>
-        <SEO title="Home" />
+        <SEO title="Contact Us" />
         <Container>
           <Row>
             <Col xs={12} lg={6} xs={{ order: 2 }} lg={{ order: 1 }}>

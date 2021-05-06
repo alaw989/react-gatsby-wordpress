@@ -21,6 +21,9 @@ export const InternalBannerContainer = styled.div`
     position: absolute;
     bottom: 0;
     z-index: 1;
+    .cls-1 {
+      fill: ${props => props.dark ? colors.primary : colors.white};
+    }
   }
 
   .bgImage {
