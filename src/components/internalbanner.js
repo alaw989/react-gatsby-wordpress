@@ -6,12 +6,13 @@ import Triangle from "../assets/Triangle.svg"
 import DarkMatter from "../assets/DarkMatter.svg"
 import { useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
+import BGOverlay from "../assets/BGOverlay.svg"
 
 // import BackgroundImage from "gatsby-background-image"
 // import Triangle from "../assets/Triangle.svg"
 
-const InternalBanner = (props) => {
-  console.log('this:', props.color);
+const InternalBanner = props => {
+  console.log("this:", props.color)
   const data = useStaticQuery(graphql`
     query internalPageBannerQuery {
       allWordpressPage {
@@ -32,14 +33,17 @@ const InternalBanner = (props) => {
   `)
 
   const title = data.allWordpressPage.nodes[0].title
-  const bgImage = data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp.fluid
-
-
+  const bgImage =
+    data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp
+      .fluid
 
   return (
     <div>
       <InternalBannerContainer dark>
-        <Triangle/>
+        <div className="bg-overlay">
+          <BGOverlay />
+        </div>
+        <Triangle />
         <BackgroundImage
           fluid={bgImage}
           backgroundColor={`#040e18`}

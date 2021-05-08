@@ -3,22 +3,35 @@ import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const HeroContainer = styled.div`
+  position: relative;
+
+  filter: drop-shadow(-17px 30px 16px rgba(46,46,40,0.5));
+  .bg-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    @media ${device.lg} {
+      top: -100px;
+    }
+  }
+
   .section-hero {
     height: 45vh;
     position: relative;
     font-family: "Roboto Condensed", sans-serif;
     z-index: -1;
+clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%);
 
     @media ${device.lg} {
       height: 90vh;
     }
-    
-    svg {
 
-    .cls-1 {
-      fill: ${props => props.dark ? colors.primary : colors.white};
+    svg {
+      .cls-1 {
+        fill: ${props => (props.dark ? colors.primary : colors.white)};
+      }
     }
-  }
 
     .slick-slide {
       height: 45vh;

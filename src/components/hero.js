@@ -6,6 +6,7 @@ import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
 import Triangle from "../assets/Triangle.svg"
 import parse from "html-react-parser"
+import BGOverlay from "../assets/BGOverlay.svg"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -60,17 +61,18 @@ const Hero = () => {
     slidesToScroll: 1,
     autoplay: true,
     fade: true,
-    arrows: false
+    arrows: false,
   }
 
   return (
     <div>
       <HeroContainer>
         <div className="section-hero">
-          {/* <div className="hero-text">
-            Structural Engineering and Steel Detailing
-          </div> */}
-          <Triangle />
+          <div className="bg-overlay">
+            <BGOverlay />
+          </div>
+
+          {/* <Triangle /> */}
 
           <Slider {...settings}>
             {home_slider.map((slide, index) => (

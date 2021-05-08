@@ -4,10 +4,12 @@ import { colors } from "../variables"
 
 export const SectionContact = styled.div`
   font-family: "Roboto Condensed";
+  background-color: ${colors.primary};
 
   .form-container {
     .form-heading {
       margin-bottom: 10px;
+      color: ${colors.white};
     }
 
     form {
@@ -33,9 +35,12 @@ export const SectionContact = styled.div`
   }
 
   .contact-container {
+    .title {
+      color: ${colors.white};
+    }
     .contact-info {
       svg {
-        color: ${colors.primary};
+        color: ${colors.white};
         margin-right: 5px;
       }
     }
@@ -44,13 +49,13 @@ export const SectionContact = styled.div`
       align-items: center;
       margin-bottom: 5px;
       a {
-        color: ${colors.primary};
+        color: ${colors.white};
       }
     }
     .email {
       margin-bottom: 15px;
       a {
-        color: ${colors.primary};
+        color: ${colors.white};
       }
     }
   }

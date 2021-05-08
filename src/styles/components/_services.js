@@ -9,7 +9,7 @@ export const ServicesContainer = styled.div`
   height: 50vh;
   position: relative;
   @media ${device.md} {
-    height: 60vh;
+    height: 80vh;
   }
 
   svg {
@@ -17,11 +17,10 @@ export const ServicesContainer = styled.div`
     z-index: 1;
     transform: rotate(180deg);
     top: -1px;
- 
+
     .cls-1 {
-      fill: ${props => props.dark ? colors.primary : colors.white};
+      fill: ${props => (props.dark ? colors.primary : colors.white)};
     }
-  
   }
 
   .services-section {
@@ -51,7 +50,7 @@ export const ServicesContainer = styled.div`
         }
 
         @media ${device.md} {
-          height: 60vh;
+          height: 80vh;
         }
 
         .overlay {
@@ -87,13 +86,21 @@ export const ServicesContainer = styled.div`
           align-items: center;
 
           position: absolute;
-          top: 50%;
+          top: 63%;
           left: 50%;
           transform: translate(-50%, -50%);
           color: #fff;
           opacity: 0;
           z-index: 1;
           transition: 0.5s all;
+          .learn-text {
+            font-size: 1rem;
+            text-transform: uppercase;
+          }
+          svg {
+            top: -57px;
+            font-size: 3rem;
+          }
         }
 
         .service-bg {
@@ -118,10 +125,10 @@ export const ServicesContainer = styled.div`
       button {
         position: absolute;
         display: block;
-        top: 50%;
+        top: 65%;
         transform: translateY(-50%);
-        background-color: #fff;
-        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+        background-color: transparent;
+
         cursor: pointer;
         width: 50px;
         height: 50px;
@@ -129,13 +136,15 @@ export const ServicesContainer = styled.div`
         &.slick-prev {
           left: 0px;
           &:before {
-            color: #000;
+            color: ${colors.white};
+            font-size: 3rem;
           }
         }
         &.slick-next {
-          right: 0px;
+          right: 12px;
           &:before {
-            color: #000;
+            color: ${colors.white};
+            font-size: 3rem;
           }
         }
       }

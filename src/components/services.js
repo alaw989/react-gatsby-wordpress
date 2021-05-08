@@ -6,6 +6,7 @@ import { Container, Row } from "react-bootstrap"
 import Slider from "react-slick"
 import Triangle from "../assets/Triangle.svg"
 import BackgroundImage from "gatsby-background-image"
+import { FaPlusCircle } from "react-icons/fa"
 
 const Services = () => {
   const data = useStaticQuery(graphql`
@@ -70,6 +71,7 @@ const Services = () => {
 
   return (
     <ServicesContainer>
+      <div className="section-title"></div>
       <Triangle />
       <Container fluid>
         <Row className="justify-content-center">
@@ -82,7 +84,7 @@ const Services = () => {
                   <div className="overlay"></div>
                   <div className="overlay-dark"></div>
                   <div className="industry-plus-icon">
-                    <i className="fal fa-plus-circle"></i>
+                    <FaPlusCircle />
                     <div className="learn-text">Learn More</div>
                   </div>
                   <BackgroundImage
