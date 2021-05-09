@@ -7,26 +7,40 @@ export const Navigation = styled.div`
   z-index: 1;
   width: 100%;
   opacity: 0.95;
+  position: relative;
   .section-navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
     font-family: "Roboto Condensed", sans-serif;
-    height: 95px;
-    box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
+    height: 135px;
+    /* box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%); */
+    position: absolute;
+    width: 100%;
+
+    .nav-container {
+      display: flex; 
+      justify-content: space-between;
+    }
 
     .logo {
-      height: 100%;
+      /* height: 100%;
       display: flex;
       align-items: center;
-      flex: 2;
+      flex: 2; */
       @media ${device.xl} {
-        flex: 1;
+        /* flex: 1; */
+      }
+
+      a {
+      
+        display: flex;
+        justify-content: center;
       }
       .gatsby-image-wrapper {
-        height: 100%;
-        width: 100%;
+        height: 105px;
+        width: 200px;
       }
     }
     .navigation-menu {
@@ -88,11 +102,11 @@ export const Navigation = styled.div`
       }
     }
     .right-container {
-      position: relative;
+      /* position: relative;
       height: 100%;
       display: flex;
-      flex: 1;
-      justify-content: flex-end;
+      justify-content: flex-end; */
+ 
       a.phone-container {
         display: flex;
         justify-content: flex-start;
@@ -193,7 +207,7 @@ export const Navigation = styled.div`
       }
     }
     .bm-menu-wrap {
-      top: 0; 
+      top: 0;
     }
   }
 `

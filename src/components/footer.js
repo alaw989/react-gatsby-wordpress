@@ -14,7 +14,7 @@ const Footer = () => {
         nodes {
           options {
             phone_number
-            logo_alt {
+            logo_dark {
               localFile {
                 childImageSharp {
                   fixed(width: 265, height: 55) {
@@ -29,9 +29,11 @@ const Footer = () => {
     }
   `)
 
+  console.log(  data.allWordpressAcfOptions.nodes[0].options);
+
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const logo =
-    data.allWordpressAcfOptions.nodes[0].options.logo_alt.localFile
+    data.allWordpressAcfOptions.nodes[0].options.logo_dark.localFile
       .childImageSharp.fixed
 
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number

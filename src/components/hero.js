@@ -7,6 +7,11 @@ import BackgroundImage from "gatsby-background-image"
 import Triangle from "../assets/Triangle.svg"
 import parse from "html-react-parser"
 import BGOverlay from "../assets/BGOverlay.svg"
+import { FaPlus } from "react-icons/fa"
+import plus from "../images/plus-icon.png"
+import { ParallaxProvider } from "react-scroll-parallax"
+
+console.log(plus)
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -55,7 +60,7 @@ const Hero = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -65,33 +70,44 @@ const Hero = () => {
   }
 
   return (
-    <div>
-      <HeroContainer>
-        <div className="section-hero">
-          <div className="bg-overlay">
-            <BGOverlay />
-          </div>
-
-          {/* <Triangle /> */}
-
-          <Slider {...settings}>
-            {home_slider.map((slide, index) => (
-              <div className="slider-container" key={index}>
-                <BackgroundImage
-                  fluid={slide.image.localFile.childImageSharp.fluid}
-                  backgroundColor={`#040e18`}
-                  className="bgSlide"
-                >
-                  {" "}
-                </BackgroundImage>
-                <div className="bgText">{parse(slide.text)}</div>
-                <div className="overlay"></div>
-              </div>
-            ))}
-          </Slider>
+    <HeroContainer>
+      <div className="section-hero">
+        <div className="bg-overlay">
+          <BGOverlay />
         </div>
-      </HeroContainer>
-    </div>
+
+        {/* <Triangle /> */}
+        <div classname="parallax">
+          <div className="hero-title">
+            <div className="top">
+              <div className="v">V</div>
+              <div className="icon">
+                <img src={plus} alt="plus-icon" />
+              </div>
+              <div className="P">P</div>
+            </div>
+            <div className="bottom">Associates</div>
+          </div>
+        </div>
+
+        <Slider {...settings}>
+          {home_slider.map((slide, index) => (
+            <div className="slider-container" key={index}>
+              {" "}
+              <BackgroundImage
+                fluid={slide.image.localFile.childImageSharp.fluid}
+                backgroundColor={`#040e18`}
+                className="bgSlide"
+              >
+                {" "}
+              </BackgroundImage>
+              <div className="bgText">{parse(slide.text)}</div>
+              <div className="overlay"></div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </HeroContainer>
   )
 }
 

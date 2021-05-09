@@ -5,9 +5,9 @@ import styled from "styled-components"
 
 const MMenuWrapper = styled.div`
 height: 100%;
-  @media (min-width: 992px) {
+  /* @media (min-width: 992px) {
     display: none;
-  }
+  } */
 `
 
 const Mmenu = () => {
@@ -49,7 +49,7 @@ var styles = {
     width: "36px",
     height: "30px",
     top: "50%",
-    left: "50%",
+    right: "0px",
     transform: "translate(-50%, -50%)",
   },
   bmBurgerBars: {
