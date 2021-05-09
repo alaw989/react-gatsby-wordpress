@@ -5,72 +5,118 @@ import { colors } from "../variables"
 export const HeroContainer = styled.div`
   position: relative;
 
-  filter: drop-shadow(-17px 30px 16px rgba(46,46,40,0.5));
+  /* filter: drop-shadow(-17px 30px 16px rgba(46, 46, 40, 0.5)); */
   .bg-overlay {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
-    @media ${device.lg} {
-      top: -100px;
-    }
   }
 
   .section-hero {
-    height: 45vh;
+    height: 100vh;
     position: relative;
     font-family: "Roboto Condensed", sans-serif;
     z-index: -1;
-clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%);
+    /* clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%); */
 
     @media ${device.lg} {
-      height: 90vh;
+      height: 100vh;
     }
 
     svg {
+      height:100%;
       .cls-1 {
         fill: ${props => (props.dark ? colors.primary : colors.white)};
       }
     }
 
-    .slick-slide {
-      height: 45vh;
-      @media ${device.lg} {
-        height: 90vh;
+    .hero-title {
+      font-family: Roboto Condensed, sans-serif;
+      position: absolute; 
+      z-index:1;
+      color: ${colors.white};
+      transform: translate(-50%,-50%);
+      top: 50%; 
+      left: 50%; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      flex-direction: column; 
+      line-height: 5rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      .top {
+        font-size: 9rem; 
+        display: flex; 
+          flex-direction: row; 
+          align-items: center; 
+          justify-content: center;
+        .icon {
+          width: 100px; 
+ 
+          svg {
+          position: relative; 
+          }
+        }
+
       }
+      .bottom {
+        font-size: 3rem;
+        font-weight: 400;
+      }
+    }
+
+    .slick-slide {
+      height: 100vh;
+      @media ${device.lg} {
+        height: 100vh;
+      }
+
+      @keyframes shrink {
+  0% {
+    transform: scale(1.2)
+  }
+  100% {
+    transform: scale(1.0)
+  }
+}
       .bgSlide {
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 65vh;
+        height: 100vh;
+        animation: shrink 15s infinite alternate;
         @media ${device.lg} {
-          height: 90vh;
+          height: 100vh;
+        }
+        &:after {
+          background-attachment: fixed;
         }
       }
       .bgText {
         color: ${colors.white};
         position: absolute;
         z-index: 99;
-        top: 40%;
+        top: 95%;
         left: 50%;
         transform: translate(-50%, -50%);
-        text-transform: uppercase;
-        font-size: 2rem;
-        font-weight: 700;
+        font-size: 1rem;
+        font-weight: 400;
         text-align: center;
-        line-height: 2rem;
+        line-height: 1rem;
         @media ${device.lg} {
-          font-size: 5rem;
-          line-height: 5rem;
+          font-size: 1.2rem;
+          line-height: 3rem;
         }
         span {
-          color: #fff;
+          /* color: #fff;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke-width: 1px;
           -webkit-text-stroke-color: #fff;
           @media ${device.lg} {
-            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-width: 3px; */
           }
         }
       }
@@ -108,7 +154,7 @@ clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%);
 
     .slick-slider.slick-initialized {
       overflow: hidden;
-      height: 65vh;
+      height: 100vh;
       @media ${device.lg} {
         height: 100vh;
       }
@@ -120,7 +166,7 @@ clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%);
       height: 100%;
       top: 0;
       left: 0;
-      background-color: rgba(38, 67, 102, 0.8);
+      background-color: rgba(38, 67, 102, 0.4);
     }
   }
 `
