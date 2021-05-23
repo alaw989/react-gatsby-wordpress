@@ -9,7 +9,7 @@ import { FaPhone, FaEnvelope } from "react-icons/fa"
 
 const IndexPage = props => {
   // const { content, title } = props.pageContext
-  const { content } = props.pageContext
+  // const { content } = props.pageContext
 
   return (
     <ContactLayout>

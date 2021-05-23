@@ -7,8 +7,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Mmenu from "../components/vendor/mmenu"
 import { Navigation } from "../styles/components/_header.js"
 import Img from "gatsby-image"
+import plus from "../images/plus-icon.png"
+import { useInView } from "react-intersection-observer"
 
-const Header = () => {
+const Header = ({selectedMode}) => {
   const data = useStaticQuery(graphql`
     query newQuery {
       allWordpressWpApiMenusMenusItems {
@@ -43,16 +45,27 @@ const Header = () => {
 
   return (
     <Navigation>
-      <div className="section-navigation">
+      {/* <div className="section-navigation">
         <div className="container-fluid">
-          <div className="nav-container">
-            <div className="logo">
-              {" "}
-              <Link to="/">
-                <Img fixed={logo} />
-              </Link>
-            </div>{" "}
-            {/* <div className="navigation-menu d-none d-xl-block">
+          <div className="nav-container"> */}
+      <div className="nav-container" data-view={selectedMode}>
+        <div className="logo">
+          {" "}
+          {/* <Img fixed={logo} /> */}
+          <div className="top">
+            <div className="V">V</div>
+            <div className="icon">
+              <img src={plus} alt="plus-icon" />
+            </div>
+            <div className="P">P</div>
+          </div>
+        </div>{" "}
+        <div className="menu-container">
+        <Mmenu />
+        </div>
+      </div>
+
+      {/* <div className="navigation-menu d-none d-xl-block">
           <ul>
             {menuItems.map((post, index) => {
               const uri = `/${post.object_slug}`
@@ -66,22 +79,22 @@ const Header = () => {
             })}
           </ul>
         </div> */}
-            <div className="menu-container">
-              {/* <a className="phone-container" href={tel + phone}>
+      {/* <div className="menu-container"> */}
+      {/* <a className="phone-container" href={tel + phone}>
             <div className="phone">
               <FontAwesomeIcon icon={faPhone} />
               <div className="number">{phone}</div>
             </div>
           </a> */}
-              {/* <div className="menu-container">
+      {/* <div className="menu-container">
             <div className="overlay-shift"></div>
             <div className="contact-text">Contact Us</div>
           </div> */}
-              <Mmenu />
-            </div>
+
+      {/* </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </Navigation>
   )
 }

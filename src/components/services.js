@@ -7,8 +7,9 @@ import Slider from "react-slick"
 import Triangle from "../assets/Triangle.svg"
 import BackgroundImage from "gatsby-background-image"
 import { FaPlusCircle } from "react-icons/fa"
+import { useInView } from "react-intersection-observer"
 
-const Services = () => {
+const Services = ({ setServicesView }) => {
   const data = useStaticQuery(graphql`
     query servicesQuery {
       allWordpressAcfOptions {
@@ -69,13 +70,22 @@ const Services = () => {
     ],
   }
 
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+
+  const view = inView ? 'view-on' : 'view-off'
+
+  setServicesView(view)
+
   return (
     <ServicesContainer>
       <div className="section-title"></div>
-      <Triangle />
+      {/* <Triangle /> */}
       <Container fluid>
         <Row className="justify-content-center">
-          <div className="services-section">
+          <div className="services-section" ref={ref} data-view={view}>
             {/* <h1>{title}</h1>
             <div className="subtitle">{subtitle}</div> */}
             <Slider {...settings}>

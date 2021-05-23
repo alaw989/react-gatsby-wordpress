@@ -1,19 +1,16 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { HeroContainer } from "../styles/components/_hero.js"
 import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
-import Triangle from "../assets/Triangle.svg"
 import parse from "html-react-parser"
 import BGOverlay from "../assets/BGOverlay.svg"
-import { FaPlus } from "react-icons/fa"
 import plus from "../images/plus-icon.png"
-import { ParallaxProvider } from "react-scroll-parallax"
+import { useInView } from "react-intersection-observer"
 
-console.log(plus)
+const Hero = ({ setSelectedMode, scrollPosition }) => {
 
-const Hero = () => {
   const data = useStaticQuery(graphql`
     query slideQuery {
       allWordpressAcfOptions {
@@ -48,14 +45,19 @@ const Hero = () => {
     }
   `)
 
+  const [offsetY, setOffsetY] = useState(0)
+  const handleScroll = () => setOffsetY(window.pageYOffset)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll)
+    }
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   const affix = data.allWordpressAcfOptions.nodes[0].options.homepage
   // const slide = affix.hero_image.localFile.childImageSharp.fluid
-
   const home_slider = affix.hero_slider
-
-  // home_slider.map(slide => {
-  //   console.log(slide.text)
-  // })
 
   const settings = {
     dots: false,
@@ -69,36 +71,44 @@ const Hero = () => {
     arrows: false,
   }
 
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+
+  const view = inView ? "view-on" : "view-off"
+  setSelectedMode(view)
+
   return (
-    <HeroContainer>
-      <div className="section-hero">
+    <HeroContainer position={scrollPosition}>
+      <div className="section-hero" data-view={view} ref={ref}>
         <div className="bg-overlay">
           <BGOverlay />
         </div>
 
-        {/* <Triangle /> */}
-        <div classname="parallax">
-          <div className="hero-title">
-            <div className="top">
-              <div className="v">V</div>
-              <div className="icon">
-                <img src={plus} alt="plus-icon" />
-              </div>
-              <div className="P">P</div>
+        <div
+          data-view={view}
+          ref={ref}
+          className="hero-title"
+          style={{ transform: `translate(-50%, -${offsetY * 0.5}px)` }}
+        >
+          <div className="top">
+            <div className="v">V</div>
+            <div className="icon">
+              <img src={plus} alt="plus-icon" />
             </div>
-            <div className="bottom">Associates</div>
+            <div className="P">P</div>
           </div>
+          <div className="bottom">Associates</div>
         </div>
 
         <Slider {...settings}>
           {home_slider.map((slide, index) => (
             <div className="slider-container" key={index}>
-              {" "}
               <BackgroundImage
                 fluid={slide.image.localFile.childImageSharp.fluid}
                 backgroundColor={`#040e18`}
-                className="bgSlide"
-              >
+                className="bgSlide">
                 {" "}
               </BackgroundImage>
               <div className="bgText">{parse(slide.text)}</div>

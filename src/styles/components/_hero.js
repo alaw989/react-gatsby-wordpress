@@ -36,7 +36,6 @@ export const HeroContainer = styled.div`
       position: absolute; 
       z-index:1;
       color: ${colors.white};
-      transform: translate(-50%,-50%);
       top: 50%; 
       left: 50%; 
       display: flex; 
@@ -46,6 +45,9 @@ export const HeroContainer = styled.div`
       line-height: 5rem;
       text-transform: uppercase;
       font-weight: 700;
+      mix-blend-mode: overlay;
+      opacity: 0; 
+      transition: .5s all;
       .top {
         font-size: 9rem; 
         display: flex; 
@@ -65,6 +67,10 @@ export const HeroContainer = styled.div`
         font-size: 3rem;
         font-weight: 400;
       }
+
+      &[data-view="view-on"] {
+          opacity: 1;
+        }
     }
 
     .slick-slide {
@@ -82,17 +88,19 @@ export const HeroContainer = styled.div`
   }
 }
       .bgSlide {
-        background-attachment: fixed;
+    
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         height: 100vh;
         animation: shrink 15s infinite alternate;
+        transition: .5s all;
         @media ${device.lg} {
           height: 100vh;
         }
         &:after {
-          background-attachment: fixed;
+          transform: translateY(-${props => props.position}px);
+          transition: .5s all;
         }
       }
       .bgText {

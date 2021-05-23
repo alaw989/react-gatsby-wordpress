@@ -29,7 +29,7 @@ const Footer = () => {
     }
   `)
 
-  console.log(  data.allWordpressAcfOptions.nodes[0].options);
+
 
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const logo =

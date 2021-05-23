@@ -3,8 +3,65 @@ import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const Navigation = styled.div`
-  background-color: ${colors.white};
-  z-index: 1;
+  font-family: Roboto Condensed, sans-serif;
+  display: flex;
+  z-index: 1; 
+  width: 100%; 
+  .nav-container {
+    z-index: 1; 
+    position: fixed; 
+    &[data-view="view-on"] {
+      mix-blend-mode: difference;
+    }
+    .logo {
+      position: absolute;
+      color: ${colors.white};
+      top: 45px;
+      left: 85px;
+      z-index: 10;
+
+      a {
+        display: flex;
+        justify-content: center;
+        font-size: 3rem;
+      }
+      .gatsby-image-wrapper {
+        height: 105px;
+        width: 200px;
+      }
+
+      .top {
+        font-size: 3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+          width: 30px;
+
+          svg {
+            position: relative;
+          }
+        }
+      }
+      .bottom {
+        font-size: 3rem;
+        font-weight: 400;
+      }
+    }
+
+    .menu-container {
+      position: absolute;
+      top: 45px;
+      right: 85px;
+      z-index: 10;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  /* z-index: 1;
   width: 100%;
   opacity: 0.95;
   position: relative;
@@ -15,32 +72,49 @@ export const Navigation = styled.div`
     background-color: transparent;
     font-family: "Roboto Condensed", sans-serif;
     height: 135px;
-    /* box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%); */
-    position: absolute;
+   box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%); 
+    position: fixed;
     width: 100%;
 
     .nav-container {
-      display: flex; 
+      display: flex;
       justify-content: space-between;
     }
 
     .logo {
-      /* height: 100%;
-      display: flex;
-      align-items: center;
-      flex: 2; */
-      @media ${device.xl} {
-        /* flex: 1; */
-      }
-
+      position: absolute; 
+      mix-blend-mode: overlay;
+      color: white;
       a {
-      
+        font-size: 3rem;
+      }
+      /* a {
         display: flex;
         justify-content: center;
       }
       .gatsby-image-wrapper {
         height: 105px;
         width: 200px;
+      } 
+
+      .top {
+        font-size: 3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+   
+        .icon {
+          width: 30px;
+
+          svg {
+            position: relative;
+          }
+        }
+      }
+      .bottom {
+        font-size: 3rem;
+        font-weight: 400;
       }
     }
     .navigation-menu {
@@ -105,8 +179,8 @@ export const Navigation = styled.div`
       /* position: relative;
       height: 100%;
       display: flex;
-      justify-content: flex-end; */
- 
+      justify-content: flex-end;
+
       a.phone-container {
         display: flex;
         justify-content: flex-start;
@@ -203,11 +277,11 @@ export const Navigation = styled.div`
           width: 100%;
           text-decoration: none;
           background-color: transparent;
-        } */
+        } 
       }
     }
     .bm-menu-wrap {
       top: 0;
     }
-  }
+  } */
 `

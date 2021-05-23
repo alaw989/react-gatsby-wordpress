@@ -1,31 +1,48 @@
 import styled from "styled-components"
 import { device } from "../mixins"
+import { colors } from "../variables"
 
 export const AboutIntroContainer = styled.div`
-  @media ${device.lg} {
-    margin: 0 auto;
-    margin-top: 50px;
-  }
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  transition: all .5s; 
+ 
+
 
   .section-about-intro {
-    font-family: "Roboto Condensed", sans-serif;
-    margin: 4vw 0;
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    height: 100vh;
+    ${props => (props.dark ? 'height: 100vh;' : 'height: auto;')}
+    font-family: sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /* display: flex; */
+    /* flex-direction: column; */
+    padding-left: 10.17vw;
+    opacity: 0;
+    transition: 2s all;
+    ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
+
+    &[data-view="view-on"] {
+      opacity: 1 !important;
+    }
 
     @media ${device.lg} {
       flex-direction: row;
-      max-width: 83%;
-      margin: 0 auto;
+      /* max-width: 83%; */
+      /* margin: 0 auto; */
     }
 
     .content-container {
+ 
       @media ${device.lg} {
         padding: 0;
         padding-right: 100px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+    
       }
 
       .supheading-container {
@@ -34,7 +51,7 @@ export const AboutIntroContainer = styled.div`
         align-items: center;
 
         @media ${device.lg} {
-          justify-content: flex-start; 
+          justify-content: flex-start;
         }
         .tagline-line {
           display: inline-block;
@@ -44,7 +61,7 @@ export const AboutIntroContainer = styled.div`
           margin-left: 10px;
           &.first {
             @media ${device.lg} {
-              display: none; 
+              display: none;
             }
           }
         }
@@ -58,12 +75,12 @@ export const AboutIntroContainer = styled.div`
       .section-heading {
         margin-top: 0.1em;
         margin-bottom: 0.675em;
-        color: #25539e;
+        ${props => (props.dark ? 'color:' + colors.white + ';' : 'color:' + colors.primary + ';')}
         font-size: 2.5rem;
         line-height: 1em;
         font-weight: 700;
-        text-transform: uppercase;
         text-align: center;
+
         @media ${device.md} {
           font-size: 3.5rem;
         }

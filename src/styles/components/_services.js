@@ -4,12 +4,11 @@ import { colors } from "../variables"
 // import BackgroundImage from "gatsby-background-image"
 
 export const ServicesContainer = styled.div`
-  margin-top: 100px;
   font-family: "Roboto Condensed", sans-serif;
-  height: 50vh;
+  height: 100vh;
   position: relative;
   @media ${device.md} {
-    height: 80vh;
+    height: 100vh;
   }
 
   svg {
@@ -34,7 +33,7 @@ export const ServicesContainer = styled.div`
         position: relative;
         color: white;
         border-right: 0.1rem solid white;
-        height: 50vh;
+        height: 100vh;
         cursor: pointer;
 
         &:hover {
@@ -50,7 +49,7 @@ export const ServicesContainer = styled.div`
         }
 
         @media ${device.md} {
-          height: 80vh;
+          height: 100vh;
         }
 
         .overlay {
