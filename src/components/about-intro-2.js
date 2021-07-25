@@ -8,14 +8,21 @@ import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
 
-const AboutIntro2 = () => {
-
+const AboutIntro2 = scrollPosition => {
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
   })
 
-  const view = inView ? 'view-on' : 'view-off'
+  const view = inView ? "view-on" : "view-off"
+
+  var maxPosition = ""
+
+  scrollPosition.scrollPosition < 3000
+    ? (maxPosition = scrollPosition.scrollPosition)
+    : (maxPosition = 1100)
+
+  console.log(scrollPosition.scrollPosition)
 
   return (
     <AboutIntroContainer dark>
@@ -26,8 +33,12 @@ const AboutIntro2 = () => {
             {/* <div className="supheading">Introduction</div> */}
             {/* <div class="tagline-line second"></div> */}
           </div>
-          <div className="section-heading view">
-       Providing services to corporate industrial contractors, commercial architects and steel fabricators.
+          <div
+            className="section-heading view"
+            // style={{ transform: `translate(${maxPosition * 0.5 - 400}px, 0)` }}
+          >
+            Providing services to corporate industrial contractors, commercial
+            architects and steel fabricators.
           </div>
 
           {/* <div className="section-content">{parse(paragraph)}</div> */}

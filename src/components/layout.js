@@ -49,7 +49,7 @@ useEffect(() => {
       <Hero setSelectedMode={setSelectedMode} scrollPosition={offsetY} />
       <AboutIntro scrollPosition={offsetY} />
       <Services setServicesView={setSelectedMode} />
-      <AboutIntro2 />
+      <AboutIntro2 scrollPosition={offsetY} />
       {children}
       <Footer />
     </>

@@ -37,6 +37,7 @@ export const FooterContainer = styled.div`
           margin: 0 5px;
           a {
             color: ${colors.primary};
+            text-transform: uppercase;
           }
         }
       }

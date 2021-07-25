@@ -8,8 +8,6 @@ export const AboutIntroContainer = styled.div`
   align-items: center;
   transition: all .5s; 
  
-
-
   .section-about-intro {
     display: flex; 
     height: 100vh;
@@ -42,7 +40,7 @@ export const AboutIntroContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-    
+        transition: .5s all;
       }
 
       .supheading-container {

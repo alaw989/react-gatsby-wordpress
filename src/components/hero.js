@@ -77,10 +77,10 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
   })
 
   const view = inView ? "view-on" : "view-off"
-  setSelectedMode(view)
+  // setSelectedMode(view)
 
   return (
-    <HeroContainer position={scrollPosition}>
+    <HeroContainer >
       <div className="section-hero" data-view={view} ref={ref}>
         <div className="bg-overlay">
           <BGOverlay />
@@ -111,7 +111,7 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
                 className="bgSlide">
                 {" "}
               </BackgroundImage>
-              <div className="bgText">{parse(slide.text)}</div>
+              <div className="bgText" style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}>{parse(slide.text)}</div>
               <div className="overlay"></div>
             </div>
           ))}

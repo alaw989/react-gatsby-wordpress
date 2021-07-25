@@ -77,7 +77,7 @@ const Services = ({ setServicesView }) => {
 
   const view = inView ? 'view-on' : 'view-off'
 
-  setServicesView(view)
+  // setServicesView(view)
 
   return (
     <ServicesContainer>

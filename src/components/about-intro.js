@@ -55,10 +55,18 @@ const AboutIntro = (scrollPosition) => {
 
   const view = inView ? 'view-on' : 'view-off'
 
+  var maxPosition = "";
+
+  scrollPosition.scrollPosition < 900 ? maxPosition = scrollPosition.scrollPosition : maxPosition = 900
+
+  
+
+  console.log(maxPosition);
+
   return (
     <AboutIntroContainer position={scrollPosition.scrollPosition}>
       <div className="section-about-intro" ref={ref} data-view={view}>
-        <div className="content-container" style={{ transform: `translate(${scrollPosition.scrollPosition * 0.5 - 400}px, 0)` }}>
+        <div className="content-container">
           <div className="supheading-container">
             <div className="tagline-line first"></div>
             {/* <div className="supheading">Introduction</div> */}

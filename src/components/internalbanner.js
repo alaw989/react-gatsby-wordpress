@@ -12,7 +12,7 @@ import BGOverlay from "../assets/BGOverlay.svg"
 // import Triangle from "../assets/Triangle.svg"
 
 const InternalBanner = props => {
-  console.log("this:", props.color)
+
   const data = useStaticQuery(graphql`
     query internalPageBannerQuery {
       allWordpressPage {
@@ -36,7 +36,7 @@ const InternalBanner = props => {
   const bgImage =
     data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp
       .fluid
-
+    console.log(title)
   return (
     <div>
       <InternalBannerContainer dark>

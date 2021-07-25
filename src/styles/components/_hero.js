@@ -19,7 +19,7 @@ export const HeroContainer = styled.div`
     font-family: "Roboto Condensed", sans-serif;
     z-index: -1;
     /* clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%); */
-
+  
     @media ${device.lg} {
       height: 100vh;
     }
@@ -34,7 +34,7 @@ export const HeroContainer = styled.div`
     .hero-title {
       font-family: Roboto Condensed, sans-serif;
       position: absolute; 
-      z-index:1;
+      z-index: 1;
       color: ${colors.white};
       top: 50%; 
       left: 50%; 
@@ -47,7 +47,7 @@ export const HeroContainer = styled.div`
       font-weight: 700;
       mix-blend-mode: overlay;
       opacity: 0; 
-      transition: .5s all;
+      transition: all 400ms ease;
       .top {
         font-size: 9rem; 
         display: flex; 
@@ -88,19 +88,21 @@ export const HeroContainer = styled.div`
   }
 }
       .bgSlide {
-    
+      
         background-position: center;
+        background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
         height: 100vh;
-        animation: shrink 15s infinite alternate;
+        /* animation: shrink 15s infinite alternate; */
         transition: .5s all;
         @media ${device.lg} {
           height: 100vh;
         }
         &:after {
-          transform: translateY(-${props => props.position}px);
-          transition: .5s all;
+          /* transform: translateY(-${props => props.position}px); */
+          /* transition: .5s all; */
+          background-attachment: fixed;
         }
       }
       .bgText {
@@ -114,6 +116,7 @@ export const HeroContainer = styled.div`
         font-weight: 400;
         text-align: center;
         line-height: 1rem;
+        transition: all 1s ease;
         @media ${device.lg} {
           font-size: 1.2rem;
           line-height: 3rem;

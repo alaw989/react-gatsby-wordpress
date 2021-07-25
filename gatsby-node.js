@@ -95,8 +95,20 @@ exports.createPages = async ({ actions, graphql }) => {
 
   data.allWordpressPage.nodes.forEach(page => {
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
-    const template = `${page.template}` == "templates/contact.php" ? "contact" : `page`
+    var template = "";
+    // const template = `${page.template}` == "templates/contact.php" ? "contact" : `page`
 
+    if (`${page.template}` == "templates/contact.php") {
+      template = "contact"
+    }
+    else if (`${page.template}` == "templates/portfolio.php") {
+      template = "portfolio"
+    }
+    else {
+      template = `page`
+    }
+
+      console.log(page.template);
     // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
 
     actions.createPage({

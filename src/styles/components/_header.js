@@ -10,6 +10,7 @@ export const Navigation = styled.div`
   .nav-container {
     z-index: 1; 
     position: fixed; 
+    width: 100%; 
     &[data-view="view-on"] {
       mix-blend-mode: difference;
     }
