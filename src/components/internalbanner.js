@@ -33,17 +33,15 @@ const InternalBanner = props => {
   `)
 
   const title = data.allWordpressPage.nodes[0].title
-  const bgImage =
-    data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp
-      .fluid
-    console.log(title)
+  const bgImage = data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp.fluid
+
   return (
     <div>
       <InternalBannerContainer dark>
         <div className="bg-overlay">
           <BGOverlay />
         </div>
-        <Triangle />
+
         <BackgroundImage
           fluid={bgImage}
           backgroundColor={`#040e18`}
@@ -51,7 +49,7 @@ const InternalBanner = props => {
         />
         <div className="section-hero internal"></div>
         <div className="overlay"></div>
-        <div className="title">{title}</div>
+        {/* <div className="title">{title}</div> */}
       </InternalBannerContainer>
     </div>
   )

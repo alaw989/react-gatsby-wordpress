@@ -111,7 +111,7 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
                 className="bgSlide">
                 {" "}
               </BackgroundImage>
-              <div className="bgText" style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}>{parse(slide.text)}</div>
+              <div className="bgText" /*style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}*/>{parse(slide.text)}</div>
               <div className="overlay"></div>
             </div>
           ))}

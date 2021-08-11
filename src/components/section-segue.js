@@ -12,7 +12,7 @@ const SectionSegue = () => {
   return (
     <StyleSegue dark>
       <div className="section-segue internal">
-        <Triangle />
+  
         <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-10">
