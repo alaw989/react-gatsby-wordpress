@@ -47,7 +47,7 @@ export const HeroContainer = styled.div`
       font-weight: 700;
       mix-blend-mode: overlay;
       opacity: 0; 
-      transition: all 400ms ease;
+     
       .top {
         font-size: 9rem; 
         display: flex; 

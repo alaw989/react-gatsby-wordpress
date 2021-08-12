@@ -19,6 +19,7 @@ export const InternalBannerContainer = styled.div`
     background-image: url("./BGOverlay.svg");
     background-size: cover;
     background-position: 50% 50%;
+    top: 0;
   }
 
   .bg-overlay {
@@ -49,8 +50,16 @@ export const InternalBannerContainer = styled.div`
     height: 100%;
     opacity: 0.6;
 
+    &:before {
+      @media ${device.xl} {
+        background-attachment: fixed;
+      }
+    }
+
     &:after {
-      background-attachment: fixed;
+      @media ${device.xl} {
+        background-attachment: fixed;
+      }
     }
   }
 

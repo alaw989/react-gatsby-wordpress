@@ -5,6 +5,9 @@ import { ServicesContainer } from "../styles/components/_services.js"
 import { Container, Row } from "react-bootstrap"
 import Slider from "react-slick"
 import Triangle from "../assets/Triangle.svg"
+import ServiceAngle1 from "../assets/service-angle-1.svg"
+import ServiceAngle2 from "../assets/service-angle-2.svg"
+import ServiceAngle3 from "../assets/service-angle-3.svg"
 import BackgroundImage from "gatsby-background-image"
 import { FaPlusCircle } from "react-icons/fa"
 import { useInView } from "react-intersection-observer"
@@ -75,39 +78,17 @@ const Services = ({ setServicesView }) => {
     threshold: 0,
   })
 
-  const view = inView ? 'view-on' : 'view-off'
+  const view = inView ? "view-on" : "view-off"
 
   // setServicesView(view)
 
   return (
     <ServicesContainer>
-      <div className="section-title"></div>
-      {/* <Triangle /> */}
+      {/* <ServiceAngle1 />
+      <ServiceAngle2 />
+      <ServiceAngle3 /> */}
       <Container fluid>
-        <Row className="justify-content-center">
-          <div className="services-section" ref={ref} data-view={view}>
-            {/* <h1>{title}</h1>
-            <div className="subtitle">{subtitle}</div> */}
-            <Slider {...settings}>
-              {services.services_repeater.map((x, index) => (
-                <div className="service-container" key={index}>
-                  <div className="overlay"></div>
-                  <div className="overlay-dark"></div>
-                  <div className="industry-plus-icon">
-                    <FaPlusCircle />
-                    <div className="learn-text">Learn More</div>
-                  </div>
-                  <BackgroundImage
-                    fluid={imgs[index]}
-                    backgroundColor={`#040e18`}
-                    className="service-bg"
-                  ></BackgroundImage>
-                  <div className="service-title">{x.service_title}</div>
-                </div>
-              ))}
-            </Slider>
-          </div>
-        </Row>
+        <Row className="justify-content-center"></Row>
       </Container>
     </ServicesContainer>
   )

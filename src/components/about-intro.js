@@ -8,9 +8,9 @@ import parse from "html-react-parser"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
+import { Container, Row, Form, Col } from "react-bootstrap"
 
-const AboutIntro = (scrollPosition) => {
-
+const AboutIntro = scrollPosition => {
   const data = useStaticQuery(graphql`
     query aboutQuery {
       allWordpressAcfOptions {
@@ -53,51 +53,42 @@ const AboutIntro = (scrollPosition) => {
   // const button = options.button_link
   const img = options.image.localFile.childImageSharp.fluid
 
-  const view = inView ? 'view-on' : 'view-off'
 
-  var maxPosition = "";
+  const view = inView ? "view-on" : "view-off"
 
-  scrollPosition.scrollPosition < 900 ? maxPosition = scrollPosition.scrollPosition : maxPosition = 900
+  var maxPosition = ""
 
-  
+  scrollPosition.scrollPosition < 900
+    ? (maxPosition = scrollPosition.scrollPosition)
+    : (maxPosition = 900)
 
-  console.log(maxPosition);
+  console.log(maxPosition)
 
   return (
     <AboutIntroContainer position={scrollPosition.scrollPosition}>
-      <div className="section-about-intro" ref={ref} data-view={view}>
-        <div className="content-container">
-          <div className="supheading-container">
-            <div className="tagline-line first"></div>
-            {/* <div className="supheading">Introduction</div> */}
-            {/* <div class="tagline-line second"></div> */}
-          </div>
-          <div className="section-heading view"> 
-            We provide a full range of structural engineering, steel detailing
-            services and inspection services.
-          </div>
-
-          {/* <div className="section-content">{parse(paragraph)}</div> */}
-      
-          <PrimaryButton light>
-            <Link to="/home">
-              <div className="overlay"></div>
-              <div className="button-text">All Our Projects</div>
-            </Link>
-          </PrimaryButton>
-        
-        </div>
-        {/* <div className="intro-image">
-          <Triangle className="upper-angle" />
-          <div className="skewed-block"></div>
-          <Img
-            fluid={img}
-            backgroundColor={`#040e18`}
-            className="intro-bg"
-          ></Img>
-          <Triangle className="lower-angle" />
-        </div> */}
-      </div>
+      <Container fluid>
+        <Row className="justify-content-center">
+          <Col xs={10}>
+            <div className="section-about-intro" ref={ref} data-view={view}>
+              <div className="content-container">
+                <div className="supheading-container">
+                  <div className="tagline-line first"></div>
+                </div>
+                <div className="section-heading view">
+                  We provide a full range of structural engineering, steel
+                  detailing services and inspection services.
+                </div>
+                <PrimaryButton light>
+                  <Link to="/home">
+                    <div className="overlay"></div>
+                    <div className="button-text">All Our Projects</div>
+                  </Link>
+                </PrimaryButton>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </AboutIntroContainer>
   )
 }

@@ -5,17 +5,17 @@ import { colors } from "../variables"
 export const Navigation = styled.div`
   font-family: Roboto Condensed, sans-serif;
   display: flex;
-  z-index: 1; 
+  z-index: 2; 
   width: 100%; 
   .nav-container {
-    z-index: 1; 
+    z-index: 2; 
     position: fixed; 
     width: 100%; 
     &[data-view="view-on"] {
       mix-blend-mode: difference;
     }
     .logo {
-      position: absolute;
+      display: flex; 
       color: ${colors.white};
       top: 45px;
       left: 85px;
@@ -53,7 +53,7 @@ export const Navigation = styled.div`
     }
 
     .menu-container {
-      position: absolute;
+  
       top: 45px;
       right: 85px;
       z-index: 10;

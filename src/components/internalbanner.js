@@ -33,7 +33,9 @@ const InternalBanner = props => {
   `)
 
   const title = data.allWordpressPage.nodes[0].title
-  const bgImage = data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp.fluid
+  const bgImage =
+    data.allWordpressPage.nodes[0].featured_media.localFile.childImageSharp
+      .fluid
 
   return (
     <div>
@@ -41,7 +43,7 @@ const InternalBanner = props => {
         <div className="bg-overlay">
           <BGOverlay />
         </div>
-
+ 
         <BackgroundImage
           fluid={bgImage}
           backgroundColor={`#040e18`}

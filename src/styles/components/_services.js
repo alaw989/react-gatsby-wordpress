@@ -7,6 +7,7 @@ export const ServicesContainer = styled.div`
   font-family: "Roboto Condensed", sans-serif;
   height: 100vh;
   position: relative;
+  background-image: url("../assets/service-angle-1.svg");
   @media ${device.md} {
     height: 100vh;
   }

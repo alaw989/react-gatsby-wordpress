@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Footer from "./footer"
 import InternalBanner from "./internalbanner"
-import  SectionSegue  from "./section-segue"
+import SectionSegue  from "./section-segue"
 
 import "./layout.css"
 

@@ -7,7 +7,8 @@ export const AboutIntroContainer = styled.div`
   display: flex;
   align-items: center;
   transition: all .5s; 
- 
+  ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
+  
   .section-about-intro {
     display: flex; 
     height: 100vh;
@@ -15,9 +16,6 @@ export const AboutIntroContainer = styled.div`
     font-family: sans-serif;
     font-weight: 400;
     font-style: normal;
-    /* display: flex; */
-    /* flex-direction: column; */
-    padding-left: 10.17vw;
     opacity: 0;
     transition: 2s all;
     ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
@@ -28,8 +26,6 @@ export const AboutIntroContainer = styled.div`
 
     @media ${device.lg} {
       flex-direction: row;
-      /* max-width: 83%; */
-      /* margin: 0 auto; */
     }
 
     .content-container {

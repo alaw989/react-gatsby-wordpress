@@ -9,8 +9,9 @@ import { Navigation } from "../styles/components/_header.js"
 import Img from "gatsby-image"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
+import { Container, Row, Form, Col } from "react-bootstrap"
 
-const Header = ({selectedMode}) => {
+const Header = ({ selectedMode }) => {
   const data = useStaticQuery(graphql`
     query newQuery {
       allWordpressWpApiMenusMenusItems {
@@ -49,20 +50,32 @@ const Header = ({selectedMode}) => {
         <div className="container-fluid">
           <div className="nav-container"> */}
       <div className="nav-container" data-view={selectedMode}>
-        <div className="logo">
-          {" "}
-          {/* <Img fixed={logo} /> */}
-          <div className="top">
-            <div className="V">V</div>
-            <div className="icon">
-              <img src={plus} alt="plus-icon" />
-            </div>
-            <div className="P">P</div>
-          </div>
-        </div>{" "}
-        <div className="menu-container">
-        <Mmenu />
-        </div>
+        <Container fluid>
+          <Row className="justify-content-center">
+            <Col xs={10}>
+              <Row>
+                <Col xs={6}>
+                  <div className="logo">
+                    {" "}
+                    {/* <Img fixed={logo} /> */}
+                    <div className="top">
+                      <div className="V">V</div>
+                      <div className="icon">
+                        <img src={plus} alt="plus-icon" />
+                      </div>
+                      <div className="P">P</div>
+                    </div>
+                  </div>{" "}
+                </Col>
+                <Col xs={6}>
+                  <div className="menu-container">
+                    <Mmenu />
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </div>
 
       {/* <div className="navigation-menu d-none d-xl-block">

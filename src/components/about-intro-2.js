@@ -7,6 +7,7 @@ import parse from "html-react-parser"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
+import { Container, Row, Form, Col } from "react-bootstrap"
 
 const AboutIntro2 = scrollPosition => {
   const { ref, inView, entry } = useInView({
@@ -26,41 +27,37 @@ const AboutIntro2 = scrollPosition => {
 
   return (
     <AboutIntroContainer dark>
-      <div className="section-about-intro" ref={ref} data-view={view}>
-        <div className="content-container">
-          <div className="supheading-container">
-            <div className="tagline-line first"></div>
-            {/* <div className="supheading">Introduction</div> */}
-            {/* <div class="tagline-line second"></div> */}
-          </div>
-          <div
-            className="section-heading view"
-            // style={{ transform: `translate(${maxPosition * 0.5 - 400}px, 0)` }}
-          >
-            Providing services to corporate industrial contractors, commercial
-            architects and steel fabricators.
-          </div>
+      <Container fluid>
+        <Row className="justify-content-center">
+          <Col xs={10}>
+            <div className="section-about-intro" ref={ref} data-view={view}>
+              <div className="content-container">
+                <div className="supheading-container">
+                  <div className="tagline-line first"></div>
+                  {/* <div className="supheading">Introduction</div> */}
+                  {/* <div class="tagline-line second"></div> */}
+                </div>
+                <div
+                  className="section-heading view"
+                  // style={{ transform: `translate(${maxPosition * 0.5 - 400}px, 0)` }}
+                >
+                  Providing services to corporate industrial contractors,
+                  commercial architects and steel fabricators.
+                </div>
 
-          {/* <div className="section-content">{parse(paragraph)}</div> */}
+                {/* <div className="section-content">{parse(paragraph)}</div> */}
 
-          <PrimaryButton light>
-            <Link to="/home">
-              <div className="overlay"></div>
-              <div className="button-text">All Our Projects</div>
-            </Link>
-          </PrimaryButton>
-        </div>
-        {/* <div className="intro-image">
-          <Triangle className="upper-angle" />
-          <div className="skewed-block"></div>
-          <Img
-            fluid={img}
-            backgroundColor={`#040e18`}
-            className="intro-bg"
-          ></Img>
-          <Triangle className="lower-angle" />
-        </div> */}
-      </div>
+                <PrimaryButton light>
+                  <Link to="/home">
+                    <div className="overlay"></div>
+                    <div className="button-text">All Our Projects</div>
+                  </Link>
+                </PrimaryButton>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </AboutIntroContainer>
   )
 }

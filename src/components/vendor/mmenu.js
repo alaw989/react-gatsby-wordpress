@@ -19,8 +19,6 @@ const Mmenu = () => {
     }
   `)
 
- 
-
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
 
   return (
@@ -51,6 +49,7 @@ var styles = {
     top: "50%",
     right: "0px",
     transform: "translate(-50%, -50%)",
+    transition: '.5s all',
   },
   bmBurgerBars: {
     background: "#fff",
@@ -69,6 +68,7 @@ var styles = {
     position: "fixed",
     height: "100%",
     right: "0",
+    top:"0",
   },
   bmMenu: {
     background: "#373a47",
