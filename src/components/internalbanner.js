@@ -2,11 +2,9 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { InternalBannerContainer } from "../styles/components/_internalbanner.js"
-import Triangle from "../assets/Triangle.svg"
-import DarkMatter from "../assets/DarkMatter.svg"
 import { useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import BGOverlay from "../assets/BGOverlay.svg"
+
 
 // import BackgroundImage from "gatsby-background-image"
 // import Triangle from "../assets/Triangle.svg"
@@ -40,10 +38,6 @@ const InternalBanner = props => {
   return (
     <div>
       <InternalBannerContainer dark>
-        <div className="bg-overlay">
-          <BGOverlay />
-        </div>
- 
         <BackgroundImage
           fluid={bgImage}
           backgroundColor={`#040e18`}

@@ -5,7 +5,6 @@ import { HeroContainer } from "../styles/components/_hero.js"
 import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
 import parse from "html-react-parser"
-import BGOverlay from "../assets/BGOverlay.svg"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
 
@@ -82,9 +81,7 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
   return (
     <HeroContainer >
       <div className="section-hero" data-view={view} ref={ref}>
-        <div className="bg-overlay">
-          <BGOverlay />
-        </div>
+
 
         <div
           data-view={view}

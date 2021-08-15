@@ -2,7 +2,6 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { StyleSegue } from "../styles/components/_style-segue.js"
-import Triangle from "../assets/Triangle.svg"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 
