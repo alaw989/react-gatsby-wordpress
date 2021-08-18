@@ -9,7 +9,7 @@ import { useInView } from "react-intersection-observer"
 import placeholder from "../images/placeholder_image.jpg"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
-import BackgroundImage from 'gatsby-background-image'
+import BackgroundImage from "gatsby-background-image"
 
 const Services = ({ setServicesView }) => {
   const data = useStaticQuery(graphql`
@@ -41,21 +41,20 @@ const Services = ({ setServicesView }) => {
   `)
 
   const services = data.allWordpressAcfOptions.nodes[0].options.services_section
-  const servicesData = {
-    images: [],
-    titles: [],
-  }
 
-
+  const servicesData = []
 
   services.services_repeater.map((item, index) => {
     for (const key in item.service_image) {
-      servicesData.images.push(item.service_image[key].childImageSharp.fluid)
+      servicesData.push({
+        images: item.service_image[key].childImageSharp.fluid, titles: item.service_title 
+      })
     }
 
-    servicesData.titles.push(item.service_title)
     return null
   })
+
+  console.log(servicesData)
 
   const settings = {
     dots: false,
@@ -92,32 +91,32 @@ const Services = ({ setServicesView }) => {
                 <div className="tagline" />
               </div>
               <div className="services-selector">
-                {servicesData.titles.map((item, index) => (
-                  <div className="services-link-container">
-                    <div className="services-icon" />
-                    <div
-                      className="services-link"
-                      data-id={index}
-                      onClick={() => customSlider.current.slickGoTo(index)}
-                    >
-                      {item}
+                {servicesData.map((item, index) => (
+                    <div className="services-link-container">
+                      <div className="services-icon" />
+                      <div
+                        className="services-link"
+                        data-id={index}
+                        onClick={() => customSlider.current.slickGoTo(index)}
+                      >
+                        {item.titles}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
               <Slider {...settings} ref={customSlider}>
-                {services.services_repeater.map((item, index) => (
+                {servicesData.map((item, index) => (
                   <div className="services-information">
-              {/* <BackgroundImage
-      Tag="section"
-      className={services-image}
-      fluid={imageData}
-      backgroundColor={`#040e18`}
-    >
-    </BackgroundImage> */}
+                    {console.log(item)}
+                      <BackgroundImage
+                        Tag="section"
+                        className="services-image"
+                        fluid={item.images}
+                        backgroundColor={`#040e18`}
+                      ></BackgroundImage>
                     <div className="services-content">
                       <div className="services-subheading">
-                        Two-day observation
+                        {item.titles}
                       </div>
                       <div className="services-heading">
                         Experts Who Know Your Industry
