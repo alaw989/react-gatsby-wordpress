@@ -62,7 +62,7 @@ const AboutIntro = scrollPosition => {
     ? (maxPosition = scrollPosition.scrollPosition)
     : (maxPosition = 900)
 
-  console.log(maxPosition)
+  // console.log(maxPosition)
 
   return (
     <AboutIntroContainer position={scrollPosition.scrollPosition}>

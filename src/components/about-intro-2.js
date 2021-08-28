@@ -2,28 +2,28 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { AboutIntroContainer } from "../styles/components/_about-intro.js"
-import Img from "gatsby-image"
-import parse from "html-react-parser"
+// import Img from "gatsby-image"
+// import parse from "html-react-parser"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
-import { Container, Row, Form, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 
 const AboutIntro2 = scrollPosition => {
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
   })
 
   const view = inView ? "view-on" : "view-off"
 
-  var maxPosition = ""
+  // var maxPosition = ""
 
-  scrollPosition.scrollPosition < 3000
-    ? (maxPosition = scrollPosition.scrollPosition)
-    : (maxPosition = 1100)
+  // scrollPosition.scrollPosition < 3000
+  //   ? (maxPosition = scrollPosition.scrollPosition)
+  //   : (maxPosition = 1100)
 
-  console.log(scrollPosition.scrollPosition)
+  // console.log(scrollPosition.scrollPosition)
 
   return (
     <AboutIntroContainer dark>

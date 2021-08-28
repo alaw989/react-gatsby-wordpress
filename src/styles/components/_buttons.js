@@ -1,5 +1,5 @@
 import styled from "styled-components"
-// import { device } from "../mixins"
+import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const PrimaryButton = styled.div`
@@ -11,7 +11,11 @@ export const PrimaryButton = styled.div`
   background-color: ${colors.secondary};
   max-width: 200px;
   font-family: "Roboto Condensed";
+  margin: 0 auto; 
 
+  @media ${device.lg} {
+    margin: 0; 
+  }
 
   a {
     display: flex;

@@ -1,15 +1,16 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { useState, useRef } from "react"
+import React, { useRef } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ServicesContainer } from "../styles/components/_services.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
-import { FaPlusCircle } from "react-icons/fa"
-import { useInView } from "react-intersection-observer"
-import placeholder from "../images/placeholder_image.jpg"
+// import { FaPlusCircle } from "react-icons/fa"
+// import { useInView } from "react-intersection-observer"
+// import placeholder from "../images/placeholder_image.jpg"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
+import parse from "html-react-parser"
 
 const Services = ({ setServicesView }) => {
   const data = useStaticQuery(graphql`
@@ -30,8 +31,14 @@ const Services = ({ setServicesView }) => {
                     }
                   }
                 }
-                service_link
+                service_link {
+                  url
+                  title
+                  target
+                }
                 service_title
+                subtitle
+                description
               }
             }
           }
@@ -40,22 +47,32 @@ const Services = ({ setServicesView }) => {
     }
   `)
 
-  const services = data.allWordpressAcfOptions.nodes[0].options.services_section
+  const fields = data.allWordpressAcfOptions.nodes[0].options
 
+  const services = fields.services_section
+  const services_title = fields.services_section.title
+    ? fields.services_section.title
+    : "Quality Services"
+
+  // Mapping through data to build new useable object
   const servicesData = []
-
   services.services_repeater.map((item, index) => {
-    for (const key in item.service_image) {
-      servicesData.push({
-        images: item.service_image[key].childImageSharp.fluid, titles: item.service_title 
-      })
+    for (const prop in item.service_image) {
+      if (item.service_image.hasOwnProperty(prop)) {
+        servicesData.push({
+          images: item.service_image[prop].childImageSharp.fluid,
+          titles: item.service_title,
+          subtitles: item.subtitle,
+          links: item.service_link,
+          description: item.description,
+        })
+      }
     }
 
     return null
   })
 
-  console.log(servicesData)
-
+  // Slick settings
   const settings = {
     dots: false,
     arrows: false,
@@ -66,12 +83,12 @@ const Services = ({ setServicesView }) => {
     slidesToScroll: 1,
   }
 
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
+  // const { inView } = useInView({
+  //   /* Optional options */
+  //   threshold: 0,
+  // })
 
-  const view = inView ? "view-on" : "view-off"
+  // const view = inView ? "view-on" : "view-off"
 
   // setServicesView(view)
 
@@ -82,53 +99,47 @@ const Services = ({ setServicesView }) => {
       <div className="section-services">
         <Container fluid>
           <Row className="justify-content-center">
-            <Col xs={10}>
+            <Col xs={11}>
               <div className="section-title-container">
                 <div className="tagline" />
-                <h2 className="section-title">
-                  Quality <span>Services</span>
-                </h2>
+                <h2 className="section-title">{parse(services_title)}</h2>
                 <div className="tagline" />
               </div>
               <div className="services-selector">
                 {servicesData.map((item, index) => (
-                    <div className="services-link-container">
-                      <div className="services-icon" />
-                      <div
-                        className="services-link"
-                        data-id={index}
-                        onClick={() => customSlider.current.slickGoTo(index)}
-                      >
-                        {item.titles}
-                      </div>
+                  <div className="services-link-container">
+                    <div className="services-icon" />
+                    <div
+                      className="services-link"
+                      data-id={index}
+                      onClick={() => customSlider.current.slickGoTo(index)}
+                    >
+                      {item.titles}
                     </div>
-                  ))}
+                  </div>
+                ))}
               </div>
               <Slider {...settings} ref={customSlider}>
                 {servicesData.map((item, index) => (
                   <div className="services-information">
-                    {console.log(item)}
-                      <BackgroundImage
-                        Tag="section"
-                        className="services-image"
-                        fluid={item.images}
-                        backgroundColor={`#040e18`}
-                      ></BackgroundImage>
+                    <BackgroundImage
+                      Tag="section"
+                      className="services-image"
+                      fluid={item.images}
+                      backgroundColor={`#040e18`}
+                    ></BackgroundImage>
                     <div className="services-content">
                       <div className="services-subheading">
-                        {item.titles}
+                      {item.titles}
                       </div>
                       <div className="services-heading">
-                        Experts Who Know Your Industry
+                        {parse(item.subtitles)}
                       </div>
                       <div className="services-description">
-                        During this intensive, two-day process, we will visit
-                        your place of business and observe every aspect of your
-                        company’s operations. We’ll then discuss what we learned
-                        and give you strategies to achieve your business goals.
+                        {parse(item.description)}
                       </div>
                       <PrimaryButton light>
-                        <Link to="/home">
+                        <Link to={item.links.url}>
                           <div className="overlay"></div>
                           <div className="button-text">Contact Us</div>
                         </Link>

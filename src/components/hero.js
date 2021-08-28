@@ -9,7 +9,6 @@ import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
 
 const Hero = ({ setSelectedMode, scrollPosition }) => {
-
   const data = useStaticQuery(graphql`
     query slideQuery {
       allWordpressAcfOptions {
@@ -79,10 +78,8 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
   // setSelectedMode(view)
 
   return (
-    <HeroContainer >
+    <HeroContainer>
       <div className="section-hero" data-view={view} ref={ref}>
-
-
         <div
           data-view={view}
           ref={ref}
@@ -105,10 +102,15 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
               <BackgroundImage
                 fluid={slide.image.localFile.childImageSharp.fluid}
                 backgroundColor={`#040e18`}
-                className="bgSlide">
+                className="bgSlide"
+              >
                 {" "}
               </BackgroundImage>
-              <div className="bgText" /*style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}*/>{parse(slide.text)}</div>
+              <div
+                className="bgText" /*style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}*/
+              >
+                {parse(slide.text)}
+              </div>
               <div className="overlay"></div>
             </div>
           ))}

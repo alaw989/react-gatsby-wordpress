@@ -5,7 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-const axios = require("axios")
 const path = require("path")
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
@@ -27,8 +26,6 @@ const seoFields = `
         twitterTitle
     }
 `
-
-
 
 // const query = `
 //     query {
@@ -95,20 +92,17 @@ exports.createPages = async ({ actions, graphql }) => {
 
   data.allWordpressPage.nodes.forEach(page => {
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
-    var template = "";
+    var template = ""
     // const template = `${page.template}` == "templates/contact.php" ? "contact" : `page`
 
     if (`${page.template}` == "templates/contact.php") {
       template = "contact"
-    }
-    else if (`${page.template}` == "templates/portfolio.php") {
+    } else if (`${page.template}` == "templates/portfolio.php") {
       template = "portfolio"
-    }
-    else {
+    } else {
       template = `page`
     }
 
-      console.log(page.template);
     // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
 
     actions.createPage({
@@ -122,7 +116,6 @@ exports.createPages = async ({ actions, graphql }) => {
         content: page.content,
       },
     })
-
   })
 
   // data.allWordpressPost.nodes.forEach(post => {
@@ -138,8 +131,6 @@ exports.createPages = async ({ actions, graphql }) => {
   //   })
   // })
 }
-
-
 
 exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   const config = getConfig()
@@ -185,5 +176,3 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
 //     },
 //   })
 // }
-
-

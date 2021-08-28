@@ -29,10 +29,10 @@ module.exports = {
     },
 
     // {
-    //   resolve: `gatsby-source-graphql`,
+    //   resolve: `gatsby-source-graphql`,`
     //   options: {
     //     typeName: `WORDPRESS`,
-    //     fieldName: `wordpress`,
+    //     fieldName: `wordpress`,``
     //     url: `http://caring-group.dev14.sociusinc.com/graphql`,
     //     // refetchInterval: 60,
     //   }
