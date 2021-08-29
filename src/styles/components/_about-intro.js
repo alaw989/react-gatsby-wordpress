@@ -7,19 +7,19 @@ export const AboutIntroContainer = styled.div`
   display: flex;
   align-items: center;
   transition: all .5s; 
+
   ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
   
   .section-about-intro {
     display: flex; 
     height: 100vh;
     ${props => (props.dark ? 'height: 100vh;' : 'height: auto;')}
-    font-family: sans-serif;
+    font-family: 'Roboto Condensed';
     font-weight: 400;
     font-style: normal;
     opacity: 0;
     transition: 2s all;
     ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
-
     &[data-view="view-on"] {
       opacity: 1 !important;
     }
