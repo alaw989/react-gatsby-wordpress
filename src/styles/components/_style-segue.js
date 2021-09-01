@@ -3,6 +3,7 @@ import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const StyleSegue = styled.div`
+
   .section-segue {
     font-family: "Roboto Condensed", sans-serif;
     background-color: ${colors.white};

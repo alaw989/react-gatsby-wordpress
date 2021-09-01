@@ -4,56 +4,53 @@ import { colors } from "../variables"
 
 export const Navigation = styled.div`
   font-family: Roboto Condensed, sans-serif;
-  display: flex;
-  z-index: 2; 
-  width: 100%; 
+  z-index: 2;
+  width: 100%;
+
   .nav-container {
-    z-index: 2; 
-    position: fixed; 
-    width: 100%; 
+    z-index: 2;
+    position: fixed;
+    width: 100%;
     &[data-view="view-on"] {
       mix-blend-mode: difference;
     }
-    .logo {
-      display: flex; 
-      color: ${colors.white};
-      top: 45px;
-      left: 85px;
-      z-index: 10;
-
-      a {
+    a {
+      text-decoration: none;
+      .logo {
         display: flex;
-        justify-content: center;
-        font-size: 3rem;
-      }
-      .gatsby-image-wrapper {
-        height: 105px;
-        width: 200px;
-      }
+        color: ${colors.white};
+        top: 45px;
+        left: 85px;
+        z-index: 10;
 
-      .top {
-        font-size: 3rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+        .gatsby-image-wrapper {
+          height: 105px;
+          width: 200px;
+        }
 
-        .icon {
-          width: 30px;
+        .top {
+          font-size: 3rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
 
-          svg {
-            position: relative;
+          .icon {
+            width: 30px;
+
+            svg {
+              position: relative;
+            }
           }
         }
-      }
-      .bottom {
-        font-size: 3rem;
-        font-weight: 400;
+        .bottom {
+          font-size: 3rem;
+          font-weight: 400;
+        }
       }
     }
 
     .menu-container {
-  
       top: 45px;
       right: 85px;
       z-index: 10;

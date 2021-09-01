@@ -18,82 +18,7 @@ const IndexPage = props => {
         nodes {
           options {
             portfolio_section {
-              industrial {
-                industrial_download_link {
-                  url {
-                    localFile {
-                      url
-                    }
-                  }
-                }
-                industrial_pdf_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 3080, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-                industrial_title
-              }
-              bridges {
-                bridges_download_link {
-                  url {
-                    localFile {
-                      url
-                    }
-                  }
-                }
-                bridges_pdf_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 3080, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-                bridges_title
-              }
-              commercial {
-                commercial_download_link {
-                  url {
-                    localFile {
-                      url
-                    }
-                  }
-                }
-                commercial_title
-                commercial_pdf_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 3080, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-              misc {
-                misc_download_link {
-                  url {
-                    localFile {
-                      url
-                    }
-                  }
-                }
-                misc_pdf_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 3080, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-                misc_title
-              }
+              ...wordpress__acf_optionsOptionsPortfolio_sectionFragment
             }
           }
         }
@@ -134,132 +59,154 @@ const IndexPage = props => {
                 <Col xs={12} lg={2}>
                   <div className="nav-container">
                     <ul className="nav">
-                      <li key="0" onClick={() => customSlider.current.slickGoTo(0)}>Misc</li>
-                      <li key="1" onClick={() => customSlider.current.slickGoTo(1)}>Commercial</li>
-                      <li key="3" onClick={() => customSlider.current.slickGoTo(2)}>Bridges</li>
-                      <li key="4" onClick={() => customSlider.current.slickGoTo(3)}>Industrial</li>
+                      <li
+                        key="0"
+                        onClick={() => customSlider.current.slickGoTo(0)}
+                      >
+                        Misc
+                      </li>
+                      <li
+                        key="1"
+                        onClick={() => customSlider.current.slickGoTo(1)}
+                      >
+                        Commercial
+                      </li>
+                      <li
+                        key="3"
+                        onClick={() => customSlider.current.slickGoTo(2)}
+                      >
+                        Bridges
+                      </li>
+                      <li
+                        key="4"
+                        onClick={() => customSlider.current.slickGoTo(3)}
+                      >
+                        Industrial
+                      </li>
                     </ul>
                   </div>
                 </Col>
                 <Col xs={12} lg={10}>
                   <div className="pdf-container">
-                  <Slider {...settings} ref={customSlider}>
-                    <div className="pdf-wrapper">
-                      {misc.map(item => (
-                        <a
-                          href={
-                            item.misc_download_link.url.localFile.url
-                              ? item.misc_download_link.url.localFile.url
-                              : ""
-                          }
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          <div className="misc-pdf-wrapper">
-                            <BackgroundImage
-                              Tag="section"
-                              className="misc-pdf-image"
-                              fluid={
-                                item.misc_pdf_image.localFile.childImageSharp
-                                  .fluid
-                              }
-                              backgroundColor={`#040e18`}
-                            ></BackgroundImage>
-                            <div className="pdf-title">
-                              {item.misc_title ? item.misc_title : ""}
+                    <Slider {...settings} ref={customSlider}>
+                      <div className="pdf-wrapper">
+                        {misc.map(item => (
+                          <a
+                            href={
+                              item.misc_download_link.url.localFile.url
+                                ? item.misc_download_link.url.localFile.url
+                                : ""
+                            }
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <div className="misc-pdf-wrapper">
+                              <BackgroundImage
+                                Tag="section"
+                                className="misc-pdf-image"
+                                fluid={
+                                  item.misc_pdf_image.localFile.childImageSharp
+                                    .fluid
+                                }
+                                backgroundColor={`#040e18`}
+                              ></BackgroundImage>
+                              <div className="pdf-title">
+                                {item.misc_title ? item.misc_title : ""}
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                    <div className="pdf-wrapper">
-                      {commercial.map(item => (
-                        <a
-                          href={
-                            item.commercial_download_link.url.localFile.url
-                              ? item.commercial_download_link.url.localFile.url
-                              : ""
-                          }
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          <div className="commercial-pdf-wrapper">
-                            <BackgroundImage
-                              Tag="section"
-                              className="commercial-pdf-image"
-                              fluid={
-                                item.commercial_pdf_image.localFile
-                                  .childImageSharp.fluid
-                              }
-                              backgroundColor={`#040e18`}
-                            ></BackgroundImage>
-                            <div className="pdf-title">
-                              {item.commercial_title
-                                ? item.commercial_title
-                                : ""}
+                          </a>
+                        ))}
+                      </div>
+                      <div className="pdf-wrapper">
+                        {commercial.map(item => (
+                          <a
+                            href={
+                              item.commercial_download_link.url.localFile.url
+                                ? item.commercial_download_link.url.localFile
+                                    .url
+                                : ""
+                            }
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <div className="commercial-pdf-wrapper">
+                              <BackgroundImage
+                                Tag="section"
+                                className="commercial-pdf-image"
+                                fluid={
+                                  item.commercial_pdf_image.localFile
+                                    .childImageSharp.fluid
+                                }
+                                backgroundColor={`#040e18`}
+                              ></BackgroundImage>
+                              <div className="pdf-title">
+                                {item.commercial_title
+                                  ? item.commercial_title
+                                  : ""}
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                    <div className="pdf-wrapper">
-                      {bridges.map(item => (
-                        <a
-                          href={
-                            item.bridges_download_link.url.localFile.url
-                              ? item.bridges_download_link.url.localFile.url
-                              : ""
-                          }
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          <div className="bridges-pdf-wrapper">
-                            <BackgroundImage
-                              Tag="section"
-                              className="bridges-pdf-image"
-                              fluid={
-                                item.bridges_pdf_image.localFile.childImageSharp
-                                  .fluid
-                              }
-                              backgroundColor={`#040e18`}
-                            ></BackgroundImage>
-                            <div className="pdf-title">
-                              {item.bridges_title ? item.bridges_title : ""}
+                          </a>
+                        ))}
+                      </div>
+                      <div className="pdf-wrapper">
+                        {bridges.map(item => (
+                          <a
+                            href={
+                              item.bridges_download_link.url.localFile.url
+                                ? item.bridges_download_link.url.localFile.url
+                                : ""
+                            }
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <div className="bridges-pdf-wrapper">
+                              <BackgroundImage
+                                Tag="section"
+                                className="bridges-pdf-image"
+                                fluid={
+                                  item.bridges_pdf_image.localFile
+                                    .childImageSharp.fluid
+                                }
+                                backgroundColor={`#040e18`}
+                              ></BackgroundImage>
+                              <div className="pdf-title">
+                                {item.bridges_title ? item.bridges_title : ""}
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                    <div className="pdf-wrapper">
-                      {industrial.map(item => (
-                        <a
-                          href={
-                            item.industrial_download_link.url.localFile.url
-                              ? item.industrial_download_link.url.localFile.url
-                              : ""
-                          }
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          <div className="industrial-pdf-wrapper">
-                            <BackgroundImage
-                              Tag="section"
-                              className="industrial-pdf-image"
-                              fluid={
-                                item.industrial_pdf_image.localFile
-                                  .childImageSharp.fluid
-                              }
-                              backgroundColor={`#040e18`}
-                            ></BackgroundImage>
-                            <div className="pdf-title">
-                              {item.industrial_title
-                                ? item.industrial_title
-                                : ""}
+                          </a>
+                        ))}
+                      </div>
+                      <div className="pdf-wrapper">
+                        {industrial.map(item => (
+                          <a
+                            href={
+                              item.industrial_download_link.url.localFile.url
+                                ? item.industrial_download_link.url.localFile
+                                    .url
+                                : ""
+                            }
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <div className="industrial-pdf-wrapper">
+                              <BackgroundImage
+                                Tag="section"
+                                className="industrial-pdf-image"
+                                fluid={
+                                  item.industrial_pdf_image.localFile
+                                    .childImageSharp.fluid
+                                }
+                                backgroundColor={`#040e18`}
+                              ></BackgroundImage>
+                              <div className="pdf-title">
+                                {item.industrial_title
+                                  ? item.industrial_title
+                                  : ""}
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
+                          </a>
+                        ))}
+                      </div>
                     </Slider>
                   </div>
                 </Col>

@@ -55,6 +55,7 @@ const Header = ({ selectedMode }) => {
             <Col xs={10}>
               <Row>
                 <Col xs={6}>
+                  <Link to="/">
                   <div className="logo">
                     {" "}
                     {/* <Img fixed={logo} /> */}
@@ -66,6 +67,7 @@ const Header = ({ selectedMode }) => {
                       <div className="P">P</div>
                     </div>
                   </div>{" "}
+                  </Link>
                 </Col>
                 <Col xs={6}>
                   <div className="menu-container">

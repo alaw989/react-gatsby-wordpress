@@ -12,7 +12,7 @@ export const PrimaryButton = styled.div`
   max-width: 200px;
   font-family: "Roboto Condensed";
   margin: 0 auto; 
-
+  z-index: 1; 
   @media ${device.lg} {
     margin: 0; 
   }
