@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { HeroContainer } from "../styles/components/_hero.js"
 import Slider from "react-slick"
@@ -7,6 +7,8 @@ import BackgroundImage from "gatsby-background-image"
 import parse from "html-react-parser"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
+import { inViewContext } from "../Contexts/inViewContext"
+
 
 const Hero = ({ setSelectedMode, scrollPosition }) => {
   const data = useStaticQuery(graphql`
@@ -75,14 +77,15 @@ const Hero = ({ setSelectedMode, scrollPosition }) => {
   })
 
   const view = inView ? "view-on" : "view-off"
-  // setSelectedMode(view)
+
+  const { setHeroView } = useContext(inViewContext)
+  setHeroView(inView)
 
   return (
     <HeroContainer>
-      <div className="section-hero" data-view={view} ref={ref}>
+      <div className="section-hero" ref={ref}>
         <div
           data-view={view}
-          ref={ref}
           className="hero-title"
           style={{ transform: `translate(-50%, -${offsetY * 0.5}px)` }}
         >

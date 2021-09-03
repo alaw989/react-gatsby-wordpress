@@ -1,5 +1,5 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
-import React from "react"
+import React, { useContext } from "react"
 // import { Container, Row, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -9,9 +9,10 @@ import { Navigation } from "../styles/components/_header.js"
 import Img from "gatsby-image"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
-import { Container, Row, Form, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
+import { inViewContext } from "../Contexts/inViewContext"
 
-const Header = ({ selectedMode }) => {
+const Header = () => {
   const data = useStaticQuery(graphql`
     query newQuery {
       allWordpressWpApiMenusMenusItems {
@@ -44,29 +45,38 @@ const Header = ({ selectedMode }) => {
   // const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   // const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
+  const { heroView, aboutIntroView } = useContext(inViewContext)
+
+  console.log("hero in view", heroView)
+  console.log("about intro 1 in view", aboutIntroView)
+
+  const heroShown = heroView ? "in-view" : "not-in-view"
+  const aboutShown = aboutIntroView ? "in-view" : "not-in-view"
+
   return (
     <Navigation>
-      {/* <div className="section-navigation">
-        <div className="container-fluid">
-          <div className="nav-container"> */}
-      <div className="nav-container" data-view={selectedMode}>
+      <div
+        className="nav-container"
+        data-about-view={aboutShown}
+        data-hero-view={heroShown}
+      >
         <Container fluid>
           <Row className="justify-content-center">
-            <Col xs={10}>
+            <Col xs={12}>
               <Row>
                 <Col xs={6}>
                   <Link to="/">
-                  <div className="logo">
-                    {" "}
-                    {/* <Img fixed={logo} /> */}
-                    <div className="top">
-                      <div className="V">V</div>
-                      <div className="icon">
-                        <img src={plus} alt="plus-icon" />
+                    <div className="logo">
+                      {" "}
+                      {/* <Img fixed={logo} /> */}
+                      <div className="top">
+                        <div className="V">V</div>
+                        <div className="icon">
+                          <img src={plus} alt="plus-icon" />
+                        </div>
+                        <div className="P">P</div>
                       </div>
-                      <div className="P">P</div>
-                    </div>
-                  </div>{" "}
+                    </div>{" "}
                   </Link>
                 </Col>
                 <Col xs={6}>
@@ -79,37 +89,6 @@ const Header = ({ selectedMode }) => {
           </Row>
         </Container>
       </div>
-
-      {/* <div className="navigation-menu d-none d-xl-block">
-          <ul>
-            {menuItems.map((post, index) => {
-              const uri = `/${post.object_slug}`
-              return (
-                <li key={index}>
-                  <Link key={index} to={uri}>
-                    {post.title}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </div> */}
-      {/* <div className="menu-container"> */}
-      {/* <a className="phone-container" href={tel + phone}>
-            <div className="phone">
-              <FontAwesomeIcon icon={faPhone} />
-              <div className="number">{phone}</div>
-            </div>
-          </a> */}
-      {/* <div className="menu-container">
-            <div className="overlay-shift"></div>
-            <div className="contact-text">Contact Us</div>
-          </div> */}
-
-      {/* </div>
-          </div>
-        </div>
-      </div> */}
     </Navigation>
   )
 }

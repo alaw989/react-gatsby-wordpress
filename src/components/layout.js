@@ -15,6 +15,7 @@ import AboutIntro from "./about-intro"
 import AboutIntro2 from "./about-intro-2"
 import Services from "./services"
 import "./layout.css"
+import { inViewContext } from "../Contexts/inViewContext"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,29 +28,20 @@ const Layout = ({ children }) => {
     }
   `)
 
-const [offsetY, setOffsetY] = useState(0)
-const handleScroll = () => setOffsetY(window.pageYOffset)
-
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", handleScroll)
-  }
-  return () => window.removeEventListener("scroll", handleScroll)
-}, [])
-
-
-  const [selectedMode, setSelectedMode] = useState()
+  const [heroView, setHeroView] = useState()
+  const [aboutIntroView, setAboutIntroView] = useState()
 
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        selectedMode={selectedMode}
-      />
-      <Hero setSelectedMode={setSelectedMode} scrollPosition={offsetY} />
-      <AboutIntro scrollPosition={offsetY} />
-      <Services setServicesView={setSelectedMode} />
-      <AboutIntro2 scrollPosition={offsetY} />
+      <inViewContext.Provider
+        value={{ heroView, setHeroView, aboutIntroView, setAboutIntroView }}
+      >
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <Hero />
+        <AboutIntro />
+      </inViewContext.Provider>
+      <Services />
+      <AboutIntro2 />
       {children}
       <Footer />
     </>

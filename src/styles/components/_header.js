@@ -11,8 +11,17 @@ export const Navigation = styled.div`
     z-index: 2;
     position: fixed;
     width: 100%;
-    &[data-view="view-on"] {
-      mix-blend-mode: difference;
+
+    &[data-hero-view="not-in-view"] {
+      .logo {
+        mix-blend-mode: difference;
+        .top {
+          /* color: ${colors.primary}; */
+        }
+        .icon {
+
+        }
+      }
     }
     a {
       text-decoration: none;

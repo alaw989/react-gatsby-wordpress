@@ -99,7 +99,7 @@ const Services = ({ setServicesView }) => {
       <div className="section-services">
         <Container fluid>
           <Row className="justify-content-center">
-            <Col xs={11}>
+            <Col xs={10}>
               <div className="section-title-container">
                 <div className="tagline" />
                 <h2 className="section-title">{parse(services_title)}</h2>

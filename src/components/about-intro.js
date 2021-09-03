@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React from "react"
+import React, { useContext } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
@@ -8,9 +8,10 @@ import parse from "html-react-parser"
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
-import { Container, Row, Form, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
+import { inViewContext } from "../Contexts/inViewContext"
 
-const AboutIntro = scrollPosition => {
+const AboutIntro = () => {
   const data = useStaticQuery(graphql`
     query aboutQuery {
       allWordpressAcfOptions {
@@ -53,23 +54,19 @@ const AboutIntro = scrollPosition => {
   // const button = options.button_link
   const img = options.image.localFile.childImageSharp.fluid
 
-
   const view = inView ? "view-on" : "view-off"
 
-  var maxPosition = ""
+  const { heroView, setAboutIntroView } = useContext(inViewContext)
+  setAboutIntroView(inView)
 
-  scrollPosition.scrollPosition < 900
-    ? (maxPosition = scrollPosition.scrollPosition)
-    : (maxPosition = 900)
-
-  // console.log(maxPosition)
+  const heroShown = heroView ? "in-view" : "not-in-view"
 
   return (
-    <AboutIntroContainer position={scrollPosition.scrollPosition}>
+    <AboutIntroContainer ref={ref} data-hero-view={heroShown}>
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs={10}>
-            <div className="section-about-intro" ref={ref} data-view={view}>
+            <div className="section-about-intro" data-view={view}>
               <div className="content-container">
                 <div className="supheading-container">
                   <div className="tagline-line first"></div>

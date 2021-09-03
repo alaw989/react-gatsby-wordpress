@@ -6,20 +6,33 @@ export const AboutIntroContainer = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  transition: all .5s; 
+  transition: all 1.5s;
 
-  ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
-  
+  ${props => (props.dark ? "background-color:" + colors.primary + ";" : "")}
+
+  &[data-hero-view="not-in-view"] {
+    background-color: ${colors.primary};
+    .section-about-intro {
+      .content-container {
+        .section-heading {
+          color: ${colors.white};
+          transition: all 1.5s;
+        }
+      }
+    }
+  }
+
   .section-about-intro {
-    display: flex; 
+    display: flex;
     height: 100vh;
-    ${props => (props.dark ? 'height: 100vh;' : 'height: auto;')}
+    ${props => (props.dark ? "height: 100vh;" : "height: auto;")}
     font-family: 'Roboto Condensed';
     font-weight: 400;
     font-style: normal;
     opacity: 0;
     transition: 2s all;
-    ${props => (props.dark ? 'background-color:'  + colors.primary + ';' : "") }
+    height: 100%;
+    ${props => (props.dark ? "background-color:" + colors.primary + ";" : "")}
     &[data-view="view-on"] {
       opacity: 1 !important;
     }
@@ -29,14 +42,13 @@ export const AboutIntroContainer = styled.div`
     }
 
     .content-container {
- 
       @media ${device.lg} {
         padding: 0;
         padding-right: 100px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        transition: .5s all;
+        transition: 0.5s all;
       }
 
       .supheading-container {
@@ -69,11 +81,15 @@ export const AboutIntroContainer = styled.div`
       .section-heading {
         margin-top: 0.1em;
         margin-bottom: 0.675em;
-        ${props => (props.dark ? 'color:' + colors.white + ';' : 'color:' + colors.primary + ';')}
+        ${props =>
+          props.dark
+            ? "color:" + colors.white + ";"
+            : "color:" + colors.primary + ";"}
         font-size: 2.5rem;
         line-height: 1em;
         font-weight: 700;
         text-align: center;
+        transition: all 1.5s;
 
         @media ${device.md} {
           font-size: 3.5rem;
