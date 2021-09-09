@@ -6,6 +6,7 @@ export const HeroContainer = styled.div`
   position: relative;
   height: 100vh;
   /* filter: drop-shadow(-17px 30px 16px rgba(46, 46, 40, 0.5)); */
+
   .bg-overlay {
     width: 100%;
     height: 100%;
@@ -19,13 +20,13 @@ export const HeroContainer = styled.div`
     font-family: "Roboto Condensed", sans-serif;
     z-index: -1;
     /* clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%); */
-  
+
     @media ${device.lg} {
       height: 100vh;
     }
 
     svg {
-      height:100%;
+      height: 100%;
       .cls-1 {
         fill: ${props => (props.dark ? colors.primary : colors.white)};
       }
@@ -33,35 +34,34 @@ export const HeroContainer = styled.div`
 
     .hero-title {
       font-family: Roboto Condensed, sans-serif;
-      position: absolute; 
+      position: absolute;
       z-index: 1;
       color: ${colors.white};
-      top: 50%; 
-      left: 50%; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      flex-direction: column; 
+      top: 50%;
+      left: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       line-height: 5rem;
       text-transform: uppercase;
       font-weight: 700;
       mix-blend-mode: overlay;
-      opacity: 0; 
-     
+      opacity: 0;
+
       .top {
-        font-size: 9rem; 
-        display: flex; 
-          flex-direction: row; 
-          align-items: center; 
-          justify-content: center;
+        font-size: 9rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         .icon {
-          width: 100px; 
- 
+          width: 100px;
+
           svg {
-          position: relative; 
+            position: relative;
           }
         }
-
       }
       .bottom {
         font-size: 3rem;
@@ -69,8 +69,8 @@ export const HeroContainer = styled.div`
       }
 
       &[data-view="view-on"] {
-          opacity: 1;
-        }
+        opacity: 1;
+      }
     }
 
     .slick-slide {
@@ -80,49 +80,51 @@ export const HeroContainer = styled.div`
       }
 
       @keyframes shrink {
-  0% {
-    transform: scale(1.2)
-  }
-  100% {
-    transform: scale(1.0)
-  }
-}
-      .bgSlide {
-      
-        background-position: center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100vh;
-        /* animation: shrink 15s infinite alternate; */
-        transition: .5s all;
-        @media ${device.lg} {
-          height: 100vh;
+        0% {
+          transform: scale(1.2);
         }
-        &:after {
-          /* transform: translateY(-${props => props.position}px); */
-          /* transition: .5s all; */
-          background-attachment: fixed;
+        100% {
+          transform: scale(1);
         }
       }
-      .bgText {
-        color: ${colors.white};
-        position: absolute;
-        z-index: 99;
-        top: 95%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1rem;
-        font-weight: 400;
-        text-align: center;
-        line-height: 1rem;
-        transition: all 1s ease;
-        @media ${device.lg} {
-          font-size: 1.2rem;
-          line-height: 3rem;
+
+      .slider-container {
+        .bgSlide {
+        
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 100vh;
+          /* animation: shrink 15s infinite alternate; */
+       
+          @media ${device.lg} {
+            height: 100vh;
+          }
+          &:after {
+            /* transform: translateY(${props => props.offsetY}px); */
+            transition: .5s all;
+            background-attachment: fixed;
+          }
         }
-        span {
-          /* color: #fff;
+
+        .bgText {
+          color: ${colors.white};
+          position: absolute;
+          z-index: 99;
+          top: 95%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1rem;
+          font-weight: 400;
+          text-align: center;
+          line-height: 1rem;
+          transition: all 1s ease;
+          @media ${device.lg} {
+            font-size: 1.2rem;
+            line-height: 3rem;
+          }
+          span {
+            /* color: #fff;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke-width: 1px;
           -webkit-text-stroke-color: #fff;

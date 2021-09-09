@@ -10,7 +10,7 @@ import Img from "gatsby-image"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
 import { Container, Row, Col } from "react-bootstrap"
-import { inViewContext } from "../Contexts/inViewContext"
+import { inViewContext } from "../Contexts/siteContext"
 
 const Header = () => {
   const data = useStaticQuery(graphql`

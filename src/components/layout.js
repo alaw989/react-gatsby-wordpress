@@ -15,7 +15,7 @@ import AboutIntro from "./about-intro"
 import AboutIntro2 from "./about-intro-2"
 import Services from "./services"
 import "./layout.css"
-import { inViewContext } from "../Contexts/inViewContext"
+import { inViewContext, yOffsetContext } from "../Contexts/siteContext"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -31,13 +31,29 @@ const Layout = ({ children }) => {
   const [heroView, setHeroView] = useState()
   const [aboutIntroView, setAboutIntroView] = useState()
 
+  const [offsetY, setOffsetY] = useState(0)
+  const handleScroll = () => setOffsetY(window.pageYOffset)
+
+  
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll)
+    }
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // const [selectedMode, setSelectedMode] = useState()
+
   return (
     <>
       <inViewContext.Provider
         value={{ heroView, setHeroView, aboutIntroView, setAboutIntroView }}
       >
         <Header siteTitle={data.site.siteMetadata.title} />
-        <Hero />
+        <yOffsetContext.Provider value={{ offsetY, setOffsetY }}>
+          <Hero />
+        </yOffsetContext.Provider>
         <AboutIntro />
       </inViewContext.Provider>
       <Services />

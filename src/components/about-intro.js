@@ -9,7 +9,7 @@ import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
 import { Container, Row, Col } from "react-bootstrap"
-import { inViewContext } from "../Contexts/inViewContext"
+import { inViewContext } from "../Contexts/siteContext"
 
 const AboutIntro = () => {
   const data = useStaticQuery(graphql`
