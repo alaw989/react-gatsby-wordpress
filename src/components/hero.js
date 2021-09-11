@@ -6,9 +6,10 @@ import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
 import parse from "html-react-parser"
 import plus from "../images/plus-icon.png"
-import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
 import { inViewContext, yOffsetContext } from "../Contexts/siteContext"
+import styled from "styled-components"
+
 
 const Hero = ({}) => {
   const data = useStaticQuery(graphql`
@@ -49,65 +50,44 @@ const Hero = ({}) => {
   // const slide = affix.hero_image.localFile.childImageSharp.fluid
   const home_slider = affix.hero_slider
 
-  var count = 0 
+  const [timer, setTimer] = useState(1)
+  const [active, setActive] = useState("active")
+
+  useEffect(() => {
+    const timerId = setInterval(() => setTimer(timer + 0.005), 100)
+
+    return () => {
+      clearInterval(timerId)
+    }
+  })
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 2000,
-    autoplaySpeed: 5000,
+    speed: 3000,
+    autoplaySpeed: 6000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     fade: true,
     arrows: false,
+    useCSS: true,
     beforeChange: () => {
-      // var interval = setInterval(() => {
-      //   ++count
-      //   console.log(count);
-      // }, 100)
-
-      // const interval2 = setInterval(() => {
-      //   clearInterval(interval)
-      //   count = 0 
-    
-      // }, 6000)
-
-      const counter = () => {
-        if (count < 10) {
-          count += 1;
-        }
-        else if (count == 10) {
-          count = 0
-        }
-
-        console.log(count)
+      setTimer(1)
+      if (active == "active") {
+        setActive("active2")
+      } else {
+        setActive("active")
       }
-
-      const interval = setInterval(counter, 200)
-    
-    }
+    },
   }
 
+  console.log(active)
 
-
-  useEffect(() => {
-    // var interval = setInterval(() => {
-    //   count++
-    //   console.log(count)
-    // }, 1000)
-    //  const interval2 = setInterval(() => {
-    //   clearInterval(interval)
-    // }, 5000)
-    // return () => clearInterval(interval)
-  }, [])
-
- 
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
   })
-
   const view = inView ? "view-on" : "view-off"
 
   const { setHeroView } = useContext(inViewContext)
@@ -115,16 +95,21 @@ const Hero = ({}) => {
 
   // Page Y Offset State
   const { offsetY } = useContext(yOffsetContext)
-
   const sliderRef = useRef
 
+
+
+
   return (
-    <HeroContainer>
+    <HeroContainer >
       <div className="section-hero" ref={ref}>
         <div
           data-view={view}
           className="hero-title"
-          style={{ transform: `translate(-50%, -${offsetY * 0.5}px)` }}
+          style={{
+            transform: `translate(-50%, -${offsetY * 0.5}px)`,
+            transition: `.5s all`,
+          }}
         >
           <div className="top">
             <div className="v">V</div>
@@ -135,23 +120,28 @@ const Hero = ({}) => {
           </div>
           <div className="bottom">Associates</div>
         </div>
+        <div className="progress-bar">
+          <div className="progress-inner" data-active={active}></div>
+        </div>
 
         <Slider {...settings} ref={ref => (sliderRef.current = ref)}>
           {home_slider.map((slide, index) => (
             <div className="slider-container" key={index}>
-              <BackgroundImage
-                fluid={slide.image.localFile.childImageSharp.fluid}
-                backgroundColor={`#040e18`}
-                className="bgSlide"
-                style={{
-                  backgroundPosition: `0px -${offsetY * 0.3}px`,
-                  backgroundSize: `${count / 4 + 100}%`,
-                  // transform: `scale(${count / 1000})`,
-                  // transition: `.5s all`
-                }}
-              >
-                {" "}
-              </BackgroundImage>
+            
+                <BackgroundImage
+                  fluid={slide.image.localFile.childImageSharp.fluid}
+                  backgroundColor={`#040e18`}
+                  className="bgSlide"
+                  style={{
+                    backgroundPosition: `0px -${offsetY * 0.3}px`,
+                    backgroundSize: `cover`,
+                    // transform: `scale(${timer})`,
+                    transition: `5s all`,
+                  }}
+                >
+                  {" "}
+                </BackgroundImage>
+     
               <div
                 className="bgText" /*style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}*/
               >

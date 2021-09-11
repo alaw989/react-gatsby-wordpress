@@ -81,6 +81,7 @@ const Services = ({ setServicesView }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+ 
   }
 
   // const { inView } = useInView({
@@ -129,9 +130,7 @@ const Services = ({ setServicesView }) => {
                       backgroundColor={`#040e18`}
                     ></BackgroundImage>
                     <div className="services-content">
-                      <div className="services-subheading">
-                      {item.titles}
-                      </div>
+                      <div className="services-subheading">{item.titles}</div>
                       <div className="services-heading">
                         {parse(item.subtitles)}
                       </div>

@@ -1,3 +1,4 @@
+import { props } from "bluebird"
 import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
@@ -73,36 +74,102 @@ export const HeroContainer = styled.div`
       }
     }
 
+    @keyframes progress {
+      0% {
+        height: 0;
+      }
+      100% {
+        height: 100%;
+      }
+    }
+    .progress-bar {
+      width: 3px;
+      height: 200px;
+      background-color: ${colors.white};
+      position: absolute;
+      top: 50%;
+      right: 40%;
+      transform: translateY(-50%);
+      z-index: 1;
+
+      @keyframes progress {
+      0% {
+        height: 0;
+      }
+
+      25% {
+        height: 25%; 
+      }
+      50% {
+        height: 50%; 
+      }
+      100% {
+        height: 100%;
+      }
+    }
+      @keyframes progress2 {
+      0% {
+        height: 0;
+      }
+
+      25% {
+        height: 25%; 
+      }
+      50% {
+        height: 50%; 
+      }
+      100% {
+        height: 100%;
+      }
+    }
+
+      .progress-inner {
+        position: absolute;
+        top: 0;
+        background-color: ${colors.primary};
+        width: 100%;
+        transition: 6s all;
+        height: 0;
+        animation: progress 6s;
+        &[data-active="active"] {
+          animation: progress 6s  ;
+          animation-timing-function: linear;
+        }
+        &[data-active="active2"] {
+          animation: progress2 6s ;
+          animation-timing-function: linear;
+        }
+      }
+    }
+
     .slick-slide {
       height: 100vh;
+
       @media ${device.lg} {
         height: 100vh;
       }
 
-      @keyframes shrink {
-        0% {
-          transform: scale(1.2);
-        }
-        100% {
-          transform: scale(1);
+      &.slick-active {
+        .slider-container {
+          .bgSlide {
+            transform: scale(${props => props.timer});
+          }
         }
       }
 
       .slider-container {
         .bgSlide {
-        
           background-attachment: fixed;
           background-repeat: no-repeat;
           background-size: cover;
           height: 100vh;
-          /* animation: shrink 15s infinite alternate; */
-       
+
           @media ${device.lg} {
             height: 100vh;
           }
           &:after {
             /* transform: translateY(${props => props.offsetY}px); */
-            transition: .5s all;
+            transition: 0.5s all;
             background-attachment: fixed;
           }
         }
