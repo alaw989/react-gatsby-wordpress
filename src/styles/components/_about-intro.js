@@ -78,7 +78,16 @@ export const AboutIntroContainer = styled.div`
         }
       }
 
+      @keyframes move-text {
+    0% { bottom: -0.2em; opacity: 1; }
+    50% { bottom: 0.2em; }
+    100% { bottom: 0; opacity: 1; }
+}
+
       .section-heading {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
         margin-top: 0.1em;
         margin-bottom: 0.675em;
         ${props =>
@@ -90,7 +99,7 @@ export const AboutIntroContainer = styled.div`
         font-weight: 700;
         text-align: center;
         transition: all 1.5s;
-
+        animation: move-text 0.75s forwards;
         @media ${device.md} {
           font-size: 3.5rem;
         }

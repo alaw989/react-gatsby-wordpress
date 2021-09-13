@@ -8,8 +8,8 @@ import parse from "html-react-parser"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
 import { inViewContext, yOffsetContext } from "../Contexts/siteContext"
-import styled from "styled-components"
-
+import { Row, Col, Container } from "react-bootstrap"
+import FadeIn from "react-fade-in"
 
 const Hero = ({}) => {
   const data = useStaticQuery(graphql`
@@ -50,42 +50,29 @@ const Hero = ({}) => {
   // const slide = affix.hero_image.localFile.childImageSharp.fluid
   const home_slider = affix.hero_slider
 
-  const [timer, setTimer] = useState(1)
   const [active, setActive] = useState("active")
+  const [index, setIndex] = useState(1)
 
-  useEffect(() => {
-    const timerId = setInterval(() => setTimer(timer + 0.005), 100)
-
-    return () => {
-      clearInterval(timerId)
-    }
-  })
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 3000,
-    autoplaySpeed: 6000,
+    speed: 6000,
+    autoplaySpeed: 9000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     fade: true,
     arrows: false,
     useCSS: true,
-    beforeChange: () => {
-      setTimer(1)
-      if (active == "active") {
-        setActive("active2")
-      } else {
-        setActive("active")
-      }
+    beforeChange: (oldIndex, newIndex) => {
+      active == "active" ? setActive("active2") : setActive("active")
+      setIndex(newIndex + 1)
     },
   }
 
-  console.log(active)
-
   const { ref, inView, entry } = useInView({
-    /* Optional options */
+    /* options */
     threshold: 0,
   })
   const view = inView ? "view-on" : "view-off"
@@ -95,39 +82,47 @@ const Hero = ({}) => {
 
   // Page Y Offset State
   const { offsetY } = useContext(yOffsetContext)
-  const sliderRef = useRef
-
-
-
 
   return (
-    <HeroContainer >
-      <div className="section-hero" ref={ref}>
-        <div
-          data-view={view}
-          className="hero-title"
-          style={{
-            transform: `translate(-50%, -${offsetY * 0.5}px)`,
-            transition: `.5s all`,
-          }}
-        >
-          <div className="top">
-            <div className="v">V</div>
-            <div className="icon">
-              <img src={plus} alt="plus-icon" />
+    <FadeIn transitionDuration={2000}>
+      <HeroContainer>
+        <div className="section-hero" ref={ref}>
+          <div className="hero-title-container">
+            <div
+              data-view={view}
+              className="hero-title"
+              style={{
+                transform: `translate(0, -${offsetY * 0.5}px)`,
+                transition: `.5s all`,
+              }}
+            >
+              <div className="top">
+                <div className="v">V</div>
+                <div className="icon">
+                  <img src={plus} alt="plus-icon" />
+                </div>
+                <div className="P">P</div>
+              </div>
+              <div className="bottom">Associates</div>
             </div>
-            <div className="P">P</div>
-          </div>
-          <div className="bottom">Associates</div>
-        </div>
-        <div className="progress-bar">
-          <div className="progress-inner" data-active={active}></div>
-        </div>
 
-        <Slider {...settings} ref={ref => (sliderRef.current = ref)}>
-          {home_slider.map((slide, index) => (
-            <div className="slider-container" key={index}>
-            
+            <div
+              className="progress-container"
+              style={{
+                transform: `translate(0, -${offsetY * 0.5}px)`,
+                transition: `.5s all`,
+              }}
+            >
+              <div className="progress-bar">
+                <div className="progress-inner" data-active={active}></div>
+              </div>
+              <div className="slide-number">{index}</div>
+            </div>
+          </div>
+
+          <Slider {...settings}>
+            {home_slider.map((slide, index) => (
+              <div className="slider-container" key={index}>
                 <BackgroundImage
                   fluid={slide.image.localFile.childImageSharp.fluid}
                   backgroundColor={`#040e18`}
@@ -135,24 +130,18 @@ const Hero = ({}) => {
                   style={{
                     backgroundPosition: `0px -${offsetY * 0.3}px`,
                     backgroundSize: `cover`,
-                    // transform: `scale(${timer})`,
-                    transition: `5s all`,
                   }}
                 >
                   {" "}
                 </BackgroundImage>
-     
-              <div
-                className="bgText" /*style={{ transform: `translate(-50%, -${offsetY * 0.7}px)` }}*/
-              >
-                {parse(slide.text)}
+                <div className="bgText">{parse(slide.text)}</div>
+                <div className="overlay"></div>
               </div>
-              <div className="overlay"></div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </HeroContainer>
+            ))}
+          </Slider>
+        </div>
+      </HeroContainer>
+    </FadeIn>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { AboutIntroContainer } from "../styles/components/_about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
@@ -10,6 +10,7 @@ import { Link } from "gatsby"
 import { useInView } from "react-intersection-observer"
 import { Container, Row, Col } from "react-bootstrap"
 import { inViewContext } from "../Contexts/siteContext"
+import FadeIn from "react-fade-in"
 
 const AboutIntro = () => {
   const data = useStaticQuery(graphql`
@@ -61,6 +62,23 @@ const AboutIntro = () => {
 
   const heroShown = heroView ? "in-view" : "not-in-view"
 
+  //animate in letters of text individually
+  const text =
+    "We provide a full range of structural engineering, steel detailing services and inspection services."
+
+  const explodeText = [...text]
+
+  const fixSpaces = () => explodeText.map(item => item == ' ' ? item == 'x' : "") 
+
+  var [durationCount, setDurationCount] = useState(0)
+
+  const staggerText = (duration, text) => {
+    console.log(text.map(item => item))
+    return text.map(item => <FadeIn delay={(duration += 15)}>{item}</FadeIn>)
+  }
+
+
+
   return (
     <AboutIntroContainer ref={ref} data-hero-view={heroShown}>
       <Container fluid>
@@ -72,8 +90,7 @@ const AboutIntro = () => {
                   <div className="tagline-line first"></div>
                 </div>
                 <div className="section-heading view">
-                  We provide a full range of structural engineering, steel
-                  detailing services and inspection services.
+                  {staggerText(durationCount, explodeText)}
                 </div>
                 <PrimaryButton light>
                   <Link to="/home">

@@ -94,6 +94,7 @@ const Services = ({ setServicesView }) => {
   // setServicesView(view)
 
   const customSlider = useRef()
+  
 
   return (
     <ServicesContainer>

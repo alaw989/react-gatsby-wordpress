@@ -1,4 +1,3 @@
-import { props } from "bluebird"
 import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
@@ -20,7 +19,6 @@ export const HeroContainer = styled.div`
     position: relative;
     font-family: "Roboto Condensed", sans-serif;
     z-index: -1;
-    /* clip-path: polygon(0 0, 75% 0%, 100% 0, 100% 82%, 25% 100%, 0 78%); */
 
     @media ${device.lg} {
       height: 100vh;
@@ -33,111 +31,160 @@ export const HeroContainer = styled.div`
       }
     }
 
-    .hero-title {
-      font-family: Roboto Condensed, sans-serif;
+    @keyframes fadeIn {
+        0% {
+          visibility: hidden;
+          
+        }
+        100% {
+          visibility: visible;
+        }
+      }
+
+    .hero-title-container {
       position: absolute;
-      z-index: 1;
-      color: ${colors.white};
-      top: 50%;
-      left: 50%;
+      height: 300px;
+      width: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: column;
-      line-height: 5rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      mix-blend-mode: overlay;
-      opacity: 0;
+      justify-content: center;
+      top: 40%;
+   
+      transition: 2s all;
 
-      .top {
-        font-size: 9rem;
+      .hero-title {
+        font-family: Roboto Condensed, sans-serif;
+        position: absolute;
+        z-index: 1;
+        color: ${colors.white};
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        align-items: center;
         justify-content: center;
-        .icon {
-          width: 100px;
+        align-items: center;
+        flex-direction: column;
+        line-height: 4rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        mix-blend-mode: overlay;
+        transition: 1s all;
 
-          svg {
-            position: relative;
+        @media ${device.md} {
+          line-height: 5rem;
+        }
+
+        .top {
+          font-size: 7rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          transition: 1s all;
+
+          @media ${device.md} {
+            font-size: 12rem;
+            margin-bottom: 15px;
+          }
+
+          .icon {
+            width: 70px;
+            @media ${device.md} {
+              width: 100px;
+            }
+
+            svg {
+              position: relative;
+            }
           }
         }
-      }
-      .bottom {
-        font-size: 3rem;
-        font-weight: 400;
-      }
+        .bottom {
+          font-size: 2rem;
+          font-weight: 400;
+          @media ${device.md} {
+            font-size: 4rem;
+          }
+        }
 
-      &[data-view="view-on"] {
-        opacity: 1;
+        &[data-view="view-on"] {
+          opacity: 1;
+        }
       }
-    }
-
-    @keyframes progress {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 100%;
-      }
-    }
-    .progress-bar {
-      width: 3px;
-      height: 200px;
-      background-color: ${colors.white};
-      position: absolute;
-      top: 50%;
-      right: 40%;
-      transform: translateY(-50%);
-      z-index: 1;
 
       @keyframes progress {
-      0% {
-        height: 0;
-      }
-
-      25% {
-        height: 25%; 
-      }
-      50% {
-        height: 50%; 
-      }
-      100% {
-        height: 100%;
-      }
-    }
-      @keyframes progress2 {
-      0% {
-        height: 0;
-      }
-
-      25% {
-        height: 25%; 
-      }
-      50% {
-        height: 50%; 
-      }
-      100% {
-        height: 100%;
-      }
-    }
-
-      .progress-inner {
-        position: absolute;
-        top: 0;
-        background-color: ${colors.primary};
-        width: 100%;
-        transition: 6s all;
-        height: 0;
-        animation: progress 6s;
-        &[data-active="active"] {
-          animation: progress 6s  ;
-          animation-timing-function: linear;
+        0% {
+          height: 0;
         }
-        &[data-active="active2"] {
-          animation: progress2 6s ;
-          animation-timing-function: linear;
+        100% {
+          height: 100%;
+        }
+      }
+
+      .progress-container {
+        width: 2px;
+        height: 150px;
+        position: absolute;
+        right: 85px;
+        top: 45px;
+        background-color: ${colors.white};
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+
+        .progress-bar {
+          @keyframes progress {
+            0% {
+              height: 0;
+            }
+
+            25% {
+              height: 25%;
+            }
+            50% {
+              height: 50%;
+            }
+            100% {
+              height: 100%;
+            }
+          }
+          @keyframes progress2 {
+            0% {
+              height: 0;
+            }
+
+            25% {
+              height: 25%;
+            }
+            50% {
+              height: 50%;
+            }
+            100% {
+              height: 100%;
+            }
+          }
+
+          .progress-inner {
+            position: absolute;
+            top: 0;
+            background-color: ${colors.primary};
+            width: 100%;
+            transition: 9s all;
+            height: 0;
+            animation: progress 9s;
+            &[data-active="active"] {
+              animation: progress 9s;
+              animation-timing-function: linear;
+            }
+            &[data-active="active2"] {
+              animation: progress2 9s;
+              animation-timing-function: linear;
+            }
+          }
+        }
+        .slide-number {
+          position: absolute;
+          bottom: -36px;
+          left: -3px;
+          color: ${colors.white};
+          font-size: 1rem;
         }
       }
     }
@@ -149,10 +196,40 @@ export const HeroContainer = styled.div`
         height: 100vh;
       }
 
+      @keyframes scale {
+        0% {
+          transform: scale(1.4);
+        }
+
+        50% {
+          transform: scale(1.3);
+        }
+
+        100% {
+          transform: scale(1.2);
+        }
+      }
+
+      @keyframes unscale {
+        0% {
+          transform: scale(1.2);
+        }
+
+        50% {
+          transform: scale(1.1);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
       &.slick-active {
         .slider-container {
           .bgSlide {
-            transform: scale(${props => props.timer});
+            animation: scale 9s;
+            animation-timing-function: linear;
+            transition: 9s all;
           }
         }
       }
@@ -163,7 +240,10 @@ export const HeroContainer = styled.div`
           background-repeat: no-repeat;
           background-size: cover;
           height: 100vh;
-
+          animation: unscale 9s;
+          animation-timing-function: linear;
+          transition: 9s all;
+          transform: scale(1.2);
           @media ${device.lg} {
             height: 100vh;
           }
