@@ -34,7 +34,7 @@ const IndexPage = props => {
   const commercial = portfolioData.commercial
   const industrial = portfolioData.industrial
 
-  console.log(portfolioData.misc)
+  // console.log(portfolioData.misc)
 
   const settings = {
     dots: false,

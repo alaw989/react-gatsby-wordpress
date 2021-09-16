@@ -139,10 +139,10 @@ const Services = ({ setServicesView }) => {
                         {parse(item.description)}
                       </div>
                       <PrimaryButton light>
-                        <Link to={item.links.url}>
+                        {/* <Link to={item.links.url}>
                           <div className="overlay"></div>
                           <div className="button-text">Contact Us</div>
-                        </Link>
+                        </Link> */}
                       </PrimaryButton>
                     </div>
                   </div>

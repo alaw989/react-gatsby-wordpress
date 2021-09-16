@@ -8,7 +8,6 @@ import parse from "html-react-parser"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
 import { inViewContext, yOffsetContext } from "../Contexts/siteContext"
-import { Row, Col, Container } from "react-bootstrap"
 import FadeIn from "react-fade-in"
 
 const Hero = ({}) => {
@@ -53,7 +52,6 @@ const Hero = ({}) => {
   const [active, setActive] = useState("active")
   const [index, setIndex] = useState(1)
 
-
   const settings = {
     dots: false,
     infinite: true,
@@ -72,7 +70,6 @@ const Hero = ({}) => {
   }
 
   const { ref, inView, entry } = useInView({
-    /* options */
     threshold: 0,
   })
   const view = inView ? "view-on" : "view-off"

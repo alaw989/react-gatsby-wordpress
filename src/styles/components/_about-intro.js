@@ -11,11 +11,11 @@ export const AboutIntroContainer = styled.div`
   ${props => (props.dark ? "background-color:" + colors.primary + ";" : "")}
 
   &[data-hero-view="not-in-view"] {
-    background-color: ${colors.primary};
+    background-color: #EDEBEE;
     .section-about-intro {
       .content-container {
         .section-heading {
-          color: ${colors.white};
+          /* color: ${colors.white}; */
           transition: all 1.5s;
         }
       }
@@ -78,15 +78,11 @@ export const AboutIntroContainer = styled.div`
         }
       }
 
-      @keyframes move-text {
-    0% { bottom: -0.2em; opacity: 1; }
-    50% { bottom: 0.2em; }
-    100% { bottom: 0; opacity: 1; }
-}
+
 
       .section-heading {
         display: flex;
-        max-width: 100%;
+        max-width: 700px;
         flex-wrap: wrap;
         margin-top: 0.1em;
         margin-bottom: 0.675em;
@@ -99,12 +95,36 @@ export const AboutIntroContainer = styled.div`
         font-weight: 700;
         text-align: center;
         transition: all 1.5s;
-        animation: move-text 0.75s forwards;
+   
         @media ${device.md} {
           font-size: 3.5rem;
         }
         @media ${device.lg} {
           text-align: left;
+        }
+
+        @keyframes move-text {
+          0% {
+            bottom: -0.2em;
+            opacity: 1;
+          }
+          50% {
+            bottom: 0.2em;
+          }
+          100% {
+            bottom: 0;
+            opacity: 1;
+          }
+        }
+
+        span {
+          position: relative;
+          opacity: 0;
+          animation: move-text 0.75s forwards;
+          font-size: 3.73333vw;
+          @media ${device.md} {
+            font-size: 1.02489vw;
+          }
         }
       }
       .section-content {

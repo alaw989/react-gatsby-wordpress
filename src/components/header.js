@@ -47,8 +47,8 @@ const Header = () => {
 
   const { heroView, aboutIntroView } = useContext(inViewContext)
 
-  console.log("hero in view", heroView)
-  console.log("about intro 1 in view", aboutIntroView)
+  // console.log("hero in view", heroView)
+  // console.log("about intro 1 in view", aboutIntroView)
 
   const heroShown = heroView ? "in-view" : "not-in-view"
   const aboutShown = aboutIntroView ? "in-view" : "not-in-view"

@@ -42,45 +42,52 @@ const AboutIntro = () => {
     }
   `)
 
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
-
   const options =
     data.allWordpressAcfOptions.nodes[0].options.about_intro_section
-
   const heading = options.heading
   const paragraph = options.paragraph
   // const button = options.button_link
   const img = options.image.localFile.childImageSharp.fluid
 
-  const view = inView ? "view-on" : "view-off"
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
 
-  const { heroView, setAboutIntroView } = useContext(inViewContext)
+  const view = inView ? "view-on" : "view-off"
+  // console.log("in view", inView)
+
+  const { heroView, setAboutIntroView, aboutIntroView } = useContext(
+    inViewContext
+  )
   setAboutIntroView(inView)
 
   const heroShown = heroView ? "in-view" : "not-in-view"
 
-  //animate in letters of text individually
-  const text =
+  //animate letters of text individually
+  var text =
     "We provide a full range of structural engineering, steel detailing services and inspection services."
+  // text = text.trim().split("  ")
 
-  const explodeText = [...text]
+  text = text.replaceAll(/ /g, "\u00a0")
 
-  const fixSpaces = () => explodeText.map(item => item == ' ' ? item == 'x' : "") 
+  var explodeText = [...text]
 
   var [durationCount, setDurationCount] = useState(0)
 
   const staggerText = (duration, text) => {
-    console.log(text.map(item => item))
-    return text.map(item => <FadeIn delay={(duration += 15)}>{item}</FadeIn>)
+    if (aboutIntroView == true) {
+      return text.map(item => (
+        <FadeIn delay={(duration += 15)}>
+        
+          {item}
+        </FadeIn>
+      ))
+    }
   }
 
-
-
   return (
-    <AboutIntroContainer ref={ref} data-hero-view={heroShown}>
+    <AboutIntroContainer data-hero-view={heroShown}>
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs={10}>
@@ -89,15 +96,18 @@ const AboutIntro = () => {
                 <div className="supheading-container">
                   <div className="tagline-line first"></div>
                 </div>
-                <div className="section-heading view">
+                <div className="section-heading view" ref={ref}>
                   {staggerText(durationCount, explodeText)}
                 </div>
-                <PrimaryButton light>
-                  <Link to="/home">
-                    <div className="overlay"></div>
-                    <div className="button-text">All Our Projects</div>
-                  </Link>
-                </PrimaryButton>
+                <FadeIn delay={900}>
+                  {" "}
+                  <PrimaryButton light>
+                    <Link to="/home">
+                      <div className="overlay"></div>
+                      <div className="button-text">All Our Projects</div>
+                    </Link>
+                  </PrimaryButton>
+                </FadeIn>
               </div>
             </div>
           </Col>
