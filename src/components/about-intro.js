@@ -67,20 +67,15 @@ const AboutIntro = () => {
   //animate letters of text individually
   var text =
     "We provide a full range of structural engineering, steel detailing services and inspection services."
-  // text = text.trim().split("  ")
-
+  const vtext = text.split(' ');
   text = text.replaceAll(/ /g, "\u00a0")
-
-  var explodeText = [...text]
-
+  var explodeText = [...vtext]
   var [durationCount, setDurationCount] = useState(0)
-
   const staggerText = (duration, text) => {
-    if (aboutIntroView == true) {
-      return text.map(item => (
-        <FadeIn delay={(duration += 15)}>
-        
-          {item}
+    if (aboutIntroView ) {
+      return  text.map(item => (
+        <FadeIn delay={(duration += 115)}>
+          {item + "\u00a0"}
         </FadeIn>
       ))
     }
@@ -99,7 +94,7 @@ const AboutIntro = () => {
                 <div className="section-heading view" ref={ref}>
                   {staggerText(durationCount, explodeText)}
                 </div>
-                <FadeIn delay={900}>
+               
                   {" "}
                   <PrimaryButton light>
                     <Link to="/home">
@@ -107,7 +102,7 @@ const AboutIntro = () => {
                       <div className="button-text">All Our Projects</div>
                     </Link>
                   </PrimaryButton>
-                </FadeIn>
+            
               </div>
             </div>
           </Col>

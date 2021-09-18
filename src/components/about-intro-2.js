@@ -17,14 +17,6 @@ const AboutIntro2 = scrollPosition => {
 
   const view = inView ? "view-on" : "view-off"
 
-  // var maxPosition = ""
-
-  // scrollPosition.scrollPosition < 3000
-  //   ? (maxPosition = scrollPosition.scrollPosition)
-  //   : (maxPosition = 1100)
-
-  // console.log(scrollPosition.scrollPosition)
-
   return (
     <AboutIntroContainer dark>
       <Container fluid>
@@ -34,18 +26,11 @@ const AboutIntro2 = scrollPosition => {
               <div className="content-container">
                 <div className="supheading-container">
                   <div className="tagline-line first"></div>
-                  {/* <div className="supheading">Introduction</div> */}
-                  {/* <div class="tagline-line second"></div> */}
                 </div>
-                <div
-                  className="section-heading view"
-                  // style={{ transform: `translate(${maxPosition * 0.5 - 400}px, 0)` }}
-                >
+                <div className="section-heading view">
                   Providing services to corporate industrial contractors,
                   commercial architects and steel fabricators.
                 </div>
-
-                {/* <div className="section-content">{parse(paragraph)}</div> */}
 
                 <PrimaryButton light>
                   <Link to="/home">

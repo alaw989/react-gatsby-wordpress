@@ -9,13 +9,13 @@ export const AboutIntroContainer = styled.div`
   transition: all 1.5s;
 
   ${props => (props.dark ? "background-color:" + colors.primary + ";" : "")}
-
+  background-color: ${colors.lightgray};
   &[data-hero-view="not-in-view"] {
-    background-color: #EDEBEE;
+    background-color: ${colors.primary};
     .section-about-intro {
       .content-container {
         .section-heading {
-          /* color: ${colors.white}; */
+          color: #edebee;
           transition: all 1.5s;
         }
       }
@@ -32,7 +32,7 @@ export const AboutIntroContainer = styled.div`
     opacity: 0;
     transition: 2s all;
     height: 100%;
-    ${props => (props.dark ? "background-color:" + colors.primary + ";" : "")}
+   
     &[data-view="view-on"] {
       opacity: 1 !important;
     }
@@ -78,11 +78,9 @@ export const AboutIntroContainer = styled.div`
         }
       }
 
-
-
       .section-heading {
         display: flex;
-        max-width: 700px;
+        max-width: 850px;
         flex-wrap: wrap;
         margin-top: 0.1em;
         margin-bottom: 0.675em;
@@ -95,14 +93,16 @@ export const AboutIntroContainer = styled.div`
         font-weight: 700;
         text-align: center;
         transition: all 1.5s;
-   
+
         @media ${device.md} {
           font-size: 3.5rem;
         }
         @media ${device.lg} {
           text-align: left;
+          height: 260px;
         }
 
+   
         @keyframes move-text {
           0% {
             bottom: -0.2em;
