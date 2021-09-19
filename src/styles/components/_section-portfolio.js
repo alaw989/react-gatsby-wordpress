@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
 
-export const SectionPortfolio = styled.div`
+export const SectionPortfolioStyles = styled.div`
   font-family: "Roboto Condensed";
 
   .nav-container {

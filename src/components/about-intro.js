@@ -55,7 +55,6 @@ const AboutIntro = () => {
   })
 
   const view = inView ? "view-on" : "view-off"
-  // console.log("in view", inView)
 
   const { heroView, setAboutIntroView, aboutIntroView } = useContext(
     inViewContext
@@ -67,17 +66,31 @@ const AboutIntro = () => {
   //animate letters of text individually
   var text =
     "We provide a full range of structural engineering, steel detailing services and inspection services."
-  const vtext = text.split(' ');
+  const vtext = text.split(" ")
   text = text.replaceAll(/ /g, "\u00a0")
   var explodeText = [...vtext]
   var [durationCount, setDurationCount] = useState(0)
+
   const staggerText = (duration, text) => {
-    if (aboutIntroView ) {
-      return  text.map(item => (
-        <FadeIn delay={(duration += 115)}>
-          {item + "\u00a0"}
-        </FadeIn>
+    if (aboutIntroView) {
+      return text.map(item => (
+        <FadeIn delay={(duration += 115)}>{item + "\u00a0"}</FadeIn>
       ))
+    }
+  }
+
+  const showButton = () => {
+    if (aboutIntroView) {
+      return (
+        <FadeIn delay={1700}>
+          <PrimaryButton light>
+            <Link to="/home">
+              <div className="overlay"></div>
+              <div className="button-text">All Our Projects</div>
+            </Link>
+          </PrimaryButton>
+        </FadeIn>
+      )
     }
   }
 
@@ -93,16 +106,8 @@ const AboutIntro = () => {
                 </div>
                 <div className="section-heading view" ref={ref}>
                   {staggerText(durationCount, explodeText)}
-                </div>
-               
-                  {" "}
-                  <PrimaryButton light>
-                    <Link to="/home">
-                      <div className="overlay"></div>
-                      <div className="button-text">All Our Projects</div>
-                    </Link>
-                  </PrimaryButton>
-            
+                </div>{" "}
+                {showButton()}
               </div>
             </div>
           </Col>

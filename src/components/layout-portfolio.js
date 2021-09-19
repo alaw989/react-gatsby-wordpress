@@ -15,7 +15,6 @@ import SectionSegue from "./section-segue"
 import "./layout.css"
 
 const Portfoliolayout = ({ children }) => {
-  
   const data = useStaticQuery(graphql`
     query PortfolioTitleQuery {
       site {

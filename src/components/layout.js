@@ -34,14 +34,12 @@ const Layout = ({ children }) => {
   const [offsetY, setOffsetY] = useState(0)
   const handleScroll = () => setOffsetY(window.pageYOffset)
 
-  
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", handleScroll)
-    }
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", handleScroll)
+  //   }
+  //   return () => window.removeEventListener("scroll", handleScroll)
+  // }, [])
 
   // const [selectedMode, setSelectedMode] = useState()
 
