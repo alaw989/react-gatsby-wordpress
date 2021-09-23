@@ -2,10 +2,9 @@ import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
 
-export const HeroContainer = styled.div`
+export const SectionHeroStyles = styled.div`
   position: relative;
   height: 100vh;
-  /* filter: drop-shadow(-17px 30px 16px rgba(46, 46, 40, 0.5)); */
 
   .bg-overlay {
     width: 100%;
@@ -34,7 +33,6 @@ export const HeroContainer = styled.div`
     @keyframes fadeIn {
         0% {
           visibility: hidden;
-          
         }
         100% {
           visibility: visible;

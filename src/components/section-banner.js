@@ -1,7 +1,7 @@
 // import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { InternalBannerContainer } from "../styles/components/_internalbanner.js"
+import { SectionBannerStyles } from "../styles/components/_section-banner.js"
 import { useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 
@@ -9,7 +9,7 @@ import BackgroundImage from "gatsby-background-image"
 // import BackgroundImage from "gatsby-background-image"
 // import Triangle from "../assets/Triangle.svg"
 
-const InternalBanner = props => {
+const SectionBanner = props => {
 
   const data = useStaticQuery(graphql`
     query internalPageBannerQuery {
@@ -37,7 +37,7 @@ const InternalBanner = props => {
 
   return (
     <div>
-      <InternalBannerContainer dark>
+      <SectionBannerStyles dark>
         <BackgroundImage
           fluid={bgImage}
           backgroundColor={`#040e18`}
@@ -46,9 +46,9 @@ const InternalBanner = props => {
         <div className="section-hero internal"></div>
         <div className="overlay"></div>
         {/* <div className="title">{title}</div> */}
-      </InternalBannerContainer>
+      </SectionBannerStyles>
     </div>
   )
 }
 
-export default InternalBanner
+export default SectionBanner

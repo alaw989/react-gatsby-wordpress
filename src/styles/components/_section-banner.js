@@ -2,11 +2,12 @@ import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
 
-export const InternalBannerContainer = styled.div`
+export const SectionBannerStyles = styled.div`
   height: 350px;
   min-height: 350px;
   position: relative;
   font-family: "Roboto Condensed", sans-serif;
+  margin-bottom: 6em;
 
   @media ${device.lg} {
     min-height: 450px;

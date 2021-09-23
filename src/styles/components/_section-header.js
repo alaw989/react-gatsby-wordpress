@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
 
-export const Navigation = styled.div`
+export const SectionHeaderStyles = styled.div`
   font-family: Roboto Condensed, sans-serif;
   z-index: 2;
   width: 100%;

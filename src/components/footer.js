@@ -59,7 +59,6 @@ const Footer = () => {
             })}
           </ul>
         </div>
-
         <div className="sub-footer">
           ©2021 VP & Associates. All Rights Reserved.
         </div>

@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
 
-export const AboutIntroContainer = styled.div`
+export const SectionAboutIntroStyles = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;

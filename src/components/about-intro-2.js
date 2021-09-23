@@ -1,7 +1,7 @@
 // import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { AboutIntroContainer } from "../styles/components/_about-intro.js"
+import { SectionAboutIntroStyles } from "../styles/components/_section-about-intro.js"
 // import Img from "gatsby-image"
 // import parse from "html-react-parser"
 import { PrimaryButton } from "../styles/components/_buttons.js"
@@ -18,7 +18,7 @@ const AboutIntro2 = scrollPosition => {
   const view = inView ? "view-on" : "view-off"
 
   return (
-    <AboutIntroContainer dark>
+    <SectionAboutIntroStyles dark>
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs={10}>
@@ -43,7 +43,7 @@ const AboutIntro2 = scrollPosition => {
           </Col>
         </Row>
       </Container>
-    </AboutIntroContainer>
+    </SectionAboutIntroStyles>
   )
 }
 

@@ -1,18 +1,14 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React, { useContext } from "react"
-// import { Container, Row, Col } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faPhone } from "@fortawesome/free-solid-svg-icons"
-import Mmenu from "../components/vendor/mmenu"
-import { Navigation } from "../styles/components/_header.js"
-import Img from "gatsby-image"
+import Mmenu from "./vendor/mmenu"
+import { SectionHeaderStyles } from "../styles/components/_section-header.js"
 import plus from "../images/plus-icon.png"
 import { useInView } from "react-intersection-observer"
 import { Container, Row, Col } from "react-bootstrap"
 import { inViewContext } from "../Contexts/siteContext"
 
-const Header = () => {
+const SectionHeader = () => {
   const data = useStaticQuery(graphql`
     query newQuery {
       allWordpressWpApiMenusMenusItems {
@@ -54,7 +50,7 @@ const Header = () => {
   const aboutShown = aboutIntroView ? "in-view" : "not-in-view"
 
   return (
-    <Navigation>
+    <SectionHeaderStyles>
       <div
         className="nav-container"
         data-about-view={aboutShown}
@@ -68,7 +64,6 @@ const Header = () => {
                   <Link to="/">
                     <div className="logo">
                       {" "}
-                      {/* <Img fixed={logo} /> */}
                       <div className="top">
                         <div className="V">V</div>
                         <div className="icon">
@@ -89,8 +84,8 @@ const Header = () => {
           </Row>
         </Container>
       </div>
-    </Navigation>
+    </SectionHeaderStyles>
   )
 }
 
-export default Header
+export default SectionHeader

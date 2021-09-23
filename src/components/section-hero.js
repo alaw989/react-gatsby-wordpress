@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React, { useState, useEffect, useContext, useRef } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { HeroContainer } from "../styles/components/_hero.js"
+import { SectionHeroStyles } from "../styles/components/_section-hero.js"
 import Slider from "react-slick"
 import BackgroundImage from "gatsby-background-image"
 import parse from "html-react-parser"
@@ -10,7 +10,7 @@ import { useInView } from "react-intersection-observer"
 import { inViewContext, yOffsetContext } from "../Contexts/siteContext"
 import FadeIn from "react-fade-in"
 
-const Hero = ({}) => {
+const SectionHero = ({}) => {
   const data = useStaticQuery(graphql`
     query slideQuery {
       allWordpressAcfOptions {
@@ -82,7 +82,7 @@ const Hero = ({}) => {
 
   return (
     <FadeIn transitionDuration={2000}>
-      <HeroContainer>
+      <SectionHeroStyles>
         <div className="section-hero" ref={ref}>
           <div className="hero-title-container">
             <div
@@ -137,9 +137,9 @@ const Hero = ({}) => {
             ))}
           </Slider>
         </div>
-      </HeroContainer>
+      </SectionHeroStyles>
     </FadeIn>
   )
 }
 
-export default Hero
+export default SectionHero

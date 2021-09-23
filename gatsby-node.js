@@ -93,7 +93,6 @@ exports.createPages = async ({ actions, graphql }) => {
   data.allWordpressPage.nodes.forEach(page => {
     const uri = `${page.path}` == "home" ? `` : `${page.path}`
     var template = ""
-    
 
     if (`${page.template}` == "templates/contact.php") {
       template = "contact"

@@ -4,12 +4,11 @@ html {
   font: 112.5%/1.45em georgia, serif, sans-serif;
   box-sizing: border-box;
 
-  height: 100%; 
-  
+  height: 100%;
 }
 body {
   margin: 0;
-  width:100%;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
@@ -21,8 +20,12 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
-  
 }
+
+h1 {
+  font-family: "Roboto Condensed";
+}
+
 article,
 aside,
 details,
@@ -47,7 +50,6 @@ audio:not([controls]) {
   display: none;
   height: 0;
 }
-
 
 progress {
   vertical-align: baseline;
@@ -77,6 +79,24 @@ strong {
 dfn {
   font-style: italic;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 400;
+  margin-bottom: 0.75em;
+  line-height: 1.125em;
+}
+
 h1 {
   margin-left: 0;
   margin-right: 0;
@@ -87,13 +107,59 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Roboto Condensed";
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
 }
+
+h1,
+.h1 {
+  color: #033379;
+  font-size: 3rem;
+  line-height: 1.125em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 480px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3.4rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 5rem;
+  }
+}
+
+h2,
+.h2 {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  @media (min-width: 480px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3.4rem;
+  }
+
+  @media (min-width: 992px) {
+    font-size: 5rem;
+  }
+}
+
+p {
+ 
+  line-height: 1.5em;
+  font-family: "Roboto Condensed";
+}
+
 mark {
   background-color: #ff0;
   color: #000;
@@ -124,7 +190,6 @@ img {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-
 }
 svg:not(:root) {
   overflow: hidden;
@@ -603,7 +668,11 @@ pre tt:after {
 }
 
 #___gatsby {
-  height: 100%; 
-  overflow: auto; 
+  height: 100%;
+  overflow: auto;
 }
 
+
+img.alignright {
+  float: right; 
+}

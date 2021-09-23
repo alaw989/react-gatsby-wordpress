@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React, { useContext, useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { AboutIntroContainer } from "../styles/components/_about-intro.js"
+import { SectionAboutIntroStyles } from "../styles/components/_section-about-intro.js"
 // import BackgroundImage from "gatsby-background-image"
 import Img from "gatsby-image"
 import parse from "html-react-parser"
@@ -12,7 +12,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import { inViewContext } from "../Contexts/siteContext"
 import FadeIn from "react-fade-in"
 
-const AboutIntro = () => {
+const SectionAboutIntro = () => {
   const data = useStaticQuery(graphql`
     query aboutQuery {
       allWordpressAcfOptions {
@@ -95,7 +95,7 @@ const AboutIntro = () => {
   }
 
   return (
-    <AboutIntroContainer data-hero-view={heroShown}>
+    <SectionAboutIntroStyles data-hero-view={heroShown}>
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs={10}>
@@ -113,8 +113,8 @@ const AboutIntro = () => {
           </Col>
         </Row>
       </Container>
-    </AboutIntroContainer>
+    </SectionAboutIntroStyles>
   )
 }
 
-export default AboutIntro
+export default SectionAboutIntro

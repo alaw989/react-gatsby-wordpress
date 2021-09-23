@@ -8,10 +8,10 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
+import SectionHeader from "./section-header"
 import Footer from "./footer"
-import Hero from "./hero"
-import AboutIntro from "./about-intro"
+import SectionHero from "./section-hero"
+import SectionAboutIntro from "./section-about-intro"
 import AboutIntro2 from "./about-intro-2"
 import Services from "./services"
 import "./layout.css"
@@ -48,11 +48,11 @@ const Layout = ({ children }) => {
       <inViewContext.Provider
         value={{ heroView, setHeroView, aboutIntroView, setAboutIntroView }}
       >
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <SectionHeader siteTitle={data.site.siteMetadata.title} />
         <yOffsetContext.Provider value={{ offsetY, setOffsetY }}>
-          <Hero />
+          <SectionHero />
         </yOffsetContext.Provider>
-        <AboutIntro />
+        <SectionAboutIntro />
       </inViewContext.Provider>
       <Services />
       <AboutIntro2 />

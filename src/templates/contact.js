@@ -1,5 +1,5 @@
 import React from "react"
-import ContactLayout from "../components/contactlayout"
+import ContactLayout from "../components/layout-contact"
 import SEO from "../components/seo"
 import { Container, Row, Form, Col } from "react-bootstrap"
 import { SectionContact } from "../styles/components/_section-contact.js"

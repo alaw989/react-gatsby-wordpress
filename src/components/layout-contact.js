@@ -8,11 +8,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
+import SectionHeader from "./section-header"
 import Footer from "./footer"
-import InternalBanner from "./internalbanner"
-import SectionSegue  from "./section-segue"
-
+import SectionBanner from "./section-banner"
+import SectionSegue from "./section-segue"
 import "./layout.css"
 
 const Contactlayout = ({ children }) => {
@@ -28,8 +27,8 @@ const Contactlayout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <InternalBanner color="dark"/>
+      <SectionHeader siteTitle={data.site.siteMetadata.title} />
+      <SectionBanner color="dark" />
       {children}
       <SectionSegue />
       <Footer />
