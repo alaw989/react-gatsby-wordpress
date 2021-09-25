@@ -8,14 +8,50 @@ export const SectionAboutIntroStyles = styled.div`
   align-items: center;
   transition: all 1.5s;
 
-  ${props => (props.dark ? "background-color:" + colors.primary + ";" : "")}
-  background-color: ${colors.lightgray};
+  ${props =>
+    props.dark ? "background-color:" + colors.primary + ";" : colors.lightgray}
+
   &[data-hero-view="not-in-view"] {
     background-color: ${colors.primary};
     .section-about-intro {
       .content-container {
         .section-heading {
           color: #edebee;
+          transition: all 1.5s;
+        }
+      }
+    }
+  }
+  &[data-hero-view="not-in-view"] {
+    background-color: ${colors.primary};
+    .section-about-intro {
+      .content-container {
+        .section-heading {
+          color: #edebee;
+          transition: all 1.5s;
+        }
+      }
+    }
+  }
+
+  &[data-hero-view2="true"] {
+    background-color: ${colors.white};
+    .section-about-intro {
+      .content-container {
+        .section-heading {
+          color: ${colors.primary};
+          transition: all 1.5s;
+        }
+      }
+    }
+  }
+
+  &[data-hero-view2="false"] {
+    background-color: ${colors.primary};
+    .section-about-intro {
+      .content-container {
+        .section-heading {
+          color: ${colors.white};
           transition: all 1.5s;
         }
       }
@@ -30,11 +66,17 @@ export const SectionAboutIntroStyles = styled.div`
     font-weight: 400;
     font-style: normal;
     opacity: 0;
-    transition: 2s all;
+    transition: .5s all;
     height: 100%;
-   
+
     &[data-view="view-on"] {
       opacity: 1 !important;
+      color: ${colors.primary};
+    }
+
+    &[data-view2="view-on"] {
+      color: ${colors.white};
+      opacity: 1; 
     }
 
     @media ${device.lg} {
@@ -84,10 +126,10 @@ export const SectionAboutIntroStyles = styled.div`
         flex-wrap: wrap;
         margin-top: 0.1em;
         margin-bottom: 0.675em;
-        ${props =>
+        /* ${props =>
           props.dark
             ? "color:" + colors.white + ";"
-            : "color:" + colors.primary + ";"}
+            : "color:" + colors.primary + ";"} */
         font-size: 2.5rem;
         line-height: 1em;
         font-weight: 700;
@@ -102,7 +144,6 @@ export const SectionAboutIntroStyles = styled.div`
           height: 260px;
         }
 
-   
         @keyframes move-text {
           0% {
             bottom: -0.2em;

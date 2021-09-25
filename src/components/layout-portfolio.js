@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import SectionHeader from "./section-header"
-import Footer from "./footer"
+import SectionFooter from "./section-footer"
 import SectionBanner from "./section-banner"
 import SectionSegue from "./section-segue"
 import "./layout.css"
@@ -31,7 +31,7 @@ const Portfoliolayout = ({ children }) => {
       <SectionBanner color="dark" />
       {children}
       <SectionSegue />
-      <Footer />
+      <SectionFooter />
     </>
   )
 }

@@ -6,7 +6,7 @@ import Angle2 from "../../images/angle2.svg"
 import Angle3 from "../../images/angle3.svg"
 // import BackgroundImage from "gatsby-background-image"
 
-export const ServicesContainer = styled.div`
+export const SectionServicesStyles = styled.div`
   font-family: "Roboto Condensed", sans-serif;
   position: relative;
   background-image: url(${Angle1}), url(${Angle2}), url(${Angle3});

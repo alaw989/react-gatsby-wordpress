@@ -9,9 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import SectionHeader from "./section-header"
-import Footer from "./footer"
 import SectionBanner from "./section-banner"
 import SectionSegue from "./section-segue"
+import SectionFooter from "./section-footer"
 import "./layout.css"
 
 const Contactlayout = ({ children }) => {
@@ -31,7 +31,7 @@ const Contactlayout = ({ children }) => {
       <SectionBanner color="dark" />
       {children}
       <SectionSegue />
-      <Footer />
+      <SectionFooter />
     </>
   )
 }

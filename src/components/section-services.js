@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React, { useRef } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { ServicesContainer } from "../styles/components/_services.js"
+import { SectionServicesStyles } from "../styles/components/_section-services.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
 // import { FaPlusCircle } from "react-icons/fa"
@@ -81,7 +81,6 @@ const Services = ({ setServicesView }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
- 
   }
 
   // const { inView } = useInView({
@@ -94,10 +93,9 @@ const Services = ({ setServicesView }) => {
   // setServicesView(view)
 
   const customSlider = useRef()
-  
 
   return (
-    <ServicesContainer>
+    <SectionServicesStyles>
       <div className="section-services">
         <Container fluid>
           <Row className="justify-content-center">
@@ -152,7 +150,7 @@ const Services = ({ setServicesView }) => {
           </Row>
         </Container>
       </div>
-    </ServicesContainer>
+    </SectionServicesStyles>
   )
 }
 

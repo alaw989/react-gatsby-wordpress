@@ -2,9 +2,9 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import Img from "gatsby-image"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { FooterContainer } from "../styles/components/_footer.js"
+import { SectionFooterStyles } from "../styles/components/_section-footer.js"
 
-const Footer = () => {
+const SectionFooter = () => {
   const data = useStaticQuery(graphql`
     query footerQuery {
       allWordpressWpApiMenusMenusItems {
@@ -29,8 +29,6 @@ const Footer = () => {
     }
   `)
 
-
-
   const menuItems = data.allWordpressWpApiMenusMenusItems.edges[0].node.items
   const logo =
     data.allWordpressAcfOptions.nodes[0].options.logo_dark.localFile
@@ -39,7 +37,7 @@ const Footer = () => {
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
   return (
-    <FooterContainer>
+    <SectionFooterStyles>
       <div className="section-footer">
         <div className="logo">
           <Img fixed={logo} />
@@ -63,8 +61,8 @@ const Footer = () => {
           ©2021 VP & Associates. All Rights Reserved.
         </div>
       </div>
-    </FooterContainer>
+    </SectionFooterStyles>
   )
 }
 
-export default Footer
+export default SectionFooter

@@ -676,3 +676,17 @@ pre tt:after {
 img.alignright {
   float: right; 
 }
+
+.l-wrapper {
+  position: relative; 
+}
+
+.l-document {
+  position: relative;
+  background-color: white;
+  z-index: 2;
+}
+
+.l-footer {
+  height: 1241px;
+}

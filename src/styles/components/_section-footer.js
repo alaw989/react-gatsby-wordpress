@@ -2,13 +2,24 @@ import styled from "styled-components"
 // import { device } from "../mixins"
 import { colors } from "../variables"
 
-export const FooterContainer = styled.div`
+export const SectionFooterStyles = styled.div`
   background-color: ${colors.primary};
   font-family: "Roboto Condensed", sans-serif;
+
 
   .section-footer {
     background-color: ${colors.white};
     margin-top: 50px; 
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    
     .logo {
       display: flex; 
       justify-content: center; 
