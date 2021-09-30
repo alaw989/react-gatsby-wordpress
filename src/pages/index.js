@@ -11,16 +11,5 @@ const IndexPage = ({ data }) => (
 
 )
 
-// export const query = graphql`
-//   query MyQuery {
-//     wordpress {
-//       posts {
-//         nodes {
-//           title
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default IndexPage

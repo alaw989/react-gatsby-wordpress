@@ -14,7 +14,7 @@ export const SectionServicesStyles = styled.div`
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-size: contain, 40%, cover;
   padding: 3em 0;
-
+ height: 100vh;
   @media ${device.lg} {
     padding: 6em 0;
   }
@@ -22,6 +22,7 @@ export const SectionServicesStyles = styled.div`
   .section-services {
     height: 100%;
     font-family: "Roboto Condensed", sans-serif;
+    
     .section-title-container {
       display: flex;
       justify-content: center;

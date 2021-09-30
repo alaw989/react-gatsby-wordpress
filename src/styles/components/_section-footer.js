@@ -1,28 +1,36 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 // import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const SectionFooterStyles = styled.div`
   background-color: ${colors.primary};
   font-family: "Roboto Condensed", sans-serif;
-
+  display: ${props =>
+    props.page == "home2" ? console.log(props.page) : "block"};
 
   .section-footer {
     background-color: ${colors.white};
-    margin-top: 50px; 
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; 
-    
+    align-items: flex-start;
+
+   
+    ${props =>
+      props.page == "home" &&
+      css`
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-bottom: 14em;
+        height: 100vh;
+      `};
+
     .logo {
-      display: flex; 
-      justify-content: center; 
+      display: flex;
+      justify-content: center;
     }
     .phone {
       background-color: ${colors.white};
@@ -56,7 +64,7 @@ export const SectionFooterStyles = styled.div`
 
     .sub-footer {
       font-size: 0.7rem;
-      margin-top: 50px; 
+      margin-top: 50px;
       display: flex;
       justify-content: center;
       padding: 12px 0;

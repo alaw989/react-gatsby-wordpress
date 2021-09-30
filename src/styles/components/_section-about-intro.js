@@ -68,7 +68,7 @@ export const SectionAboutIntroStyles = styled.div`
     opacity: 0;
     transition: .5s all;
     height: 100%;
-
+    color: ${colors.primary};
     &[data-view="view-on"] {
       opacity: 1 !important;
       color: ${colors.primary};

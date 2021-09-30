@@ -104,6 +104,9 @@ exports.createPages = async ({ actions, graphql }) => {
 
     // page.slug == 'contact' ? `${template}` = 'contact' : `${template}` = 'page'
 
+
+    console.log(page.slug)
+
     actions.createPage({
       path: `/${page.slug}`,
       component: path.resolve(`./src/templates/${template}.js`),

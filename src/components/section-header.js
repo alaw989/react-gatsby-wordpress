@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer"
 import { Container, Row, Col } from "react-bootstrap"
 import { inViewContext } from "../Contexts/siteContext"
 
-const SectionHeader = () => {
+const SectionHeader = (props) => {
   const data = useStaticQuery(graphql`
     query newQuery {
       allWordpressWpApiMenusMenusItems {

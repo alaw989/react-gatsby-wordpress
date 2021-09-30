@@ -3,8 +3,11 @@ import React from "react"
 import Img from "gatsby-image"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { SectionFooterStyles } from "../styles/components/_section-footer.js"
+import { Col, Row, Container, Form } from "react-bootstrap"
 
-const SectionFooter = () => {
+const SectionFooter = props => {
+  const page = props.page
+
   const data = useStaticQuery(graphql`
     query footerQuery {
       allWordpressWpApiMenusMenusItems {
@@ -37,9 +40,46 @@ const SectionFooter = () => {
   const phone = data.allWordpressAcfOptions.nodes[0].options.phone_number
 
   return (
-    <SectionFooterStyles>
+    <SectionFooterStyles page={props.page}>
       <div className="section-footer">
-        <div className="logo">
+        <Container fluid>
+          <Row className="justify-content-center">
+            <Col xs={10}>
+              <Row className="justify-content-between">
+              <Col xs={4}>
+              <div className="touch-container">
+                <h1 classNamer="higher">Get In touch</h1>
+                <h1 className="lower">Let's talk</h1>
+              </div>
+
+              <Link to={"/contact"}>Contact</Link>
+
+              <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Control type="email" placeholder="Email" />
+                </Form.Group>
+              </Form>
+            </Col>
+            <Col xs={4}>        <div className="nav-menu">
+          <ul>
+            {menuItems.map((x, index) => {
+              const uri = `/${x.object_slug}`
+              return (
+                <li key={index}>
+                  <Link key={x.wordpress_id} to={uri}>
+                    {x.title}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div></Col>
+              </Row>
+            </Col>
+ 
+          </Row>
+        </Container>
+        {/* <div className="logo">
           <Img fixed={logo} />
         </div>
         <div className="phone">{phone}</div>
@@ -59,7 +99,7 @@ const SectionFooter = () => {
         </div>
         <div className="sub-footer">
           ©2021 VP & Associates. All Rights Reserved.
-        </div>
+        </div> */}
       </div>
     </SectionFooterStyles>
   )

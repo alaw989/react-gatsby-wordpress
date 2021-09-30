@@ -44,6 +44,8 @@ const HomeLayout = ({ children }) => {
 
   // const [selectedMode, setSelectedMode] = useState()
 
+  const home = "home"
+
   return (
     <>
       <inViewContext.Provider
@@ -68,11 +70,12 @@ const HomeLayout = ({ children }) => {
           </div>
           {children}
           <div className="l-footer">
-            <SectionFooter />
+            <SectionFooter page={home}/>
           </div>
         </div>
       </inViewContext.Provider>
     </>
+    
   )
 }
 

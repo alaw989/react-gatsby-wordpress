@@ -30,7 +30,7 @@ console.log(view)
   setAboutIntroView2(inView)
 
   var text =
-    "Providing services to corporate industrial contractors, commercial architects and steel fabricators."
+    "We provide services to corporate industrial contractors, commercial architects and steel fabricators."
   const vtext = text.split(" ")
   // text = text.replaceAll(/ /g, "\u00a0")
 
