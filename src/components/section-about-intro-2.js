@@ -1,7 +1,7 @@
 // import { useStaticQuery, graphql } from "gatsby"
 import React, { useContext, useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { SectionAboutIntroStyles } from "../styles/components/_section-about-intro.js"
+import { SectionAboutIntroStyles2 } from "../styles/components/_section-about-intro-2.js"
 // import Img from "gatsby-image"
 // import parse from "html-react-parser"
 import { PrimaryButton } from "../styles/components/_buttons.js"
@@ -61,7 +61,7 @@ console.log(view)
     }
   }
   return (
-    <SectionAboutIntroStyles dark data-hero-view2={aboutIntroView2}>
+    <SectionAboutIntroStyles2 dark data-hero-view2={aboutIntroView2}>
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs={10}>
@@ -79,7 +79,7 @@ console.log(view)
           </Col>
         </Row>
       </Container>
-    </SectionAboutIntroStyles>
+    </SectionAboutIntroStyles2>
   )
 }
 

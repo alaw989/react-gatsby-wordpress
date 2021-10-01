@@ -5,7 +5,8 @@ export const colors = {
     secondary: `#BE0000`,
     white: `#fff`,
     lightblue: `#62a8c4`,
-    lightgray: `#edebee`
+    lightgray: `#edebee`,
+    black: `#000`
 
 }
 

@@ -46,37 +46,39 @@ const SectionFooter = props => {
           <Row className="justify-content-center">
             <Col xs={10}>
               <Row className="justify-content-between">
-              <Col xs={4}>
-              <div className="touch-container">
-                <h1 classNamer="higher">Get In touch</h1>
-                <h1 className="lower">Let's talk</h1>
-              </div>
-
-              <Link to={"/contact"}>Contact</Link>
-
-              <Form>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder="Email" />
-                </Form.Group>
-              </Form>
-            </Col>
-            <Col xs={4}>        <div className="nav-menu">
-          <ul>
-            {menuItems.map((x, index) => {
-              const uri = `/${x.object_slug}`
-              return (
-                <li key={index}>
-                  <Link key={x.wordpress_id} to={uri}>
-                    {x.title}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </div></Col>
+                <Col xs={12}>
+                  <div className="touch-container">
+                    <h1 className="higher">Get In touch</h1>
+                    <h1 className="lower">Let's talk</h1>
+                  </div>
+                  <div className="contact-link">
+                    <Link to={"/contact"}>Contact</Link>
+                  </div>
+                  <Form>
+                    <Form.Group controlId="formBasicEmail">
+                      <Form.Control type="email" placeholder="hello@vpassociates.com" />
+                    </Form.Group>
+                  </Form>
+                </Col>
+                {/* <Col xs={12}>
+                  {" "}
+                  <div className="nav-menu">
+                    <ul>
+                      {menuItems.map((x, index) => {
+                        const uri = `/${x.object_slug}`
+                        return (
+                          <li key={index}>
+                            <Link key={x.wordpress_id} to={uri}>
+                              {x.title}
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                </Col> */}
               </Row>
             </Col>
- 
           </Row>
         </Container>
         {/* <div className="logo">
