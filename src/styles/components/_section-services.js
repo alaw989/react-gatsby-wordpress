@@ -4,6 +4,8 @@ import { colors } from "../variables"
 import Angle1 from "../../images/angle1.svg"
 import Angle2 from "../../images/angle2.svg"
 import Angle3 from "../../images/angle3.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCoffee } from "@fortawesome/free-solid-svg-icons"
 // import BackgroundImage from "gatsby-background-image"
 
 export const SectionServicesStyles = styled.div`
@@ -14,7 +16,7 @@ export const SectionServicesStyles = styled.div`
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-size: contain, 40%, cover;
   padding: 3em 0;
- height: 100vh;
+
   @media ${device.lg} {
     padding: 6em 0;
   }
@@ -22,23 +24,37 @@ export const SectionServicesStyles = styled.div`
   .section-services {
     height: 100%;
     font-family: "Roboto Condensed", sans-serif;
-    
+
     .section-title-container {
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      margin-bottom: 2em;
+
       .section-title {
         text-transform: uppercase;
         font-family: "Roboto Condensed", sans-serif;
         color: ${colors.primary};
         font-size: 1.8rem;
+        font-weight: 100;
+        margin-bottom: 0;
 
         @media ${device.lg} {
           font-size: 2.4rem;
         }
         span {
           font-weight: 600;
+        }
+      }
+
+      @media ${device.lg} {
+        .tagline {
+          width: 150px;
+          height: 2px;
+          background-color: #002d3c33;
+          margin-right: 1em;
+          margin-left: 1em;
         }
       }
     }
@@ -67,27 +83,57 @@ export const SectionServicesStyles = styled.div`
       .services-link-container {
         display: flex;
         justify-content: center;
+        position: relative;
+        align-items: center;
+        margin-top: 0.25em;
+     
 
         @media ${device.md} {
-          margin: 0 25px;
-          margin-bottom: 5px;
+          margin-left: 25px;
+          margin-right: 25px;
         }
 
         @media ${device.lg} {
           justify-content: flex-start;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+
+        &.color-change {
+          .services-link {
+            color: ${colors.secondary};
+          }
+        }
+
+        .services-icon {
+       
+          transition: 0.5s all;
+          visibility: hidden;
+          opacity: 0;
+          &.show {
+            display: block;
+            color: ${colors.secondary};
+            margin-right: 5px;
+            visibility: visible;
+            opacity: 1;
+            transition: 0.5s all;
+          }
         }
 
         .services-link {
-          margin-top: 0.25em;
-          margin-bottom: 0.8em;
           padding-bottom: 0;
           text-transform: uppercase;
-          color: ${colors.lightblue};
+          color: ${colors.primary};
           font-weight: 600;
           line-height: 1em;
           letter-spacing: 0.0325em;
           font-size: 1rem;
           cursor: pointer;
+          transition: 0.5s all;
+
+          @media ${device.lg} {
+            font-size: 1.1rem;
+          }
         }
       }
     }
@@ -97,7 +143,7 @@ export const SectionServicesStyles = styled.div`
       margin-bottom: 20px;
       flex-direction: column;
       align-items: center;
-      position: relative; 
+      position: relative;
       .services-image {
         width: 100%;
         height: 350px;

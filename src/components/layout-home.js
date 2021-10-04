@@ -44,7 +44,7 @@ const HomeLayout = ({ children }) => {
 
   // const [selectedMode, setSelectedMode] = useState()
 
-  const home = "home"
+  const home = "home";
 
   return (
     <>

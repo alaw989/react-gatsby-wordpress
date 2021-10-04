@@ -1,20 +1,27 @@
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
 
 export const PrimaryButton = styled.div`
   position: relative;
   overflow: hidden;
-  border: 1px solid ${props => props.light ? colors.secondary : colors.white};
+  border: 1px solid ${props => (props.light ? colors.secondary : colors.white)};
   position: relative;
   padding: 25px 80px 25px 80px;
   background-color: ${colors.secondary};
   max-width: 200px;
   font-family: "Roboto Condensed";
-  margin: 0 auto; 
-  z-index: 1; 
+  transition: 0.5s opacity;
+  transition-delay: ${props => (props.fadein ? 1400 + 'ms' : '0s')};
+  opacity: ${props => (props.light ? 1 : 0)};
+  z-index: 1;
+
+  ${props => props.fadein && css`
+    opacity: 1
+    `};
+
   @media ${device.lg} {
-    margin: 0; 
+    margin: 0;
   }
 
   a {
@@ -26,7 +33,7 @@ export const PrimaryButton = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    background-color: ${props => props.light ? colors.white : colors.white};
+    background-color: ${props => (props.light ? colors.white : colors.white)};
     transition: 0.5s all;
     z-index: 2;
     cursor: pointer;

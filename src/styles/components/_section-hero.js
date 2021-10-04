@@ -47,7 +47,6 @@ export const SectionHeroStyles = styled.div`
       align-items: center;
       justify-content: center;
       top: 40%;
-   
       transition: 2s all;
 
       .hero-title {

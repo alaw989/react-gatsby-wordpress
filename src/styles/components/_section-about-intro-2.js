@@ -1,14 +1,38 @@
 import styled from "styled-components"
 import { device } from "../mixins"
 import { colors } from "../variables"
+import image from "../../images/HomeHero.jpg"
 
 export const SectionAboutIntroStyles2 = styled.div`
-  height: 100vh;
   display: flex;
   align-items: center;
   transition: all 1.5s;
-    background-color: ${colors.primary};
+  background-image: url(${image});
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-top: 6em;
+  padding-bottom: 6em;
 
+  @media ${device.md} {
+    padding-top: 8em;
+    padding-bottom: 8em;
+  }
+
+  @media ${device.lg} {
+    height: 100vh;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+  }
 
   .section-about-intro {
     display: flex;
@@ -17,18 +41,13 @@ export const SectionAboutIntroStyles2 = styled.div`
     font-family: 'Roboto Condensed';
     font-weight: 400;
     font-style: normal;
-    opacity: 0;
-    transition: .5s all;
+
+    transition: 0.5s all;
     height: 100%;
-    color: ${colors.primary};
-    &[data-view="view-on"] {
-      opacity: 1 !important;
-      color: ${colors.primary};
-    }
+    color: ${colors.white};
 
     &[data-view2="view-on"] {
       color: ${colors.white};
-      opacity: 1; 
     }
 
     @media ${device.lg} {
@@ -36,6 +55,10 @@ export const SectionAboutIntroStyles2 = styled.div`
     }
 
     .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
       @media ${device.lg} {
         padding: 0;
         padding-right: 100px;
@@ -78,46 +101,26 @@ export const SectionAboutIntroStyles2 = styled.div`
         flex-wrap: wrap;
         margin-top: 0.1em;
         margin-bottom: 0.675em;
-        /* ${props =>
-          props.dark
-            ? "color:" + colors.white + ";"
-            : "color:" + colors.primary + ";"} */
-        font-size: 2.5rem;
-        line-height: 1em;
+        font-size: 21px;
+        line-height: 1.5em;
         font-weight: 700;
         text-align: center;
         transition: all 1.5s;
+        font-weight: 400;
 
         @media ${device.md} {
-          font-size: 3.5rem;
+          font-size: 33px;
+          line-height: 45px; 
         }
         @media ${device.lg} {
           text-align: left;
-          height: 260px;
+          line-height: 50px;
+          font-size: 43px;
         }
-
-        @keyframes move-text {
-          0% {
-            bottom: -0.2em;
-            opacity: 1;
-          }
-          50% {
-            bottom: 0.2em;
-          }
-          100% {
-            bottom: 0;
-            opacity: 1;
-          }
-        }
-
-        span {
-          position: relative;
-          opacity: 0;
-          animation: move-text 0.75s forwards;
-          font-size: 3.73333vw;
-          @media ${device.md} {
-            font-size: 1.02489vw;
-          }
+        @media ${device.xl} {
+          text-align: left;
+          font-size: 53px;
+          line-height: 65px;
         }
       }
       .section-content {

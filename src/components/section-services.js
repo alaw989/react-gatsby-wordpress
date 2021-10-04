@@ -1,12 +1,14 @@
 import { useStaticQuery, graphql } from "gatsby"
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { SectionServicesStyles } from "../styles/components/_section-services.js"
 import { Container, Row, Col } from "react-bootstrap"
 import Slider from "react-slick"
-// import { FaPlusCircle } from "react-icons/fa"
+
 // import { useInView } from "react-intersection-observer"
 // import placeholder from "../images/placeholder_image.jpg"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { PrimaryButton } from "../styles/components/_buttons.js"
 import { Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
@@ -94,12 +96,19 @@ const Services = ({ setServicesView }) => {
 
   const customSlider = useRef()
 
+  const [textColor, setTextColor] = useState("")
+
+  const handleChangeTextColor = index => {
+    console.log(index)
+    setTextColor(index)
+  }
+
   return (
     <SectionServicesStyles>
       <div className="section-services">
         <Container fluid>
           <Row className="justify-content-center">
-            <Col xs={10}>
+            <Col xs={11}>
               <div className="section-title-container">
                 <div className="tagline" />
                 <h2 className="section-title">{parse(services_title)}</h2>
@@ -107,12 +116,31 @@ const Services = ({ setServicesView }) => {
               </div>
               <div className="services-selector">
                 {servicesData.map((item, index) => (
-                  <div className="services-link-container">
-                    <div className="services-icon" />
+                  <div
+                    className={
+                      textColor == index
+                        ? "services-link-container color-change"
+                        : "services-link-container"
+                    }
+                    onClick={() => {
+                      handleChangeTextColor(index)
+                    }}
+                  >
+                    <div className={
+                      textColor == index
+                        ? "services-icon show"
+                        : "services-icon"
+                    }>
+                      {" "}
+                      <FontAwesomeIcon icon={faCoffee} />
+                    </div>
+
                     <div
                       className="services-link"
                       data-id={index}
-                      onClick={() => customSlider.current.slickGoTo(index)}
+                      onClick={() => {
+                        customSlider.current.slickGoTo(index)
+                      }}
                     >
                       {item.titles}
                     </div>
@@ -136,12 +164,12 @@ const Services = ({ setServicesView }) => {
                       <div className="services-description">
                         {parse(item.description)}
                       </div>
-                      <PrimaryButton light>
-                        {/* <Link to={item.links.url}>
+                      {/* <PrimaryButton light>
+                        <Link to={item.links.url}>
                           <div className="overlay"></div>
                           <div className="button-text">Contact Us</div>
-                        </Link> */}
-                      </PrimaryButton>
+                        </Link>
+                      </PrimaryButton> */}
                     </div>
                   </div>
                 ))}
